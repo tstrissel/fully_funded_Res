@@ -16,7 +16,6 @@ export async function getStaticProps() {
 }
 
 export default function Recipes({ artist }) {
-  //console.log(artist.sys.id, "here is artist");
   return (
     <div className="recipe-list">
       artist List
