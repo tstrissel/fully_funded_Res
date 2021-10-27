@@ -20,6 +20,7 @@ export default function Index({ artist }) {
   return <div>
     {/* <NavBar />
     <SearchBar /> */}
+    
     <GridComp artist={artist} />
 
   </div>;
