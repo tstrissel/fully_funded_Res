@@ -15,9 +15,9 @@ export async function getStaticProps() {
   };
 }
 
-export default function Recipes({ artist }) {
+export default function Artists({ artist }) {
   return (
-    <div className="recipe-list">
+    <div>
       artist List
       {artist.map((artist) => (
         <div key={artist.sys.id}>
