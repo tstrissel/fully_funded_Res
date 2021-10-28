@@ -3,8 +3,13 @@ import { useState } from "react";
 
 export default function GridComp({ artist }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [toggleViewMode, setToggleViewMode] = useState(false);
   return (
     <div>
+      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+        {toggleViewMode ? "grid" : "list"}
+      </button>
+
       <h2>Here is the search bar</h2>
       <input
         type="text"
