@@ -1,5 +1,6 @@
 import styles from "./gridComp.module.css";
 
+
 export default function GridComp({ artist }) {
   //   console.log(artist, "ARTIST HERE");
   return (
@@ -8,10 +9,10 @@ export default function GridComp({ artist }) {
       <ul className={styles.wrapper}>
         {artist.map((artist) => (
           <div key={artist.sys.id}>
-            {console.log(
+            {/* {console.log(
               artist.fields.featuredImage.fields.file.url,
               "here is the thumbnail"
-            )}
+            )} */}
             {artist.fields.title}
             <img
               src={artist.fields.thumbnail.fields.file.url}
