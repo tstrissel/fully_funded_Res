@@ -1,6 +1,6 @@
 import { createClient } from "contentful";
 import GridComp from "../components/gridComp/gridComp";
-import SearchBar from "../components/searchBar/SearchBar";
+// import SearchBar from "../components/searchBar/SearchBar";
 // import NavBar from "../components/navBar/NavBar";
 
 export const getStaticProps = async (context) => {
@@ -22,7 +22,7 @@ export default function Index({ artist }) {
   return (
     <div>
       {/* <NavBar /> */}
-      <SearchBar artist={artist}/>
+      {/* <SearchBar artist={artist}/> */}
       <GridComp artist={artist} />
     </div>
   );
