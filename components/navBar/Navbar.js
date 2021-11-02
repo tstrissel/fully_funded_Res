@@ -1,22 +1,25 @@
 import Link from 'next/link';
+import Image from 'next/image'
+import Logo from '../../public/Logo/FFR-logo.png'
+import Insta from '../..//public/Social links/icon_instagram.svg'
+import FaceBook from '../..//public/Social links/icon_facebook.svg'
+import styles from '../NavBar/NavBar.module.css'
 
-export const Navbar = () => {
+export default function NavBar() {
     return (
       <>
-        <nav className='navBar'>
+        <nav className= {styles.navBar} >
           <Link href='/'>
             <a className='logo'>
-              
-                <img className='logo' src="/public/Logo/FFR-logo.png/" alt="FFR" width="200" height="100">
-                </img>
-             
+                <Image className='logo' src= { Logo } alt="FFR" width="200" height="100">
+                </Image> 
             </a>
           </Link>
-          <button className='button'>
+          {/* <button className='button'>
             click me
-          </button>
+          </button> */}
           {/* <div className='navEntriesWrapper'> */}
-          <div className='navEntries'>
+          <div className={styles.navEntries}>
             <Link href='/'>
               <a className='navOpenCalls'>
                 Open Calls
@@ -44,17 +47,21 @@ export const Navbar = () => {
             </Link>
             <Link href='/'>
               <a className='navInsta'>              
-                <img src="/public/Social links/icon_instagram.svg" alt="IG" width="200" height="100">   
-                </img>
+                <Image src= {Insta} alt="IG" >   
+                </Image>
               </a>
             </Link>
             <Link href='/'>
               <a className='navFacebook'>                
-              <img className='logo' src="/public/Social links/icon_instagram.svg" onerror="this.src='your.png'">   
-              </img>
+              <Image src= {FaceBook} alt="FB" >   
+              </Image>
             </a>
             </Link>
-            <div className='heroMessage'>
+            
+          </div>
+        {/* </div> */}
+        </nav>
+        <div className='heroMessage'>
              <h1>
               Open Calls
              </h1>
@@ -62,10 +69,7 @@ export const Navbar = () => {
               Browse through a list of fully funded residencies that we <br></br>
               update regularly and find the best fit for you.    
              </h3>
-            </div>
-          </div>
-        {/* </div> */}
-        </nav>
+        </div>
       </>
     );
   };

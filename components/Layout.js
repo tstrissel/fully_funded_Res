@@ -1,18 +1,18 @@
 import Link from 'next/link'
-import { Navbar } from '../components/navBar/Navbar';
+import Head from 'next/head'
+
 export default function Layout({ children }) {
   return (
     <div className="layout">
+    <Head>
+      </Head>
       <header>
         <title>Fully Funded Recidencies</title>
         <link rel='icon' href='/favicon.ico' />
       </header>
-      <Navbar />
       <div className="page-content">
         { children }
       </div>
-
-      
     </div>
   )
 }

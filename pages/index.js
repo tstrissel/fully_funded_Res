@@ -1,5 +1,10 @@
 import { createClient } from "contentful";
 import GridComp from "../components/gridComp/gridComp";
+import NavBar from "../components/NavBar/NavBar"
+import Footer from "../components/Footer/Footer"
+import Head from 'next/head'
+// import { MyDocument } from "./_document";
+// import SearchBar from "../components/searchBar"
 
 export const getStaticProps = async (context) => {
   const client = createClient({
@@ -17,13 +22,14 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Index({ artist }) {
-  return <div>
-    {/* <NavBar />
-    <SearchBar /> */}
-    
+  return (
+  <div>
+    <NavBar />
+    {/* <MyDocument /> */}
     <GridComp artist={artist} />
-
-  </div>;
+    <Footer />
+  </div>
+  )
 }
 
 

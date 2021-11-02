@@ -1,0 +1,15 @@
+.footer {
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+}
+
+.logoSocial {
+    display:flex;
+    flex-direction: column;
+}
+
+.socials {
+    flex-direction: row;
+}
