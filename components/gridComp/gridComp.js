@@ -1,14 +1,22 @@
 import styles from "./gridComp.module.css";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function GridComp({ artist }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    isOpen === false ? setIsOpen(true) : setIsOpen(false);
+    console.log(isOpen, "HERE IS STATE");
+  };
+
   return (
     <div>
-      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+      {/* <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
-      </button>
+      </button> */}
 
       <h2>Here is the search bar</h2>
       <input
@@ -18,6 +26,9 @@ export default function GridComp({ artist }) {
           setSearchTerm(event.target.value);
         }}
       />
+
+      <button onClick={handleClick}>Filter Button</button>
+
       {artist
         .filter((val) => {
           if (searchTerm == "") {
