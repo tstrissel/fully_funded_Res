@@ -14,10 +14,11 @@ export default function GridComp({ artist }) {
 
   return (
     <div>
-      {/* <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
-      </button> */}
+      </button>
 
+      <button onClick={handleClick}>Filter Button</button>
       <h2>Here is the search bar</h2>
       <input
         type="text"
@@ -26,8 +27,6 @@ export default function GridComp({ artist }) {
           setSearchTerm(event.target.value);
         }}
       />
-
-      <button onClick={handleClick}>Filter Button</button>
 
       {artist
         .filter((val) => {
