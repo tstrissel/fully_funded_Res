@@ -23,14 +23,20 @@ export default function GridComp({ artist }) {
 
       <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
         <h3>HERE I AM!</h3>
-        <h2>This is my button triggered popup</h2>
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
       </SearchModal>
 
       <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
       </button>
 
-      <button onClick={handleClick}>Filter Button</button>
+      <button onClick={handleClick}>Search Button</button>
       <h2>Here is the search bar</h2>
       <input
         type="text"
