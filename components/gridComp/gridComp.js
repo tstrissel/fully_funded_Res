@@ -10,19 +10,22 @@ export default function GridComp({ artist }) {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
 
-  const handleClick = () => {
-    isOpen === false ? setIsOpen(true) : setIsOpen(false);
-    console.log(isOpen, "HERE IS STATE");
+  const handleClick = (event) => {
+    // isOpen === false ? setIsOpen(true) : setIsOpen(false);
+    // console.log(isOpen, "HERE IS STATE");
+    setSearchTerm(event.target.value);
+  };
+
+  const handleChange = (event) => {
+    // setSearchTerm(event.target.value);
   };
 
   return (
     <div>
-      <h1>Here is the modal page</h1>
-
       <button onClick={() => setButtonPopup(true)}>Open Popup</button>
 
       <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h3>HERE I AM!</h3>
+        {/* <form>
         <input
           type="text"
           placeholder="Search..."
@@ -30,32 +33,31 @@ export default function GridComp({ artist }) {
             setSearchTerm(event.target.value);
           }}
         />
+        <button type="submit" onClick={handleClick}>
+          Search Button
+        </button>
+      </form> */}
       </SearchModal>
 
-      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+      {/* <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
-      </button>
+      </button> */}
 
-      <button onClick={handleClick}>Search Button</button>
-      <h2>Here is the search bar</h2>
-      <input
-        type="text"
-        placeholder="Search..."
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
+      <form>
+        <input type="text" placeholder="Search..." onChange={handleChange} />
+        <button onClick={handleClick}>Search Button</button>
+      </form>
 
       {artist
-        .filter((val) => {
-          if (searchTerm == "") {
-            return val;
-          } else if (
-            val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-            return val;
-          }
-        })
+        // .filter((val) => {
+        //   if (searchTerm == "") {
+        //     return val;
+        //   } else if (
+        //     val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
+        //   ) {
+        //     return val;
+        //   }
+        // })
         .map((artist) => {
           return (
             <ul key={artist.sys.id} className={styles.wrapper}>
