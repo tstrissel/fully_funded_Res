@@ -4,20 +4,17 @@ import SearchModal from "../SearchModal/SearchModal";
 
 import { useState } from "react";
 
-export default function GridComp({ artist }) {
+export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
 
-  const handleClick = (event) => {
-    // isOpen === false ? setIsOpen(true) : setIsOpen(false);
-    // console.log(isOpen, "HERE IS STATE");
-    setSearchTerm(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
 
   const handleChange = (event) => {
-    // setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -25,45 +22,42 @@ export default function GridComp({ artist }) {
       <button onClick={() => setButtonPopup(true)}>Open Popup</button>
 
       <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-        {/* <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
-        <button type="submit" onClick={handleClick}>
-          Search Button
-        </button>
-      </form> */}
+        <form>
+          <input type="text" placeholder="Search..." onChange={handleChange} />
+          <button type="submit">Search Button</button>
+        </form>
       </SearchModal>
 
       {/* <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
       </button> */}
 
-      <form>
-        <input type="text" placeholder="Search..." onChange={handleChange} />
-        <button onClick={handleClick}>Search Button</button>
+      <form onSubmit={handleSubmit}> 
+        <input
+          value={searchTerm}
+          type="text"
+          placeholder="Search..."
+          onChange={handleChange}
+        />
+        <button type="submit">Search Button</button>
       </form>
 
-      {artist
-        // .filter((val) => {
-        //   if (searchTerm == "") {
-        //     return val;
-        //   } else if (
-        //     val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-        //   ) {
-        //     return val;
-        //   }
-        // })
-        .map((artist) => {
+      {fellowship
+        .filter((val) => {
+          if (searchTerm == "") {
+            return val;
+          } else if (
+            val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return val;
+          }
+        })
+        .map((fellowship) => {
           return (
-            <ul key={artist.sys.id} className={styles.wrapper}>
-              {artist.fields.title}
+            <ul key={fellowship.sys.id} className={styles.wrapper}>
+              {fellowship.fields.title}
               <img
-                src={artist.fields.thumbnail.fields.file.url}
+                src={fellowship.fields.thumbnail.fields.file.url}
                 height="300px"
                 width="350px"
               />
