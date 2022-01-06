@@ -28,9 +28,9 @@ export default function GridComp({ fellowship }) {
         </form>
       </SearchModal>
 
-      {/* <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
         {toggleViewMode ? "grid" : "list"}
-      </button> */}
+      </button>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -42,6 +42,7 @@ export default function GridComp({ fellowship }) {
         <button type="submit">Search Button</button>
       </form>
 
+      <ul className={styles.wrapper}>
       {fellowship
         .filter((val) => {
           if (searchTerm == "") {
@@ -54,16 +55,27 @@ export default function GridComp({ fellowship }) {
         })
         .map((fellowship) => {
           return (
-            <ul key={fellowship.sys.id} className={styles.wrapper}>
+            <div key={fellowship.sys.id}>
+              <div className={styles.cards}>
               {fellowship.fields.title}
               <img
                 src={fellowship.fields.thumbnail.fields.file.url}
                 height="300px"
                 width="350px"
               />
-            </ul>
+              <ul>
+              <li>{fellowship.fields.category}</li>
+              <li>location</li>
+              <li>{fellowship.fields.money}</li>
+              </ul>
+              <p>{fellowship.fields.paragraph}</p>
+              {/* <p>{fellowship.fields.secondparagraph}</p> */}
+            </div>
+            </div>
           );
         })}
+        </ul>
     </div>
   );
 }
+
