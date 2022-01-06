@@ -32,7 +32,7 @@ export default function GridComp({ fellowship }) {
         {toggleViewMode ? "grid" : "list"}
       </button> */}
 
-      <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <input
           value={searchTerm}
           type="text"
