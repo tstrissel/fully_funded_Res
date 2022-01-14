@@ -9,12 +9,23 @@ export default function GridComp({ fellowship }) {
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
 
+  /**
+   * @param {React.FormEvent<HTMLFormElement>} event
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+    try {
+      /**
+       * Take the form's submit event and grab the target, extend it with the input by the name of the input
+       * @type {HTMLFormElement & { search: HTMLInputElement }}
+       */
+      const target = event.target;
+
+      setSearchTerm(target.search.value);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -22,8 +33,14 @@ export default function GridComp({ fellowship }) {
       <button onClick={() => setButtonPopup(true)}>Open Popup</button>
 
       <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form>
-          <input type="text" placeholder="Search..." onChange={handleChange} />
+        <form role="searchbox" onSubmit={handleSubmit}>
+          <input
+            type="search"
+            name="search"
+            id="search"
+            role="search"
+            placeholder="Search..."
+          />
           <button type="submit">Search Button</button>
         </form>
       </SearchModal>
@@ -32,12 +49,13 @@ export default function GridComp({ fellowship }) {
         {toggleViewMode ? "grid" : "list"}
       </button> */}
 
-      <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <input
-          value={searchTerm}
-          type="text"
+          type="search"
+          name="search"
+          id="search"
+          role="search"
           placeholder="Search..."
-          onChange={handleChange}
         />
         <button type="submit">Search Button</button>
       </form>
