@@ -43,39 +43,38 @@ export default function GridComp({ fellowship }) {
       </form>
 
       <ul className={styles.wrapper}>
-      {fellowship
-        .filter((val) => {
-          if (searchTerm == "") {
-            return val;
-          } else if (
-            val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-            return val;
-          }
-        })
-        .map((fellowship) => {
-          return (
-            <div key={fellowship.sys.id}>
-              <div className={styles.cards}>
-              {fellowship.fields.title}
-              <img
-                src={fellowship.fields.thumbnail.fields.file.url}
-                height="300px"
-                width="350px"
-              />
-              <ul>
-              <li>{fellowship.fields.category}</li>
-              <li>location</li>
-              <li>{fellowship.fields.money}</li>
-              </ul>
-              <p>{fellowship.fields.paragraph}</p>
-              {/* <p>{fellowship.fields.secondparagraph}</p> */}
-            </div>
-            </div>
-          );
-        })}
-        </ul>
+        {fellowship
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((fellowship) => {
+            return (
+              <div key={fellowship.sys.id}>
+                <div className={styles.cards}>
+                  {fellowship.fields.title}
+                  <img
+                    src={fellowship.fields.thumbnail.fields.file.url}
+                    height="300px"
+                    width="350px"
+                  />
+                  <ul>
+                    <li>{fellowship.fields.category}</li>
+                    <li>location</li>
+                    <li>{fellowship.fields.money}</li>
+                  </ul>
+                  <p>{fellowship.fields.paragraph}</p>
+                  {/* <p>{fellowship.fields.secondparagraph}</p> */}
+                </div>
+              </div>
+            );
+          })}
+      </ul>
     </div>
   );
 }
-
