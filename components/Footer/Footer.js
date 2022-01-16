@@ -6,9 +6,8 @@ import Insta from '../..//public/Social links/icon_instagram.svg'
 import FaceBook from '../..//public/Social links/icon_facebook.svg'
 import styles from '../Footer/Footer.module.css'
 
-
-class Footer extends Component {
-    render() {
+export default function Footer() {
+  
         return (
             <div className={styles.footer}>
                 <div className={styles.logoSocial} >
@@ -72,6 +71,5 @@ class Footer extends Component {
             </div>
         )
     }
-}
 
-export default Footer;
+

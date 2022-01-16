@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import NavBar from "./navBar/NavBar";
+import Footer from './Footer/Footer';
+
+
 
 export default function Layout({ children }) {
   return (
@@ -14,6 +17,7 @@ export default function Layout({ children }) {
       <div className="page-content">
       <NavBar />
         { children }
+      <Footer />
       </div>
     </div>
   );
