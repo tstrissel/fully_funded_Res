@@ -1,17 +1,11 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function Layout({ children }) {
   return (
     <div className="layout">
-      <header>
-       
-      </header>
+      <header></header>
 
-      <div className="page-content">
-        { children }
-      </div>
-
-      
+      <div className="page-content">{children}</div>
     </div>
-  )
+  );
 }
