@@ -12,24 +12,24 @@ export const getStaticProps = async (context) => {
     accessToken: process.env.ACCESS_TOKEN,
   });
 
-  const res = await client.getEntries({ content_type: "artist" });
+  const res = await client.getEntries({ content_type: "fellowship" });
 
   return {
     props: {
-      artist: res.items,
+      fellowship: res.items,
     },
   };
 };
 
-export default function Index({ artist }) {
+export default function Index({ fellowship }) {
   return (
-  <div>
-    <NavBar />
-    {/* <MyDocument /> */}
-    <GridComp artist={artist} />
-    <Footer />
-  </div>
-  )
+    <div>
+      <GridComp fellowship={fellowship} />
+    </div>
+  );
 }
+
+
+
 
 
