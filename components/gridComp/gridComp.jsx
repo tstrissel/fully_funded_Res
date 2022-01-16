@@ -30,35 +30,46 @@ export default function GridComp({ fellowship }) {
 
   return (
     <div>
-      <button onClick={() => setButtonPopup(true)}>Open Popup</button>
+      <div className={styles.searchOpt}>
+        <div className={styles.searchMain}>
+          <button onClick={() => setButtonPopup(true)}>Filters:</button>
 
-      <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form role="searchbox" onSubmit={handleSubmit}>
+          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <form role="searchbox" onSubmit={handleSubmit}>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                role="search"
+                placeholder="Search Opportunities....."
+              />
+              <button type="submit">Search Button</button>
+            </form>
+          </SearchModal>
+
+          <label for="dateOrg">sort by:</label>
+
+          <select name="dateOrg">
+            <option value="deadline-approaching">deadline approaching</option>
+            <option value="recently-added">recently added</option>
+          </select>
+
+          <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? "grid" : "list"}
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit}>
           <input
             type="search"
             name="search"
             id="search"
             role="search"
-            placeholder="Search..."
+            placeholder="Search Opportunities....."
           />
           <button type="submit">Search Button</button>
         </form>
-      </SearchModal>
-
-      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
-        {toggleViewMode ? "grid" : "list"}
-      </button>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="search"
-          name="search"
-          id="search"
-          role="search"
-          placeholder="Search..."
-        />
-        <button type="submit">Search Button</button>
-      </form>
+      </div>
 
       <ul className={styles.wrapper}>
         {fellowship
@@ -73,8 +84,8 @@ export default function GridComp({ fellowship }) {
           })
           .map((fellowship) => {
             return (
-              <div key={fellowship.sys.id}>
-                <div className={styles.cards}>
+              <div className={styles.cards} key={fellowship.sys.id}>
+                <div>
                   {fellowship.fields.title}
                   <img
                     src={fellowship.fields.thumbnail.fields.file.url}

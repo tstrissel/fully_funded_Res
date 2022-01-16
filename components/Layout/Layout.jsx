@@ -1,13 +1,14 @@
+import styles from '../Layout/Layout.module.css'
 import Link from 'next/link'
 import Head from 'next/head'
-import NavBar from "./NavBar/NavBar";
-import Footer from './Footer/Footer';
+import NavBar from "../NavBar/NavBar";
+import Footer from '../Footer/Footer';
 
 
 
 export default function Layout({ children }) {
   return (
-    <div className="layout">
+    <div className={styles.layout}>
     <Head>
       </Head>
       <header>

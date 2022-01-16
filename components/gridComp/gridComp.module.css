@@ -2,9 +2,20 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
-  /* grid-auto-rows: minmax(50px, auto); */
 }
 
 .cards {
-  background-color: lightblue;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.searchOpt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchMain {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
 }
