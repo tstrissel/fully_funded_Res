@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import NavBar from "./navBar/NavBar";
+import NavBar from "./NavBar/NavBar";
 import Footer from './Footer/Footer';
 
 
