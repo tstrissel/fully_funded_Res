@@ -1,6 +1,7 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
+import { useRouter } from 'next/router'
 
 import { useState } from "react";
 
@@ -8,6 +9,8 @@ export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
+
+// console.log(slugFellowship, "HERE")
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event

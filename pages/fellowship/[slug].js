@@ -1,5 +1,8 @@
 import { createClient } from "contentful";
 import Image from "next/image";
+import ResultModal from "../../components/resultModal/ResultModal";
+import React, { useState } from "react";
+import GridComp from "../../components/gridComp/gridComp";
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -35,15 +38,26 @@ export async function getStaticProps({ params }) {
 }
 
 export default function fellowshipDetails({ fellowship }) {
+  const [buttonPopup, setButtonPopup] = useState(false);
+
   const { title, slug, category, money, paragraph, thumbnail } =
     fellowship.fields;
+
+
+
   return (
     <div>
-      <img src={thumbnail.fields.file.url} />
-      <h1>{title}</h1>
-      <p>{category}</p>
-      <p>{money}</p>
-      <p>{paragraph}</p>
+      
+      <button onClick={() => setButtonPopup(true)}>Read more</button>
+
+      <ResultModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <img src={thumbnail.fields.file.url} height="300px" width="350px" />
+
+        <h1>{title}</h1>
+        <p>{category}</p>
+        <p>{money}</p>
+        <p>{paragraph}</p>
+      </ResultModal> 
     </div>
   );
 }
