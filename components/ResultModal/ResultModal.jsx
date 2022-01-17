@@ -14,6 +14,7 @@ export default function ResultModal(props) {
         >
           close
         </button>
+        
         {props.children}
       </div>
     </div>

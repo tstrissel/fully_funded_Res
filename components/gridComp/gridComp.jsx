@@ -1,16 +1,15 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
-import { useRouter } from 'next/router'
-
+import ResultModal from "../../components/resultModal/ResultModal";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
-
-// console.log(slugFellowship, "HERE")
+  const [resultPopup, setResultPopup] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -99,15 +98,37 @@ export default function GridComp({ fellowship }) {
                     width="350px"
                   />
                   <ul>
+                    <li>{slug}</li>
                     <li>{category}</li>
                     <li>location</li>
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>
+                  <button onClick={() => setButtonPopup(true)}>
+                    Read more
+                  </button>
+
+                  <ResultModal
+                    fellowship={fellowship}
+                    trigger={buttonPopup}
+                    setTrigger={setButtonPopup}
+                  >
+                    {/* <img
+                      src={fellowship.thumbnail.fields.file.url}
+                      height="300px"
+                      width="350px"
+                    /> */}
+                    <h1>{slug}</h1>
+                    <h1>{title}</h1>
+                    <p>{category}</p>
+                    <p>{money}</p>
+                    <p>{paragraph}</p>
+                  </ResultModal>
+
                   {/* <p>{secondparagraph}</p> */}
-                  <Link href={"/fellowship/" + slug}>
+                  {/* <Link href={"/fellowship/" + slug}>
                     <a>Read more</a>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             );
