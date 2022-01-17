@@ -47,7 +47,7 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
-          <label for="dateOrg">sort by:</label>
+          <label htmlFor="dateOrg">sort by:</label>
 
           <select name="dateOrg">
             <option value="deadline-approaching">deadline approaching</option>
@@ -83,22 +83,28 @@ export default function GridComp({ fellowship }) {
             }
           })
           .map((fellowship) => {
+            const { title, slug, category, money, paragraph, thumbnail } =
+              fellowship.fields;
+
             return (
               <div className={styles.cards} key={fellowship.sys.id}>
                 <div>
-                  {fellowship.fields.title}
+                  {title}
                   <img
-                    src={fellowship.fields.thumbnail.fields.file.url}
+                    src={thumbnail.fields.file.url}
                     height="300px"
                     width="350px"
                   />
                   <ul>
-                    <li>{fellowship.fields.category}</li>
+                    <li>{category}</li>
                     <li>location</li>
-                    <li>{fellowship.fields.money}</li>
+                    <li>{money}</li>
                   </ul>
-                  <p>{fellowship.fields.paragraph}</p>
-                  {/* <p>{fellowship.fields.secondparagraph}</p> */}
+                  <p>{paragraph}</p>
+                  {/* <p>{secondparagraph}</p> */}
+                  <Link href={"/fellowship/" + slug}>
+                    <a>Read more</a>
+                  </Link>
                 </div>
               </div>
             );
