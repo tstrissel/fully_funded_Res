@@ -17,16 +17,16 @@ export default function NavBar() {
           <Link href="/">
             <a className="navOpenCalls">Open Calls</a>
           </Link>
-          <Link href="/">
+          <Link href="/resources">
             <a className="navResources">Resources</a>
           </Link>
-          <Link href="/">
+          <Link href="/interviews">
             <a className="navInterviews">Interviews</a>
           </Link>
-          <Link href="/">
+          <Link href="/about">
             <a className="navAbout">About</a>
           </Link>
-          <Link href="/">
+          <Link href="/contact">
             <a className="navContact">Contact</a>
           </Link>
           <Link href="/">

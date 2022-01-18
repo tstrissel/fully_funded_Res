@@ -1,7 +1,7 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../../components/resultModal/ResultModal";
+import ResultModal from "../resultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -104,20 +104,20 @@ export default function GridComp({ fellowship }) {
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>
-                  <button onClick={() => setButtonPopup(true)}>
+                  <button onClick={() => setResultPopup(true)}>
                     Read more
                   </button>
 
                   <ResultModal
                     fellowship={fellowship}
-                    trigger={buttonPopup}
-                    setTrigger={setButtonPopup}
+                    trigger={resultPopup}
+                    setTrigger={setResultPopup}
                   >
-                    {/* <img
-                      src={fellowship.thumbnail.fields.file.url}
+                    <img
+                      src={thumbnail.fields.file.url}
                       height="300px"
                       width="350px"
-                    /> */}
+                    />
                     <h1>{slug}</h1>
                     <h1>{title}</h1>
                     <p>{category}</p>
