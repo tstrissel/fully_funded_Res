@@ -1,15 +1,18 @@
- .navBar {
-    display:flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    
-
+.navBar {
+  display: flex;
+  align-items: flex-start;
 }
 
+.navEntries {
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+}
 .navEntries a {
-    text-decoration: none;
-    color:black;
-    display:inline-flex;
-    justify-content: space-between;
-    margin: auto;
+  width: 1fr;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  margin: 45px;
 }
+

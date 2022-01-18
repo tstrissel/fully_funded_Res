@@ -1,13 +1,15 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
-
+import ResultModal from "../resultModal/ResultModal";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [resultPopup, setResultPopup] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -30,35 +32,46 @@ export default function GridComp({ fellowship }) {
 
   return (
     <div>
-      <button onClick={() => setButtonPopup(true)}>Open Popup</button>
+      <div className={styles.searchOpt}>
+        <div className={styles.searchMain}>
+          <button onClick={() => setButtonPopup(true)}>Filters:</button>
 
-      <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <form role="searchbox" onSubmit={handleSubmit}>
+          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <form role="searchbox" onSubmit={handleSubmit}>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                role="search"
+                placeholder="Search Opportunities....."
+              />
+              <button type="submit">Search Button</button>
+            </form>
+          </SearchModal>
+
+          <label htmlFor="dateOrg">sort by:</label>
+
+          <select name="dateOrg">
+            <option value="deadline-approaching">deadline approaching</option>
+            <option value="recently-added">recently added</option>
+          </select>
+
+          <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? "grid" : "list"}
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit}>
           <input
             type="search"
             name="search"
             id="search"
             role="search"
-            placeholder="Search..."
+            placeholder="Search Opportunities....."
           />
           <button type="submit">Search Button</button>
         </form>
-      </SearchModal>
-
-      <button onClick={() => setToggleViewMode(!toggleViewMode)}>
-        {toggleViewMode ? "grid" : "list"}
-      </button>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="search"
-          name="search"
-          id="search"
-          role="search"
-          placeholder="Search..."
-        />
-        <button type="submit">Search Button</button>
-      </form>
+      </div>
 
       <ul className={styles.wrapper}>
         {fellowship
@@ -72,22 +85,50 @@ export default function GridComp({ fellowship }) {
             }
           })
           .map((fellowship) => {
+            const { title, slug, category, money, paragraph, thumbnail } =
+              fellowship.fields;
+
             return (
-              <div key={fellowship.sys.id}>
-                <div className={styles.cards}>
-                  {fellowship.fields.title}
+              <div className={styles.cards} key={fellowship.sys.id}>
+                <div>
+                  {title}
                   <img
-                    src={fellowship.fields.thumbnail.fields.file.url}
+                    src={thumbnail.fields.file.url}
                     height="300px"
                     width="350px"
                   />
                   <ul>
-                    <li>{fellowship.fields.category}</li>
+                    <li>{slug}</li>
+                    <li>{category}</li>
                     <li>location</li>
-                    <li>{fellowship.fields.money}</li>
+                    <li>{money}</li>
                   </ul>
-                  <p>{fellowship.fields.paragraph}</p>
-                  {/* <p>{fellowship.fields.secondparagraph}</p> */}
+                  <p>{paragraph}</p>
+                  <button onClick={() => setResultPopup(true)}>
+                    Read more
+                  </button>
+
+                  <ResultModal
+                    fellowship={fellowship}
+                    trigger={resultPopup}
+                    setTrigger={setResultPopup}
+                  >
+                    <img
+                      src={thumbnail.fields.file.url}
+                      height="300px"
+                      width="350px"
+                    />
+                    <h1>{slug}</h1>
+                    <h1>{title}</h1>
+                    <p>{category}</p>
+                    <p>{money}</p>
+                    <p>{paragraph}</p>
+                  </ResultModal>
+
+                  {/* <p>{secondparagraph}</p> */}
+                  {/* <Link href={"/fellowship/" + slug}>
+                    <a>Read more</a>
+                  </Link> */}
                 </div>
               </div>
             );
