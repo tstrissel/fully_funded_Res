@@ -37,13 +37,15 @@ export default function GridComp({ fellowship }) {
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
             <form role="searchbox" onSubmit={handleSubmit}>
-              <input
+              {/* <input
                 type="search"
                 name="search"
                 id="search"
                 role="search"
                 placeholder="Search Opportunities....."
-              />
+              /> */}
+              <input />
+
               <button type="submit">Search Button</button>
             </form>
           </SearchModal>
@@ -87,51 +89,87 @@ export default function GridComp({ fellowship }) {
             const { title, slug, category, money, paragraph, thumbnail } =
               fellowship.fields;
             const [resultPopup, setResultPopup] = useState(false);
-
-            return (
-              <div className={styles.cards} key={fellowship.sys.id}>
-                <div>
-                  {title}
-                  <img
-                    src={thumbnail.fields.file.url}
-                    height="300px"
-                    width="350px"
-                  />
-                  <ul>
-                    <li>{slug}</li>
-                    <li>{category}</li>
-                    <li>location</li>
-                    <li>{money}</li>
-                  </ul>
-                  <p>{paragraph}</p>
-                  <button onClick={() => setResultPopup(true)}>
-                    Read more
-                  </button>
-
-                  <ResultModal
-                    fellowship={fellowship}
-                    trigger={resultPopup}
-                    setTrigger={setResultPopup}
-                  >
+            if (!toggleViewMode === true) {
+              return (
+                <div className={styles.cards} key={fellowship.sys.id}>
+                  <div>
+                    {title}
                     <img
                       src={thumbnail.fields.file.url}
                       height="300px"
                       width="350px"
                     />
-                    <h1>{slug}</h1>
-                    <h1>{title}</h1>
-                    <p>{category}</p>
-                    <p>{money}</p>
+                    <ul>
+                      <li>{slug}</li>
+                      <li>{category}</li>
+                      <li>location</li>
+                      <li>{money}</li>
+                    </ul>
                     <p>{paragraph}</p>
-                  </ResultModal>
+                    <button onClick={() => setResultPopup(true)}>
+                      Read more
+                    </button>
 
-                  {/* <p>{secondparagraph}</p> */}
-                  {/* <Link href={"/fellowship/" + slug}>
-                    <a>Read more</a>
-                  </Link> */}
+                    <ResultModal
+                      fellowship={fellowship}
+                      trigger={resultPopup}
+                      setTrigger={setResultPopup}
+                    >
+                      <img
+                        src={thumbnail.fields.file.url}
+                        height="300px"
+                        width="350px"
+                      />
+                      <h1>{slug}</h1>
+                      <h1>{title}</h1>
+                      <p>{category}</p>
+                      <p>{money}</p>
+                      <p>{paragraph}</p>
+                    </ResultModal>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            } else if (!toggleViewMode === false) {
+              return (
+                <div className={styles.cards} key={fellowship.sys.id}>
+                  <div>
+                    {title}
+                    {/* <img
+                        src={thumbnail.fields.file.url}
+                        height="300px"
+                        width="350px"
+                      /> */}
+                    <ul>
+                      {/* <li>{slug}</li>
+                        <li>{category}</li>
+                        <li>location</li> */}
+                      <li>{money}</li>
+                    </ul>
+                    <p>{paragraph}</p>
+                    <button onClick={() => setResultPopup(true)}>
+                      Read more
+                    </button>
+
+                    <ResultModal
+                      fellowship={fellowship}
+                      trigger={resultPopup}
+                      setTrigger={setResultPopup}
+                    >
+                      <img
+                        src={thumbnail.fields.file.url}
+                        height="300px"
+                        width="350px"
+                      />
+                      <h1>{slug}</h1>
+                      <h1>{title}</h1>
+                      <p>{category}</p>
+                      <p>{money}</p>
+                      <p>{paragraph}</p>
+                    </ResultModal>
+                  </div>
+                </div>
+              );
+            }
           })}
       </ul>
     </div>
