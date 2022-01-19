@@ -36,17 +36,96 @@ export default function GridComp({ fellowship }) {
           <button onClick={() => setButtonPopup(true)}>Filters:</button>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <form role="searchbox" onSubmit={handleSubmit}>
-              {/* <input
-                type="search"
-                name="search"
-                id="search"
-                role="search"
-                placeholder="Search Opportunities....."
-              /> */}
-              <input />
+            <div>
+              <h1>Filter open calls by</h1>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <h1>location</h1>
+                <label htmlFor="location">location:</label>
+                <select id="location" name="location">
+                  <option value="" disabled selected>
+                    select country
+                  </option>
+                  <option value="Germany">Germany</option>
+                  <option value="France">France</option>
+                  <option value="India">India</option>
+                  <option value="England">England</option>
+                </select>
+              </div>
+              <div>
+                <h1>type</h1>
+                <input type="checkbox" id="production" name="production" />
+                <label htmlFor="production">production</label>
+                <input type="checkbox" id="Exhibition" name="Exhibition" />
+                <label htmlFor="Exhibition">Exhibition</label>
+                <input type="checkbox" id="Research" name="Research" />
+                <label htmlFor="Research">Research</label>
+              </div>
 
-              <button type="submit">Search Button</button>
+              <div>
+                <h1>Eligibility</h1>
+                <label htmlFor="Eligibility">Eligibility:</label>
+                <select id="Eligibility" name="Eligibility">
+                  <option value="" disabled selected>
+                    select criteria
+                  </option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                </select>
+              </div>
+
+              <div>
+                <h1>Application Fee</h1>
+                <input
+                  type="checkbox"
+                  id="Without Application Fee"
+                  name="Without Application Fee"
+                />
+                <label htmlFor="Without Application Fee">
+                  Without Application Fee
+                </label>
+              </div>
+
+              <div>
+                <h1>Duration</h1>
+                <label htmlFor="Duration">Duration:</label>
+                <select id="Duration" name="Duration">
+                  <option value="" disabled selected>
+                    select residency duration
+                  </option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                </select>
+              </div>
+
+              <div>
+                <h1>Field</h1>
+                <input type="checkbox" id="Visual" name="Visual" />
+                <label htmlFor="Visual">Visual</label>
+                <input
+                  type="checkbox"
+                  id="Multidisciplinary"
+                  name="Multidisciplinary"
+                />
+                <label htmlFor="Multidisciplinary">Multidisciplinary</label>
+                <input type="checkbox" id="Curatorial" name="Curatorial" />
+                <label htmlFor="Curatorial">Curatorial</label>
+                <input type="checkbox" id="Sound" name="Sound" />
+                <label htmlFor="Sound">Sound</label>
+                <input type="checkbox" id="Literature" name="Literature" />
+                <label htmlFor="Literature">Literature</label>
+                <input type="checkbox" id="Performance" name="Performance" />
+                <label htmlFor="Performance">Performance</label>
+                <input type="checkbox" id="Dance" name="Dance" />
+                <label htmlFor="Dance">Dance</label>
+              </div>
+
+              <button type="submit"> Search </button>
             </form>
           </SearchModal>
 
