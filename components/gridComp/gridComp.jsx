@@ -9,6 +9,7 @@ export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [resultPopup, setResultPopup] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -130,7 +131,6 @@ export default function GridComp({ fellowship }) {
           </SearchModal>
 
           <label htmlFor="dateOrg">sort by:</label>
-
           <select name="dateOrg">
             <option value="deadline-approaching">deadline approaching</option>
             <option value="recently-added">recently added</option>
@@ -139,18 +139,19 @@ export default function GridComp({ fellowship }) {
           <button onClick={() => setToggleViewMode(!toggleViewMode)}>
             {toggleViewMode ? "grid" : "list"}
           </button>
+          <div className={styles.searchMain}>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                role="search"
+                placeholder="Search Opportunities....."
+              />
+              <button type="submit">Search Button</button>
+            </form>
+          </div>
         </div>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            name="search"
-            id="search"
-            role="search"
-            placeholder="Search Opportunities....."
-          />
-          <button type="submit">Search Button</button>
-        </form>
       </div>
 
       <ul className={styles.wrapper}>
@@ -167,8 +168,9 @@ export default function GridComp({ fellowship }) {
           .map((fellowship) => {
             const { title, slug, category, money, paragraph, thumbnail } =
               fellowship.fields;
-            const [resultPopup, setResultPopup] = useState(false);
+              //const [resultPopup, setResultPopup] = useState(false);
             if (!toggleViewMode === true) {
+            
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
                   <div>
