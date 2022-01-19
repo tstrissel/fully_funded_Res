@@ -9,7 +9,6 @@ export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [resultPopup, setResultPopup] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -87,6 +86,7 @@ export default function GridComp({ fellowship }) {
           .map((fellowship) => {
             const { title, slug, category, money, paragraph, thumbnail } =
               fellowship.fields;
+            const [resultPopup, setResultPopup] = useState(false);
 
             return (
               <div className={styles.cards} key={fellowship.sys.id}>
