@@ -1,5 +1,5 @@
- import ResultModal from "../ResultModal/ResultModal";
- import { useState } from "react";
+import ResultModal from "../ResultModal/ResultModal";
+import { useState } from "react";
 
 const Modal = ({
   title,
@@ -10,10 +10,9 @@ const Modal = ({
   thumbnail,
   fellowship,
 }) => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
-    setIsVisible(false);
+    setIsCardOpen(false);
   };
   return (
     <>

@@ -1,7 +1,7 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../resultModal/ResultModal";
+import ResultModal from "../ResultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "./Modal";
