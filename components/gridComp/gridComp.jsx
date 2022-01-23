@@ -4,6 +4,7 @@ import SearchModal from "../SearchModal/SearchModal";
 import ResultModal from "../resultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Modal from "./Modal";
 
 export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -168,46 +169,19 @@ export default function GridComp({ fellowship }) {
           .map((fellowship) => {
             const { title, slug, category, money, paragraph, thumbnail } =
               fellowship.fields;
-              //const [resultPopup, setResultPopup] = useState(false);
+
             if (!toggleViewMode === true) {
-            
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
-                  <div>
-                    {title}
-                    <img
-                      src={thumbnail.fields.file.url}
-                      height="300px"
-                      width="350px"
-                    />
-                    <ul>
-                      <li>{slug}</li>
-                      <li>{category}</li>
-                      <li>location</li>
-                      <li>{money}</li>
-                    </ul>
-                    <p>{paragraph}</p>
-                    <button onClick={() => setResultPopup(true)}>
-                      Read more
-                    </button>
-
-                    <ResultModal
-                      fellowship={fellowship}
-                      trigger={resultPopup}
-                      setTrigger={setResultPopup}
-                    >
-                      <img
-                        src={thumbnail.fields.file.url}
-                        height="300px"
-                        width="350px"
-                      />
-                      <h1>{slug}</h1>
-                      <h1>{title}</h1>
-                      <p>{category}</p>
-                      <p>{money}</p>
-                      <p>{paragraph}</p>
-                    </ResultModal>
-                  </div>
+                  <Modal
+                    title={title}
+                    slug={slug}
+                    category={category}
+                    money={money}
+                    paragraph={paragraph}
+                    thumbnail={thumbnail}
+                    fellowship={fellowship}
+                  />
                 </div>
               );
             } else if (!toggleViewMode === false) {
@@ -216,14 +190,14 @@ export default function GridComp({ fellowship }) {
                   <div>
                     {title}
                     {/* <img
-                        src={thumbnail.fields.file.url}
-                        height="300px"
-                        width="350px"
-                      /> */}
+                          src={thumbnail.fields.file.url}
+                          height="300px"
+                          width="350px"
+                        /> */}
                     <ul>
                       {/* <li>{slug}</li>
-                        <li>{category}</li>
-                        <li>location</li> */}
+                          <li>{category}</li>
+                          <li>location</li> */}
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
@@ -236,13 +210,13 @@ export default function GridComp({ fellowship }) {
                       trigger={resultPopup}
                       setTrigger={setResultPopup}
                     >
-                      <img
-                        src={thumbnail.fields.file.url}
-                        height="300px"
-                        width="350px"
-                      />
-                      <h1>{slug}</h1>
-                      <h1>{title}</h1>
+                      {/* <img
+                          src={thumbnail.fields.file.url}
+                          height="300px"
+                          width="350px"
+                        /> */}
+                      {/* <h1>{slug}</h1>
+                      <h1>{title}</h1> */}
                       <p>{category}</p>
                       <p>{money}</p>
                       <p>{paragraph}</p>
