@@ -1,9 +1,10 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../resultModal/ResultModal";
+import ResultModal from "../ResultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Modal from "./Modal";
 
 
 export default function GridComp({ fellowship }) {
@@ -33,102 +34,176 @@ export default function GridComp({ fellowship }) {
 
   return (
     <div>
-        <div className={styles.searchOpt}>
-          <div className={styles.searchMain}>
-            <div className="field has-addons">
+      <div className={styles.searchOpt}>
+        <div className={styles.searchMain}>
+          <button onClick={() => setButtonPopup(true)}>Filters:</button>
 
-              <label className="label" htmlFor="dateOrg">view as:</label>
-              <button className="button" onClick={() => setToggleViewMode(!toggleViewMode)}>
-                {toggleViewMode ? "cards" : " list "}
-              </button>
+          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <div>
+              <h1>Filter open calls by</h1>
             </div>
-            <div className="field has-addons">
-              <label className="label" htmlFor="dateOrg">sort by:</label>
-                <div className="control">
-                  <div className="select">
-                    <select name="dateOrg">
-                      <option className="btnFont" value="deadline-approaching">deadline approaching</option>
-                      <option  className="btnFont" value="recently-added">recently added</option>
-                    </select>
-                  </div>
-                </div>
-            </div>
-              <button className={styles.buttonFilters} className="button" onClick={() => setButtonPopup(true)}>
-                Filters:
-              </button>
-            <div className="field has-addons">
-            <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-              <form className="control" role="searchbox" onSubmit={handleSubmit}>
-                <input
-                  className="input"
-                  type="search"
-                  name="search"
-                  id="search"
-                  role="search"
-                  placeholder="Search Opportunities....."
-                />
-                <button className="button is-family-secondary" type="submit">Search Button</button>
-              </form>
-            </SearchModal>
-            </div>
-
-          </div>
-          <div className="searchBar">
-            <form  className="field has-addons has-addons-right" onSubmit={handleSubmit}>
-              <div className="control">
-                <input
-                  className="input"
-                  type="search"
-                  name="search"
-                  id="search"
-                  role="search"
-                  placeholder="Search Opportunities..."
-                />
+            <form onSubmit={handleSubmit}>
+              <div>
+                <h1>location</h1>
+                <label htmlFor="location">location:</label>
+                <select id="location" name="location">
+                  <option value="" disabled selected>
+                    select country
+                  </option>
+                  <option value="Germany">Germany</option>
+                  <option value="France">France</option>
+                  <option value="India">India</option>
+                  <option value="England">England</option>
+                </select>
               </div>
               <div>
-                <button className="button is-primary"  type="submit"></button>
+                <h1>type</h1>
+                <input type="checkbox" id="production" name="production" />
+                <label htmlFor="production">production</label>
+                <input type="checkbox" id="Exhibition" name="Exhibition" />
+                <label htmlFor="Exhibition">Exhibition</label>
+                <input type="checkbox" id="Research" name="Research" />
+                <label htmlFor="Research">Research</label>
               </div>
+
+              <div>
+                <h1>Eligibility</h1>
+                <label htmlFor="Eligibility">Eligibility:</label>
+                <select id="Eligibility" name="Eligibility">
+                  <option value="" disabled selected>
+                    select criteria
+                  </option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                </select>
+              </div>
+
+              <div>
+                <h1>Application Fee</h1>
+                <input
+                  type="checkbox"
+                  id="Without Application Fee"
+                  name="Without Application Fee"
+                />
+                <label htmlFor="Without Application Fee">
+                  Without Application Fee
+                </label>
+              </div>
+
+              <div>
+                <h1>Duration</h1>
+                <label htmlFor="Duration">Duration:</label>
+                <select id="Duration" name="Duration">
+                  <option value="" disabled selected>
+                    select residency duration
+                  </option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                  <option value="example">example</option>
+                </select>
+              </div>
+
+              <div>
+                <h1>Field</h1>
+                <input type="checkbox" id="Visual" name="Visual" />
+                <label htmlFor="Visual">Visual</label>
+                <input
+                  type="checkbox"
+                  id="Multidisciplinary"
+                  name="Multidisciplinary"
+                />
+                <label htmlFor="Multidisciplinary">Multidisciplinary</label>
+                <input type="checkbox" id="Curatorial" name="Curatorial" />
+                <label htmlFor="Curatorial">Curatorial</label>
+                <input type="checkbox" id="Sound" name="Sound" />
+                <label htmlFor="Sound">Sound</label>
+                <input type="checkbox" id="Literature" name="Literature" />
+                <label htmlFor="Literature">Literature</label>
+                <input type="checkbox" id="Performance" name="Performance" />
+                <label htmlFor="Performance">Performance</label>
+                <input type="checkbox" id="Dance" name="Dance" />
+                <label htmlFor="Dance">Dance</label>
+              </div>
+
+              <button type="submit"> Search </button>
+            </form>
+          </SearchModal>
+
+          <label htmlFor="dateOrg">sort by:</label>
+          <select name="dateOrg">
+            <option value="deadline-approaching">deadline approaching</option>
+            <option value="recently-added">recently added</option>
+          </select>
+
+          <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? "grid" : "list"}
+          </button>
+          <div className={styles.searchMain}>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                role="search"
+                placeholder="Search Opportunities....."
+              />
+              <button type="submit">Search Button</button>
             </form>
           </div>
         </div>
+      </div>
 
-        <ul className={styles.wrapper}>
-          {fellowship
-            .filter((val) => {
-              if (searchTerm == "") {
-                return val;
-              } else if (
-                val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-              ) {
-                return val;
-              }
-            })
-            .map((fellowship) => {
-              const { title, slug, category, money, paragraph, thumbnail } =
-                fellowship.fields;
+      <ul className={styles.wrapper}>
+        {fellowship
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((fellowship) => {
+            const { title, slug, category, money, paragraph, thumbnail } =
+              fellowship.fields;
 
+            if (!toggleViewMode === true) {
               return (
-                <div className="cards">
+                <div className={styles.cards} key={fellowship.sys.id}>
+                  <Modal
+                    title={title}
+                    slug={slug}
+                    category={category}
+                    money={money}
+                    paragraph={paragraph}
+                    thumbnail={thumbnail}
+                    fellowship={fellowship}
+                  />
+                </div>
+              );
+            } else if (!toggleViewMode === false) {
+              return (
                 <div className={styles.cards} key={fellowship.sys.id}>
                   <div>
-                    {/* {title} */}
-                    <img
-                      className={styles.cardImg}
-                      src={thumbnail.fields.file.url}
-                    />
+                    {title}
+                    {/* <img
+                          src={thumbnail.fields.file.url}
+                          height="300px"
+                          width="350px"
+                        /> */}
                     <ul>
-                      <li className="title mg-small">{slug}</li>
-                      <li className="title is-6 mg-small">{category}</li>
-                      <li className="title is-6 mg-small">location</li>
-                      <li className="title is-6 mg-small">{money}</li>
+                      {/* <li>{slug}</li>
+                          <li>{category}</li>
+                          <li>location</li> */}
+                      <li>{money}</li>
                     </ul>
-                    <p className="card-content">{paragraph}</p>
-                    <button className="button is-text mg-small" onClick={() => setResultPopup(true)}>
+                    <p>{paragraph}</p>
+                    <button onClick={() => setResultPopup(true)}>
                       Read more
-                    </button>
-                    <button className="button is-ghost mg-small" onClick={() => setResultPopup(true)}>
-                      Visit Website
-                    <img src="/public/favicon.ico"/>
                     </button>
 
                     <ResultModal
@@ -136,28 +211,23 @@ export default function GridComp({ fellowship }) {
                       trigger={resultPopup}
                       setTrigger={setResultPopup}
                     >
-                      <img
-                        src={thumbnail.fields.file.url}
-                        height="300px"
-                        width="350px"
-                      />
-                      <h1>{slug}</h1>
-                      <h1>{title}</h1>
+                      {/* <img
+                          src={thumbnail.fields.file.url}
+                          height="300px"
+                          width="350px"
+                        /> */}
+                      {/* <h1>{slug}</h1>
+                      <h1>{title}</h1> */}
                       <p>{category}</p>
                       <p>{money}</p>
                       <p>{paragraph}</p>
                     </ResultModal>
-
-                    {/* <p>{secondparagraph}</p> */}
-                    {/* <Link href={"/fellowship/" + slug}>
-                      <a>Read more</a>
-                    </Link> */}
                   </div>
-                </div>    
-              </div>       
+                </div>
               );
-            })}
-        </ul>
-      </div>
+            }
+          })}
+      </ul>
+    </div>
   );
 }
