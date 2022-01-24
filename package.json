@@ -8,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "bulma": "^0.9.3",
     "contentful": "^9.0.3",
     "next": "^11.1.2",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.49.0"
   }
 }

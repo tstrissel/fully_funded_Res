@@ -1,0 +1,17 @@
+@import "../scss/mystyles.scss";
+$primary: $lightblue;
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.page {
+    
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 45px;
+}
+
+
+@import 'bulma/bulma';

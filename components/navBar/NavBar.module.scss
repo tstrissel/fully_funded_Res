@@ -1,0 +1,49 @@
+
+
+.navBar {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.navEntries {
+  display: flex;
+  justify-content:flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: center;
+  width: 100vw;
+  font-size:larger;
+  padding-top: 50px;
+  padding-right:50px;
+  
+}
+.navEntries a {
+  width: 1fr;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  margin: 30px;
+  font-weight:700;
+}
+
+.logo {
+  display:flexbox;
+  position:absolute;
+  width:  229px;
+  height: 171.85px;
+  padding-top: 50px;
+  
+}
+  
+.social a {
+  display: flexbox;
+  flex-wrap: nowrap;
+  justify-content:flex-end;
+  margin-right: 0px;
+}
+
+.subtitleOpenCalls {
+  color:#424141;
+  line-height: 133.9%;
+}
