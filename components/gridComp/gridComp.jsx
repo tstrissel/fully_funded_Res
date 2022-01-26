@@ -36,7 +36,9 @@ export default function GridComp({ fellowship }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <button className="button" onClick={() => setButtonPopup(true)}>Filters:</button>
+          <div>
+            <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters:</button>
+          </div>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
@@ -131,36 +133,39 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
+          <div>
+            <div >
+              <select className={styles.dropdownBtn}
+                name="dateOrg">
           <label className="label" htmlFor="dateOrg">sort by:</label>
-          <div className="control">
-            <div className="select">
-              <select name="dateOrg">
-                <option value="deadline-approaching">deadline approaching</option>
-                <option value="recently-added">recently added</option>
-              </select>
+                  <option value="deadline-approaching">Sort by: Deadline approaching</option>
+                  <option value="recently-added">Sort by: Recently added</option>
+                </select> 
             </div>
           </div>
 
-          <button className="is-toggle" onClick={() => setToggleViewMode(!toggleViewMode)}>
-            {toggleViewMode ? "grid" : "list"}
+          <button className={styles.toggleBtn} onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? "view as: Cards" : " view as: List"}
           </button>
         </div>
-          <div className="field has-addons is-flex-wrap-nowrap">  
-            <form onSubmit={handleSubmit}>
-              <div className="control">
-                <input
-                className="input"
+          <div >  
+            <form 
+              className="is-align-content-end"
+             onSubmit={handleSubmit}>
+              <div className="control is-flex has-addons">
+                <input 
+                  className={styles.searchBar}
                   type="search"
                   name="search"
                   id="search"
                   role="search"
                   placeholder="Search Opportunities....."
                 />
+                <div >
+                  <button className={styles.searchBtn} type="submit"><img src="/public/FFR-assets/Icons/search_icon.svg"  /></button>
+                </div>
               </div>
             </form>
-                <div className="control">
-                  <button className="button is-info has-icons-right" type="submit"><img src="/public/FFR-assets/Icons/search_icon.svg"  /></button>
-                </div>
           </div>
       </div>
 

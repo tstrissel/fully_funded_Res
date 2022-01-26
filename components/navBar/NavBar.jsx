@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "../../public/FFR-assets/Logo/FFR-logo.png";
 import Insta from "../..//public/Social links/icon_instagram.svg";
 import FaceBook from "../..//public/Social links/icon_facebook.svg";
-import styles from "../navBar/NavBar.module.scss";
+import styles from "../navBar/NavBar.module.css";
 
 export default function NavBar() {
   return (
