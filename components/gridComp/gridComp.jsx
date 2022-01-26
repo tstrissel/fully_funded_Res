@@ -11,12 +11,16 @@ export default function GridComp({ fellowship }) {
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
+  const [country, setCountry] = useState("");
+  const [checkbox, setCheckBox] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log(checkbox, "HERE!");
+    // console.log(country, "HERE IS COUNTRY");
 
     try {
       /**
@@ -26,6 +30,8 @@ export default function GridComp({ fellowship }) {
       const target = event.target;
 
       setSearchTerm(target.search.value);
+      setCheckBox(target.checked);
+      setCountry(target.value);
     } catch (error) {
       console.error(error);
     }
@@ -45,19 +51,28 @@ export default function GridComp({ fellowship }) {
               <div>
                 <h1>location</h1>
                 <label htmlFor="location">location:</label>
-                <select id="location" name="location">
-                  <option value="" disabled selected>
-                    select country
-                  </option>
-                  <option value="Germany">Germany</option>
+                <select
+                  onChange={(e) => setCountry(e.target.value)}
+                  id="location"
+                  name="location"
+                >
+                  <option isdisabled="true">select country</option>
                   <option value="France">France</option>
+                  <option value="Germany">Germany</option>
+
                   <option value="India">India</option>
                   <option value="England">England</option>
                 </select>
               </div>
               <div>
                 <h1>type</h1>
-                <input type="checkbox" id="production" name="production" />
+                <input
+                  type="checkbox"
+                  id="production"
+                  name="production"
+                  checkbox={checkbox}
+                  onChange={(e) => setCheckBox(true)}
+                />
                 <label htmlFor="production">production</label>
                 <input type="checkbox" id="Exhibition" name="Exhibition" />
                 <label htmlFor="Exhibition">Exhibition</label>
@@ -69,13 +84,11 @@ export default function GridComp({ fellowship }) {
                 <h1>Eligibility</h1>
                 <label htmlFor="Eligibility">Eligibility:</label>
                 <select id="Eligibility" name="Eligibility">
-                  <option value="" disabled selected>
-                    select criteria
-                  </option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
+                  <option isdisabled="true">select criteria</option>
+                  <option value="example">1</option>
+                  <option value="example">2</option>
+                  <option value="example">3</option>
+                  <option value="example">4</option>
                 </select>
               </div>
 
@@ -95,13 +108,11 @@ export default function GridComp({ fellowship }) {
                 <h1>Duration</h1>
                 <label htmlFor="Duration">Duration:</label>
                 <select id="Duration" name="Duration">
-                  <option value="" disabled selected>
-                    select residency duration
-                  </option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
+                  <option isdisabled="true">select residency duration</option>
+                  <option value="example">1</option>
+                  <option value="example">2</option>
+                  <option value="example">3</option>
+                  <option value="example">4</option>
                 </select>
               </div>
 
@@ -166,9 +177,19 @@ export default function GridComp({ fellowship }) {
               return val;
             }
           })
+
           .map((fellowship) => {
-            const { title, slug, category, money, paragraph, thumbnail } =
-              fellowship.fields;
+            //console.log(fellowship, "HERE I AM")
+            const {
+              title,
+              slug,
+              category,
+              money,
+              paragraph,
+              thumbnail,
+              location,
+              type,
+            } = fellowship.fields;
 
             if (!toggleViewMode === true) {
               return (
@@ -181,6 +202,8 @@ export default function GridComp({ fellowship }) {
                     paragraph={paragraph}
                     thumbnail={thumbnail}
                     fellowship={fellowship}
+                    location={location}
+                    type={type}
                   />
                 </div>
               );
