@@ -26,7 +26,6 @@ export default function Index({ fellowship }) {
   return (
     <div>
       <GridComp fellowship={fellowship} />
-      
     </div>
   );
 }
