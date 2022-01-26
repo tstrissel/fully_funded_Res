@@ -36,17 +36,16 @@ export default function GridComp({ fellowship }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <button onClick={() => setButtonPopup(true)}>Filters:</button>
+          <button className="button" onClick={() => setButtonPopup(true)}>Filters:</button>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
-              <h1>Filter open calls by</h1>
+              <h1 className="label">Filter open calls by</h1>
             </div>
             <form onSubmit={handleSubmit}>
               <div>
                 <h1>location</h1>
-                <label htmlFor="location">location:</label>
-                <select id="location" name="location">
+                <select className="select" id="location" name="location">
                   <option value="" disabled selected>
                     select country
                   </option>
@@ -132,28 +131,37 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
-          <label htmlFor="dateOrg">sort by:</label>
-          <select name="dateOrg">
-            <option value="deadline-approaching">deadline approaching</option>
-            <option value="recently-added">recently added</option>
-          </select>
+          <label className="label" htmlFor="dateOrg">sort by:</label>
+          <div className="control">
+            <div className="select">
+              <select name="dateOrg">
+                <option value="deadline-approaching">deadline approaching</option>
+                <option value="recently-added">recently added</option>
+              </select>
+            </div>
+          </div>
 
-          <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+          <button className="is-toggle" onClick={() => setToggleViewMode(!toggleViewMode)}>
             {toggleViewMode ? "grid" : "list"}
           </button>
-          <div className={styles.searchMain}>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="search"
-                name="search"
-                id="search"
-                role="search"
-                placeholder="Search Opportunities....."
-              />
-              <button type="submit">Search Button</button>
-            </form>
-          </div>
         </div>
+          <div className="field has-addons is-flex-wrap-nowrap">  
+            <form onSubmit={handleSubmit}>
+              <div className="control">
+                <input
+                className="input"
+                  type="search"
+                  name="search"
+                  id="search"
+                  role="search"
+                  placeholder="Search Opportunities....."
+                />
+              </div>
+            </form>
+                <div className="control">
+                  <button className="button is-info has-icons-right" type="submit"><img src="/public/FFR-assets/Icons/search_icon.svg"  /></button>
+                </div>
+          </div>
       </div>
 
       <ul className={styles.wrapper}>

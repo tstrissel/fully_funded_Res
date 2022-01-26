@@ -1,3 +1,4 @@
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -14,16 +15,19 @@
 .searchOpt {
   display: flex;
   justify-content: space-between;
-  
   margin-bottom: 88px;
+  width:100%;
 }
 
 .searchMain {
-  width:600px;
-  display: flex;
+  width:50%;
+  display: inline-flex;
   justify-content: space-between;
-}
+  flex-wrap: nowrap;
 
+
+
+}
 
 .buttonFilters {
   background-image: xmlns("/public/FFR-assets/Buttons/Filters/Filters.svg");
@@ -44,19 +48,38 @@
 }
 
 .cards {
+  padding:25px;
   background-color: white;
   border-radius: 25px;
 }
 
+
 .cardImg {
-  padding: 22px;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
   
 }
 
-.titleContent {
-  padding:22px;
-}
 
 .iconArrow {
-  content:url(/public/FFR-assets/Icons/arrow-right.svg)
+  content:url(/public/FFR-assets/Icons/arrow-right.svg);
+}
+
+
+.button {
+  border-radius: 55px;
+}
+
+.fontTitle {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.fontLabels {
+  font-family: "Frutiger", sans-serif;
+  font-weight:400px;
+  line-height: 1.5em;
 }
