@@ -1,14 +1,15 @@
-import styles from "./InterviewComp.module.css";
-import interImage from "../../public/FFR-assets/Buttons/Buttons/read-interview-button@2x.png";
+import styles from "./InterviewComp.module.css"
+import interButton from "../../public/FFR-assets/Buttons/Buttons/read-interview-button.svg"
 import Image from "next/image";
+import Link from "next/link";
 
 export default function interviewComp({ interviews }) {
   return (
     <div>
-      <h1>Artist Reflections</h1>
-      <p>
-        Artist reflections is a series of short interviews about AIR models,
-        structures, personal experiences and application processes.
+      <h1 className="openCalls title">Artist Reflections</h1>
+      <p className="subtitleOpenCalls title is-4">
+        Artist reflections is a series of short interviews about AIR <br></br> models,
+        structures, personal experiences and application<br></br> processes.
       </p>
       <ul className={styles.wrapper}>
         {interviews.map((interviews) => {
@@ -17,13 +18,17 @@ export default function interviewComp({ interviews }) {
           return (
             <div className={styles.cards} key={interviews.sys.id}>
               <img
+                className={styles.cardImg}
                 src={interviewImage.fields.file.url}
-                height="300px"
-                width="350px"
               />
-              <h1>{title}</h1>
-              <p>{paragraph}</p>
-              <Image src={interImage} height={50} width={150} />
+              <h1 className={styles.interviewTitle}>{title}</h1>
+              <p className={styles.interviewText}>{paragraph}</p>
+          <Link href="/interviews">
+              <div className={styles.interviewButton}>
+              <Image 
+                src={interButton} height={44} width={133}/>
+              </div>
+          </Link>
             </div>
           );
         })}

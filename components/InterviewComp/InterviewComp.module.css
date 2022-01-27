@@ -5,7 +5,46 @@
   }
   
   .cards {
-    background-color: white;
-    border-radius: 25px;
+    margin-top: 86px;
+    padding-bottom:10px;
+    background: #F6F6F6;
+    box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+    border-radius: 30px;
   }
   
+  .cardImg {
+
+    display:flex;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    align-items: stretch;
+    align-content:stretch;
+    justify-content: center;
+    
+    
+  }
+
+  .interviewTitle {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 24px;
+    padding:22px;
+    color:black;
+
+  }
+
+  .interviewText {
+    font-family: "Frutiger", sans-serif;
+    font-weight:400px;
+    font-size:15px;
+    line-height:19.5px;
+    color:black;
+    padding:0px 22px 0px 25px;
+  }
+
+  .interviewButton {
+    fill:black;
+    display: flex;
+    justify-content: center;
+    margin: 18px;
+  }

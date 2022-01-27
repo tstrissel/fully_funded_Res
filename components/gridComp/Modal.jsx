@@ -1,6 +1,8 @@
 import ResultModal from "../ResultModal/ResultModal";
 import { useState } from "react";
 import styles from "./gridComp.module.css";
+import Image from "next/image";
+import ArrowRight from "../../public/FFR-assets/Icons/arrow-right.svg"
 
 const Modal = ({
   title,
@@ -21,7 +23,6 @@ const Modal = ({
     <>
       {""}
       <div>
-        {/* {title} */}
         <img src={thumbnail.fields.file.url} className={styles.card} />
         <ul>
           <li className={styles.fontTitle}>{slug}</li>
@@ -32,8 +33,13 @@ const Modal = ({
         <p>{paragraph}</p>
         <button className="button is-text has-text-weight-bold" onClick={() => setIsCardOpen(true)}>
         Read more</button>
-        <button className="button is-ghost" >Visit Website</button>
-
+        <button className="button is-ghost" >
+          Visit Website
+          <Image 
+            className={styles.iconArrow}
+            src={ArrowRight} alt=">">
+          </Image>
+        </button>
         <ResultModal
           fellowship={fellowship}
           trigger={isCardOpen}

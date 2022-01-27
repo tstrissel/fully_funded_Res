@@ -6,7 +6,7 @@ import styles from "./Resultmodal.module.css";
 
 export default function ResultModal(props) {
   return props.trigger ? (
-    <div className="modal">
+    // <div className="modal">
       <div className={styles.popup}>
         <div className={styles.popupinner}>
           <button
@@ -19,7 +19,7 @@ export default function ResultModal(props) {
           {props.children}
         </div>
       </div>
-    </div>
+    // </div>
   
   ) : (
     ""

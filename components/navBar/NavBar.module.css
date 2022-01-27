@@ -4,6 +4,7 @@
   display: flex;
   align-items: flex-start;
   background-color: rgba(255, 255, 255, .4);
+  padding-top: 85.5px;
 }
 
 .navEntries {
@@ -11,9 +12,8 @@
   justify-content:flex-end;
   flex-wrap: wrap;
   align-items: center;
-  justify-items: center;
   width: 100vw;
-  font-size:larger;
+  margin-left:20%;
   padding-top: 50px;
   
   
@@ -23,31 +23,55 @@
   text-decoration: none;
   color: black;
   text-align: center;
-  margin: 30px;
+  margin: 25px;
   font-weight:700;
-  font-size:18px;
+  font-size:14px;
   line-height:17px;
+  letter-spacing:0.1em;
 }
 
 .logo {
   display:flexbox;
   position:absolute;
-  width:  229px;
-  height: 171.85px;
-  padding-top: 50px;
+  width:180px;
+  padding-top: 40px;
   
 }
-  
-.social a {
-  display: flexbox;
-  float:right;
+
+.social {
+  display: flex;
   flex-wrap: nowrap;
   justify-content:flex-end;
-  margin-right: 0px;
+}
+
+.social a {
+  width:2em;
+  height:2em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  margin-right:auto;
+  
+}
+
+.openCalls {
+  margin-top:140px;
+  font-size:54px;
+  line-height: 78px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  color: #424141;
   
 }
 
 .subtitleOpenCalls {
   color:#424141;
-  line-height: 133.9%;
+  line-height:32.14px;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size:20px;
+  color: #424141;
+  margin-top:15px;
 }

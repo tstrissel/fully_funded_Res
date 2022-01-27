@@ -30,7 +30,7 @@ export default function NavBar() {
           <Link href="/contact">
             <a className="navContact">CONTACT</a>
           </Link>
-          <div className="social"> 
+          <div className={styles.social}> 
           <Link href="/">
             <a >
               <Image src={Insta} alt="IG"></Image>
@@ -46,8 +46,8 @@ export default function NavBar() {
       </nav>
     </div>
       <div >
-        <h1 className="openCalls title">Open Calls</h1>
-        <h2 className="subtitleOpenCalls title is-4">
+        <h1 className={styles.openCalls}>Open Calls</h1>
+        <h2 className={styles.subtitleOpenCalls}>
           Browse through a list of fully funded residencies that we <br></br>
           update regularly and find the best fit for you.
         </h2>
