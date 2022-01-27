@@ -5,6 +5,9 @@ import ResultModal from "../ResultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "./Modal";
+import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
+import Image from "next/image";
+
 
 export default function GridComp({ fellowship }) {
   console.log(fellowship, "HERE");
@@ -42,17 +45,20 @@ export default function GridComp({ fellowship }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <button onClick={() => setButtonPopup(true)}>Filters:</button>
+          <div>
+            <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters:</button>
+          </div>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
-              <h1>Filter open calls by</h1>
+              <h1 className="label">Filter open calls by</h1>
             </div>
             <form onSubmit={handleSubmit}>
               <div>
                 <h1>location</h1>
                 <label htmlFor="location">location:</label>
                 <select
+                  className="select"
                   onChange={(e) => setCountry(e.target.value)}
                   id="location"
                   name="location"
@@ -143,28 +149,41 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
-          <label htmlFor="dateOrg">sort by:</label>
-          <select name="dateOrg">
-            <option value="deadline-approaching">deadline approaching</option>
-            <option value="recently-added">recently added</option>
-          </select>
+          <div>
+            <div >
+              <select className={styles.dropdownBtn}
+                name="dateOrg">
+          <label className="label" htmlFor="dateOrg">sort by:</label>
+                  <option value="deadline-approaching">Sort by: Deadline approaching</option>
+                  <option value="recently-added">Sort by: Recently added</option>
+                </select> 
+            </div>
+          </div>
 
-          <button onClick={() => setToggleViewMode(!toggleViewMode)}>
-            {toggleViewMode ? "grid" : "list"}
+          <button className={styles.toggleBtn} onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? "view as: Cards" : " view as: List"}
           </button>
-          <div className={styles.searchMain}>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="search"
-                name="search"
-                id="search"
-                role="search"
-                placeholder="Search Opportunities....."
-              />
-              <button type="submit">Search Button</button>
+        </div>
+          <div >  
+            <form 
+              className="is-align-content-end"
+             onSubmit={handleSubmit}>
+              <div className="control is-flex has-addons">
+                <input 
+                  className={styles.searchBar}
+                  type="search"
+                  name="search"
+                  id="search"
+                  role="search"
+                  placeholder="Search Opportunities....."
+                />
+                <div >
+                  <button className={styles.searchBtn} type="submit"><Image className={styles.btnSearchIcon} src={SearchIcon} alt="search"></Image></button>
+                
+                </div>
+              </div>
             </form>
           </div>
-        </div>
       </div>
 
       <ul className={styles.wrapper}>
