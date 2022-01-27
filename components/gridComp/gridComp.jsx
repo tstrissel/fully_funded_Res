@@ -78,12 +78,22 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  onChange={(e) => setCheckBox(e.target.checked)}
+                  onChange={(e) => setCheckBox("Production")}
                 />
                 <label htmlFor="production">production</label>
-                <input type="checkbox" id="Exhibition" name="Exhibition" />
+                <input
+                  type="checkbox"
+                  id="Exhibition"
+                  name="Exhibition"
+                  onChange={(e) => setCheckBox("Exhibition")}
+                />
                 <label htmlFor="Exhibition">Exhibition</label>
-                <input type="checkbox" id="Research" name="Research" />
+                <input
+                  type="checkbox"
+                  id="Research"
+                  name="Research"
+                  onChange={(e) => setCheckBox("Research")}
+                />
                 <label htmlFor="Research">Research</label>
               </div>
 
@@ -92,10 +102,10 @@ export default function GridComp({ fellowship }) {
                 <label htmlFor="Eligibility">Eligibility:</label>
                 <select id="Eligibility" name="Eligibility">
                   <option isdisabled="true">select criteria</option>
-                  <option value="example">1</option>
-                  <option value="example">2</option>
-                  <option value="example">3</option>
-                  <option value="example">4</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </div>
 
@@ -116,10 +126,10 @@ export default function GridComp({ fellowship }) {
                 <label htmlFor="Duration">Duration:</label>
                 <select id="Duration" name="Duration">
                   <option isdisabled="true">select residency duration</option>
-                  <option value="example">1</option>
-                  <option value="example">2</option>
-                  <option value="example">3</option>
-                  <option value="example">4</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </div>
 
@@ -210,6 +220,12 @@ export default function GridComp({ fellowship }) {
             return country
               ? fellowship?.fields?.location?.toLowerCase() ===
                   country.toLowerCase()
+              : true;
+          })
+          .filter((fellowship) => {
+            return checkbox
+              ? fellowship?.fields?.type?.toLowerCase() ===
+                  checkbox.toLowerCase()
               : true;
           })
 
