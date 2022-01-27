@@ -22,7 +22,7 @@ const Modal = ({
   return (
     <>
       {""}
-      <div>
+      <div >
         <img src={thumbnail.fields.file.url} className={styles.card} />
         <ul>
           <li className={styles.fontTitle}>{slug}</li>
@@ -30,7 +30,7 @@ const Modal = ({
           <li className={styles.fontLabels}>location</li>
           <li className={styles.fontLabels}>{money}</li>
         </ul>
-        <p>{paragraph}</p>
+        <p className={styles.fontLabels}>{paragraph}</p>
         <button className="button is-text has-text-weight-bold" onClick={() => setIsCardOpen(true)}>
         Read more</button>
         <button className="button is-ghost" >
