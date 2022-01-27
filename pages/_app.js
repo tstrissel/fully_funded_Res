@@ -3,6 +3,7 @@ import '../scss/styles.scss'
 import '../scss/mystyles.scss'
 import '../styles/globals.scss'
 import Layout from '../components/Layout/Layout.jsx'
+import "../styles/globals.css";
 
 
 function MyApp({ Component, pageProps }) {
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
     </div>
     </Layout>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

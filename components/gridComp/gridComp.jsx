@@ -5,19 +5,28 @@ import ResultModal from "../ResultModal/ResultModal";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "./Modal";
+import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
+import Image from "next/image";
 
 
 export default function GridComp({ fellowship }) {
+  console.log(fellowship, "HERE");
+  // const allLocations = fellowship.map((f) => f.fields.location);
+  // console.log(allLocations);
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
+  const [country, setCountry] = useState();
+  const [checkbox, setCheckBox] = useState(false);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(checkbox, "HERE!");
+    console.log(country, "HERE IS COUNTRY");
 
     try {
       /**
@@ -47,19 +56,30 @@ export default function GridComp({ fellowship }) {
             <form onSubmit={handleSubmit}>
               <div>
                 <h1>location</h1>
-                <select className="select" id="location" name="location">
-                  <option value="" disabled selected>
-                    select country
-                  </option>
-                  <option value="Germany">Germany</option>
+                <label htmlFor="location">location:</label>
+                <select
+                  className="select"
+                  onChange={(e) => setCountry(e.target.value)}
+                  id="location"
+                  name="location"
+                >
+                  <option isdisabled="true">select country</option>
                   <option value="France">France</option>
+                  <option value="Germany">Germany</option>
+
                   <option value="India">India</option>
                   <option value="England">England</option>
                 </select>
               </div>
               <div>
                 <h1>type</h1>
-                <input type="checkbox" id="production" name="production" />
+                <input
+                  type="checkbox"
+                  id="production"
+                  name="production"
+                  checkbox={checkbox}
+                  onChange={(e) => setCheckBox(e.target.checked)}
+                />
                 <label htmlFor="production">production</label>
                 <input type="checkbox" id="Exhibition" name="Exhibition" />
                 <label htmlFor="Exhibition">Exhibition</label>
@@ -71,13 +91,11 @@ export default function GridComp({ fellowship }) {
                 <h1>Eligibility</h1>
                 <label htmlFor="Eligibility">Eligibility:</label>
                 <select id="Eligibility" name="Eligibility">
-                  <option value="" disabled selected>
-                    select criteria
-                  </option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
+                  <option isdisabled="true">select criteria</option>
+                  <option value="example">1</option>
+                  <option value="example">2</option>
+                  <option value="example">3</option>
+                  <option value="example">4</option>
                 </select>
               </div>
 
@@ -97,13 +115,11 @@ export default function GridComp({ fellowship }) {
                 <h1>Duration</h1>
                 <label htmlFor="Duration">Duration:</label>
                 <select id="Duration" name="Duration">
-                  <option value="" disabled selected>
-                    select residency duration
-                  </option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
-                  <option value="example">example</option>
+                  <option isdisabled="true">select residency duration</option>
+                  <option value="example">1</option>
+                  <option value="example">2</option>
+                  <option value="example">3</option>
+                  <option value="example">4</option>
                 </select>
               </div>
 
@@ -162,7 +178,8 @@ export default function GridComp({ fellowship }) {
                   placeholder="Search Opportunities....."
                 />
                 <div >
-                  <button className={styles.searchBtn} type="submit"><img src="/public/FFR-assets/Icons/search_icon.svg"  /></button>
+                  <button className={styles.searchBtn} type="submit"><Image className={styles.btnSearchIcon} src={SearchIcon} alt="search"></Image></button>
+                
                 </div>
               </div>
             </form>
@@ -173,16 +190,32 @@ export default function GridComp({ fellowship }) {
         {fellowship
           .filter((val) => {
             if (searchTerm == "") {
-              return val;
-            } else if (
-              val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              return val;
+              return true;
+            } else {
+              return val.fields.title
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
             }
           })
+          .filter((fellowship) => {
+            return country
+              ? fellowship?.fields?.location?.toLowerCase() ===
+                  country.toLowerCase()
+              : true;
+          })
+
           .map((fellowship) => {
-            const { title, slug, category, money, paragraph, thumbnail } =
-              fellowship.fields;
+            console.log(fellowship, "HERE I AM");
+            const {
+              title,
+              slug,
+              category,
+              money,
+              paragraph,
+              thumbnail,
+              location,
+              type,
+            } = fellowship.fields;
 
             if (!toggleViewMode === true) {
               return (
@@ -195,6 +228,8 @@ export default function GridComp({ fellowship }) {
                     paragraph={paragraph}
                     thumbnail={thumbnail}
                     fellowship={fellowship}
+                    location={location}
+                    type={type}
                   />
                 </div>
               );

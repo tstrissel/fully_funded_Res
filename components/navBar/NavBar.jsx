@@ -47,7 +47,7 @@ export default function NavBar() {
     </div>
       <div >
         <h1 className="openCalls title">Open Calls</h1>
-        <h2 className=" subtitleOpenCalls title is-4">
+        <h2 className="subtitleOpenCalls title is-4">
           Browse through a list of fully funded residencies that we <br></br>
           update regularly and find the best fit for you.
         </h2>

@@ -123,7 +123,6 @@
   display:flex;
   float: right;
   background: #24c7d2;
-  color: white;
   font-size: 15px;
   height: 48px;
   border: none;
@@ -134,6 +133,12 @@
   margin-left:0px;
   padding: 15.5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  
+}
+
+.btnSearchIcon {
+  padding:10px;
+  fill:white;
 }
 
 .btnFont {
