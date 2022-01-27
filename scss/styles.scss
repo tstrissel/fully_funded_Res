@@ -1,0 +1,37 @@
+@import "../scss/mystyles.scss";
+$primary: $lightblue;
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    
+}
+.fontTitle {
+    font-family: "Montserrat", 700;
+    font-size: 24px;
+}
+
+// h2, h3, h4, h6, p {
+//     font-family: "Frutiger" ,sans-serif;
+// }
+
+// ul li {
+//     font-family: "Frutiger" ,sans-serif;
+//     font-weight: 700;
+// }
+
+
+.page {
+    
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 45px;
+}
+
+
+.fontTitle {
+    font-family: "Montserrat", 700;
+    font-size: 24px;
+  }
+  
+@import 'bulma/bulma';
+

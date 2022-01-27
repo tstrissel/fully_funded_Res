@@ -1,7 +1,10 @@
 .footer {
+    
     display:flex;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: white;
+    padding: 66px 25% 66px 66px;
     
 }
 
@@ -11,5 +14,33 @@
 }
 
 .socials {
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.footerEntries {
+    display:flex;
+    flex-direction: column;
+    font-family: "Frutiger", sans-serif;
+    text-decoration: underline;   
+    font-weight: 700;
+    font-style:normal;
+    font-size: 16px;
+    line-height: 40px;
+    color: black;
+    
+    
+}
+
+.footerApplication {
+    display:flex;
+    flex-direction: column;
+    font-family: "Frutiger", sans-serif;
+    font-weight: 600;
+    font-style:normal;
+    font-size: 16px;
+    line-height: 30px;
+    color: black;
+    margin-bottom:30px;
+    
+    
 }

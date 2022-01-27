@@ -1,5 +1,6 @@
 import ResultModal from "../ResultModal/ResultModal";
 import { useState } from "react";
+import styles from "./gridComp.module.css";
 
 const Modal = ({
   title,
@@ -20,16 +21,18 @@ const Modal = ({
     <>
       {""}
       <div>
-        {title}
-        <img src={thumbnail.fields.file.url} height="300px" width="350px" />
+        {/* {title} */}
+        <img src={thumbnail.fields.file.url} className={styles.card} />
         <ul>
-          <li>{slug}</li>
-          <li>{category}</li>
-          <li>location</li>
-          <li>{money}</li>
+          <li className={styles.fontTitle}>{slug}</li>
+          <li className={styles.fontLabels}>{category}</li>
+          <li className={styles.fontLabels}>location</li>
+          <li className={styles.fontLabels}>{money}</li>
         </ul>
         <p>{paragraph}</p>
-        <button onClick={() => setIsCardOpen(true)}>Read more</button>
+        <button className="button is-text has-text-weight-bold" onClick={() => setIsCardOpen(true)}>
+        Read more</button>
+        <button className="button is-ghost" >Visit Website</button>
 
         <ResultModal
           fellowship={fellowship}
@@ -49,3 +52,4 @@ const Modal = ({
 };
 
 export default Modal;
+
