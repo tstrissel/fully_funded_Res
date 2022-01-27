@@ -16,9 +16,8 @@ const Modal = ({
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
     setIsCardOpen(false);
-
   };
-  console.log(isCardOpen, "open");
+
   return (
     <>
       {""}
