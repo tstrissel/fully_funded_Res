@@ -1,3 +1,4 @@
+import '../styles/reset.css';
 import '../scss/styles.scss'
 import '../scss/mystyles.scss'
 import '../styles/globals.scss'
