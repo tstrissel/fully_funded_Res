@@ -9,20 +9,21 @@ import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
 
 export default function GridComp({ fellowship }) {
-  // console.log(fellowship, "HERE");
+  //console.log(fellowship, "HERE");
+
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
   const [checkbox, setCheckBox] = useState(false);
-
+  //console.log(checkbox, "checkbox");
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log(event);
     try {
       /**
        * Take the form's submit event and grab the target, extend it with the input by the name of the input
@@ -77,7 +78,6 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  checkbox={checkbox}
                   onChange={(e) => setCheckBox(e.target.checked)}
                 />
                 <label htmlFor="production">production</label>
