@@ -9,6 +9,8 @@ const Modal = ({
   paragraph,
   thumbnail,
   fellowship,
+  location,
+  type
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {

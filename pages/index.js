@@ -15,18 +15,21 @@ export const getStaticProps = async (context) => {
 
   const res = await client.getEntries({ content_type: "fellowship" });
 
+
   return {
     props: {
       fellowship: res.items,
+    
     },
   };
 };
 
-export default function Index({ fellowship }) {
+export default function Index({ fellowship, interviews }) {
+  
+ 
   return (
     <div>
       <GridComp fellowship={fellowship} />
-      
     </div>
   );
 }
