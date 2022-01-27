@@ -25,8 +25,8 @@ export default function GridComp({ fellowship }) {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(checkbox, "HERE!");
-    console.log(country, "HERE IS COUNTRY");
+    // console.log(checkbox, "HERE!");
+    // console.log(country, "HERE IS COUNTRY");
 
     try {
       /**
@@ -45,7 +45,7 @@ export default function GridComp({ fellowship }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <div>
+          <div className={styles.searchThreeButtons}>
             <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters:</button>
           </div>
 
@@ -149,7 +149,7 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
-          <div>
+          <div className={styles.searchThreeButtons}>
             <div >
               <select className={styles.dropdownBtn}
                 name="dateOrg">
