@@ -7,11 +7,14 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 export default function GridComp({ fellowship }) {
+  console.log(fellowship, "HERE");
+  // const allLocations = fellowship.map((f) => f.fields.location);
+  // console.log(allLocations);
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState();
   const [checkbox, setCheckBox] = useState(false);
 
   /**
@@ -19,8 +22,8 @@ export default function GridComp({ fellowship }) {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(checkbox, "HERE!");
-    // console.log(country, "HERE IS COUNTRY");
+    console.log(checkbox, "HERE!");
+    console.log(country, "HERE IS COUNTRY");
 
     try {
       /**
@@ -30,8 +33,6 @@ export default function GridComp({ fellowship }) {
       const target = event.target;
 
       setSearchTerm(target.search.value);
-      setCheckBox(target.checked);
-      setCountry(target.value);
     } catch (error) {
       console.error(error);
     }
@@ -71,7 +72,7 @@ export default function GridComp({ fellowship }) {
                   id="production"
                   name="production"
                   checkbox={checkbox}
-                  onChange={(e) => setCheckBox(true)}
+                  onChange={(e) => setCheckBox(e.target.checked)}
                 />
                 <label htmlFor="production">production</label>
                 <input type="checkbox" id="Exhibition" name="Exhibition" />
@@ -170,16 +171,22 @@ export default function GridComp({ fellowship }) {
         {fellowship
           .filter((val) => {
             if (searchTerm == "") {
-              return val;
-            } else if (
-              val.fields.title.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              return val;
+              return true;
+            } else {
+              return val.fields.title
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
             }
+          })
+          .filter((fellowship) => {
+            return country
+              ? fellowship?.fields?.location?.toLowerCase() ===
+                  country.toLowerCase()
+              : true;
           })
 
           .map((fellowship) => {
-            //console.log(fellowship, "HERE I AM")
+            console.log(fellowship, "HERE I AM");
             const {
               title,
               slug,
