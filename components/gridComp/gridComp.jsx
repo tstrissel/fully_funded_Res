@@ -10,7 +10,7 @@ import Image from "next/image";
 
 
 export default function GridComp({ fellowship }) {
-  console.log(fellowship, "HERE");
+  // console.log(fellowship, "HERE");
   // const allLocations = fellowship.map((f) => f.fields.location);
   // console.log(allLocations);
   const [searchTerm, setSearchTerm] = useState("");
@@ -46,7 +46,7 @@ export default function GridComp({ fellowship }) {
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
           <div className={styles.searchThreeButtons}>
-            <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters:</button>
+            <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters: None</button>
           </div>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>

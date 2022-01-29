@@ -1,5 +1,5 @@
 .aboutTitle {
-    font-size: 68px;
+    font-size: 54px;
     line-height: 78px;
     font-family: "Montserrat";
     font-style: normal;
@@ -11,7 +11,7 @@
     width: 72%;
     font-family: "Montserrat";
     color:#424141;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 149%;
     font-weight: 700;
     margin-top:41px;
@@ -20,21 +20,19 @@
   }
 
   .aboutMission {
-    width: 73%;
+    width: 66%;
     font-family: "Frutiger", sans-serif;
     color:black;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 133.9%;
     font-weight: normal;
     margin-top:41px;
-
-    
   }
 
   .aboutSupport {
     font-family: "Frutiger", sans-serif;
     color:black;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 133.9%;
     font-weight: normal;
     margin-bottom:41px;
@@ -58,4 +56,26 @@
     align-content: flex-start;
     flex-direction: column;
     
+  }
+
+  .teamList {
+      margin-top:2rem;
+  }
+
+
+  .teamGrid {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .teamMember {
+    margin:5rem;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
   }

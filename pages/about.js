@@ -3,7 +3,7 @@ import Image from "next/image";
 import exampleImage from "../public/FFR-assets/Icons/profile_icon.svg";
 import patron from "../public/FFR-assets/Social links/Patreon button/Patreon.png";
 import payPal from "../public/FFR-assets/Social links/PayPal button/Paypal.png";
-import styles from "./about.module.css";
+import styles from "../pages/about.module.css"
 
 export default function about() {
   return (
@@ -42,44 +42,45 @@ export default function about() {
       </p>
       <p className={styles.aboutMission}>If you wish to help and donate to FFR, we would appreciate it!</p>
 
-      <p className={styles.aboutMission}>Thanks for your support!</p>
-      <p>FFR Team:</p>
-
-      <div>
-        <a>Mila Panić</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Lena Skrabs</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Paloma Sanchez-Palencia</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Sasa Tatić</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Eliot Moleba</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Mathias Schäfer</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Enrico Floriddia</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Gideon Smilansky</a>
-        <Image src={exampleImage} width={50} height={50} />
-      </div>
-      <div>
-        <a>Rebecca Layton</a>
-        <Image src={exampleImage} width={50} height={50} />
+      <p className={styles.aboutSubtitle}>Thanks for your support!</p>
+      <p className={styles.teamList}>FFR Team:</p>
+      <div className={styles.teamGrid}>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Mila Panić</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Lena Skrabs</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Paloma Sanchez-Palencia</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Sasa Tatić</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Eliot Moleba</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Mathias Schäfer</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Enrico Floriddia</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Gideon Smilansky</a>
+        </div>
+        <div className={styles.teamMember}>
+          <Image src={exampleImage} width={50} height={50} />
+          <a>Rebecca Layton</a>
+        </div>
       </div>
     </div>
   );

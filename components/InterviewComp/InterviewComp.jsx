@@ -7,7 +7,7 @@ export default function interviewComp({ interviews }) {
   return (
     <div>
       <h1 className="openCalls title">Artist Reflections</h1>
-      <p className="subtitleOpenCalls title is-4">
+      <p className="subtitleOpenCalls">
         Artist reflections is a series of short interviews about AIR <br></br> models,
         structures, personal experiences and application<br></br> processes.
       </p>
