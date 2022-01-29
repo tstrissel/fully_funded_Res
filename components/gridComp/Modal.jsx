@@ -11,12 +11,13 @@ const Modal = ({
   thumbnail,
   fellowship,
   location,
-  type
+  type,
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
     setIsCardOpen(false);
   };
+
   return (
     <>
       {""}
@@ -30,9 +31,13 @@ const Modal = ({
           <li className={styles.fontLabels}>{money}</li>
         </ul>
         <p>{paragraph}</p>
-        <button className="button is-text has-text-weight-bold" onClick={() => setIsCardOpen(true)}>
-        Read more</button>
-        <button className="button is-ghost" >Visit Website</button>
+        <button
+          className="button is-text has-text-weight-bold"
+          onClick={() => setIsCardOpen(true)}
+        >
+          Read more
+        </button>
+        <button className="button is-ghost">Visit Website</button>
 
         <ResultModal
           fellowship={fellowship}
@@ -52,4 +57,3 @@ const Modal = ({
 };
 
 export default Modal;
-
