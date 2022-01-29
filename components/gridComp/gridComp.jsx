@@ -8,26 +8,23 @@ import Modal from "./Modal";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
 
-
 export default function GridComp({ fellowship }) {
-  // console.log(fellowship, "HERE");
-  // const allLocations = fellowship.map((f) => f.fields.location);
-  // console.log(allLocations);
+  //console.log(fellowship, "HERE");
+
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
   const [checkbox, setCheckBox] = useState(false);
-
+  const [eligibility, setEligibility] = useState();
+  //console.log(checkbox, "checkbox");
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(checkbox, "HERE!");
-    // console.log(country, "HERE IS COUNTRY");
-
+    console.log(event);
     try {
       /**
        * Take the form's submit event and grab the target, extend it with the input by the name of the input
@@ -45,8 +42,13 @@ export default function GridComp({ fellowship }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <div className={styles.searchThreeButtons}>
-            <button className={styles.buttonFilters} onClick={() => setButtonPopup(true)}>Filters: None</button>
+          <div>
+            <button
+              className={styles.buttonFilters}
+              onClick={() => setButtonPopup(true)}
+            >
+              Filters:
+            </button>
           </div>
 
           <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
@@ -77,25 +79,38 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  checkbox={checkbox}
-                  onChange={(e) => setCheckBox(e.target.checked)}
+                  onChange={(e) => setCheckBox("Production")}
                 />
                 <label htmlFor="production">production</label>
-                <input type="checkbox" id="Exhibition" name="Exhibition" />
+                <input
+                  type="checkbox"
+                  id="Exhibition"
+                  name="Exhibition"
+                  onChange={(e) => setCheckBox("Exhibition")}
+                />
                 <label htmlFor="Exhibition">Exhibition</label>
-                <input type="checkbox" id="Research" name="Research" />
+                <input
+                  type="checkbox"
+                  id="Research"
+                  name="Research"
+                  onChange={(e) => setCheckBox("Research")}
+                />
                 <label htmlFor="Research">Research</label>
               </div>
 
               <div>
                 <h1>Eligibility</h1>
                 <label htmlFor="Eligibility">Eligibility:</label>
-                <select id="Eligibility" name="Eligibility">
+                <select
+                  id="Eligibility"
+                  name="Eligibility"
+                  onChange={(e) => setEligibility(e.target.value)}
+                >
                   <option isdisabled="true">select criteria</option>
-                  <option value="example">1</option>
-                  <option value="example">2</option>
-                  <option value="example">3</option>
-                  <option value="example">4</option>
+                  <option value="elig one">elig one</option>
+                  <option value="elig two">elig two</option>
+                  <option value="elig three">elig three</option>
+                  <option value="elig four">elig four</option>
                 </select>
               </div>
 
@@ -116,10 +131,10 @@ export default function GridComp({ fellowship }) {
                 <label htmlFor="Duration">Duration:</label>
                 <select id="Duration" name="Duration">
                   <option isdisabled="true">select residency duration</option>
-                  <option value="example">1</option>
-                  <option value="example">2</option>
-                  <option value="example">3</option>
-                  <option value="example">4</option>
+                  <option value="duration one">duration one</option>
+                  <option value="duration two">duration two</option>
+                  <option value="duration three">duration three</option>
+                  <option value="duration four">duration four</option>
                 </select>
               </div>
 
@@ -149,41 +164,50 @@ export default function GridComp({ fellowship }) {
             </form>
           </SearchModal>
 
-          <div className={styles.searchThreeButtons}>
-            <div >
-              <select className={styles.dropdownBtn}
-                name="dateOrg">
-          <label className="label" htmlFor="dateOrg">sort by:</label>
-                  <option value="deadline-approaching">Sort by: Deadline approaching</option>
-                  <option value="recently-added">Sort by: Recently added</option>
-                </select> 
+          <div>
+            <div>
+              <select className={styles.dropdownBtn} name="dateOrg">
+                <label className="label" htmlFor="dateOrg">
+                  sort by:
+                </label>
+                <option value="deadline-approaching">
+                  Sort by: Deadline approaching
+                </option>
+                <option value="recently-added">Sort by: Recently added</option>
+              </select>
             </div>
           </div>
 
-          <button className={styles.toggleBtn} onClick={() => setToggleViewMode(!toggleViewMode)}>
+          <button
+            className={styles.toggleBtn}
+            onClick={() => setToggleViewMode(!toggleViewMode)}
+          >
             {toggleViewMode ? "view as: Cards" : " view as: List"}
           </button>
         </div>
-          <div >  
-            <form 
-              className="is-align-content-end"
-             onSubmit={handleSubmit}>
-              <div className="control is-flex has-addons">
-                <input 
-                  className={styles.searchBar}
-                  type="search"
-                  name="search"
-                  id="search"
-                  role="search"
-                  placeholder="Search Opportunities....."
-                />
-                <div >
-                  <button className={styles.searchBtn} type="submit"><Image className={styles.btnSearchIcon} src={SearchIcon} alt="search"></Image></button>
-                
-                </div>
+        <div>
+          <form className="is-align-content-end" onSubmit={handleSubmit}>
+            <div className="control is-flex has-addons">
+              <input
+                className={styles.searchBar}
+                type="search"
+                name="search"
+                id="search"
+                role="search"
+                placeholder="Search Opportunities....."
+              />
+              <div>
+                <button className={styles.searchBtn} type="submit">
+                  <Image
+                    className={styles.btnSearchIcon}
+                    src={SearchIcon}
+                    alt="search"
+                  ></Image>
+                </button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
+        </div>
       </div>
 
       <ul className={styles.wrapper}>
@@ -203,9 +227,20 @@ export default function GridComp({ fellowship }) {
                   country.toLowerCase()
               : true;
           })
+          .filter((fellowship) => {
+            return checkbox
+              ? fellowship?.fields?.type?.toLowerCase() ===
+                  checkbox.toLowerCase()
+              : true;
+          })
+          .filter((fellowship) => {
+            return eligibility
+              ? fellowship?.fields?.eligibility?.toLowerCase() ===
+                  eligibility.toLowerCase()
+              : true;
+          })
 
           .map((fellowship) => {
-            console.log(fellowship, "HERE I AM");
             const {
               title,
               slug,
@@ -250,7 +285,10 @@ export default function GridComp({ fellowship }) {
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
-                    <button onClick={() => setResultPopup(true)}>
+                    <button
+                      className="button is-text has-text-weight-bold"
+                      onClick={() => setResultPopup(true)}
+                    >
                       Read more
                     </button>
 
