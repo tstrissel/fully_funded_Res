@@ -17,6 +17,7 @@ export default function GridComp({ fellowship }) {
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
   const [checkbox, setCheckBox] = useState(false);
+  const [eligibility, setEligibility] = useState();
   //console.log(checkbox, "checkbox");
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -100,12 +101,16 @@ export default function GridComp({ fellowship }) {
               <div>
                 <h1>Eligibility</h1>
                 <label htmlFor="Eligibility">Eligibility:</label>
-                <select id="Eligibility" name="Eligibility">
+                <select
+                  id="Eligibility"
+                  name="Eligibility"
+                  onChange={(e) => setEligibility(e.target.value)}
+                >
                   <option isdisabled="true">select criteria</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="elig one">elig one</option>
+                  <option value="elig two">elig two</option>
+                  <option value="elig three">elig three</option>
+                  <option value="elig four">elig four</option>
                 </select>
               </div>
 
@@ -126,10 +131,10 @@ export default function GridComp({ fellowship }) {
                 <label htmlFor="Duration">Duration:</label>
                 <select id="Duration" name="Duration">
                   <option isdisabled="true">select residency duration</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="duration one">duration one</option>
+                  <option value="duration two">duration two</option>
+                  <option value="duration three">duration three</option>
+                  <option value="duration four">duration four</option>
                 </select>
               </div>
 
@@ -226,6 +231,12 @@ export default function GridComp({ fellowship }) {
             return checkbox
               ? fellowship?.fields?.type?.toLowerCase() ===
                   checkbox.toLowerCase()
+              : true;
+          })
+          .filter((fellowship) => {
+            return eligibility
+              ? fellowship?.fields?.eligibility?.toLowerCase() ===
+                  eligibility.toLowerCase()
               : true;
           })
 
