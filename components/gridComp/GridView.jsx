@@ -2,7 +2,7 @@ import ResultModal from "../ResultModal/ResultModal";
 import { useState } from "react";
 import styles from "./gridComp.module.css";
 
-const Modal = ({
+const GridView = ({
   title,
   slug,
   category,
@@ -56,4 +56,4 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export default GridView;

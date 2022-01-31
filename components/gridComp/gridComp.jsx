@@ -1,30 +1,29 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
-import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../ResultModal/ResultModal";
-import { useRouter } from "next/router";
+import SearchFilter from "../SearchFilter/SearchFilter";
+
 import { useState } from "react";
-import Modal from "./Modal";
+import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
 
 export default function GridComp({ fellowship }) {
-  //console.log(fellowship, "HERE");
-
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
-  const [checkbox, setCheckBox] = useState(false);
+  const [type, setType] = useState(false);
   const [eligibility, setEligibility] = useState();
-  //console.log(checkbox, "checkbox");
+  const [duration, setDuration] = useState();
+  const [checked, setChecked] = useState(false);
+
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+
     try {
       /**
        * Take the form's submit event and grab the target, extend it with the input by the name of the input
@@ -33,6 +32,7 @@ export default function GridComp({ fellowship }) {
       const target = event.target;
 
       setSearchTerm(target.search.value);
+      event.currentTarget.reset();
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +51,7 @@ export default function GridComp({ fellowship }) {
             </button>
           </div>
 
-          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
               <h1 className="label">Filter open calls by</h1>
             </div>
@@ -79,21 +79,21 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  onChange={(e) => setCheckBox("Production")}
+                  onChange={(e) => setType(e.target.checked)}
                 />
                 <label htmlFor="production">production</label>
                 <input
                   type="checkbox"
                   id="Exhibition"
                   name="Exhibition"
-                  onChange={(e) => setCheckBox("Exhibition")}
+                  onChange={(e) => setType(e.target.checked)}
                 />
                 <label htmlFor="Exhibition">Exhibition</label>
                 <input
                   type="checkbox"
                   id="Research"
                   name="Research"
-                  onChange={(e) => setCheckBox("Research")}
+                  onChange={(e) => setType(e.target.checked)}
                 />
                 <label htmlFor="Research">Research</label>
               </div>
@@ -129,7 +129,11 @@ export default function GridComp({ fellowship }) {
               <div>
                 <h1>Duration</h1>
                 <label htmlFor="Duration">Duration:</label>
-                <select id="Duration" name="Duration">
+                <select
+                  id="Duration"
+                  name="Duration"
+                  onChange={(e) => setDuration(e.target.value)}
+                >
                   <option isdisabled="true">select residency duration</option>
                   <option value="duration one">duration one</option>
                   <option value="duration two">duration two</option>
@@ -162,7 +166,7 @@ export default function GridComp({ fellowship }) {
 
               <button type="submit"> Search </button>
             </form>
-          </SearchModal>
+          </SearchFilter>
 
           <div>
             <div>
@@ -228,15 +232,20 @@ export default function GridComp({ fellowship }) {
               : true;
           })
           .filter((fellowship) => {
-            return checkbox
-              ? fellowship?.fields?.type?.toLowerCase() ===
-                  checkbox.toLowerCase()
+            return type
+              ? fellowship?.fields?.type?.toLowerCase() === type.toLowerCase()
               : true;
           })
           .filter((fellowship) => {
             return eligibility
               ? fellowship?.fields?.eligibility?.toLowerCase() ===
                   eligibility.toLowerCase()
+              : true;
+          })
+          .filter((fellowship) => {
+            return duration
+              ? fellowship?.fields?.duration?.toLowerCase() ===
+                  duration.toLowerCase()
               : true;
           })
 
@@ -252,10 +261,10 @@ export default function GridComp({ fellowship }) {
               type,
             } = fellowship.fields;
 
-            if (!toggleViewMode === true) {
+            if (toggleViewMode === false) {
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
-                  <Modal
+                  <GridView
                     title={title}
                     slug={slug}
                     category={category}
@@ -268,20 +277,17 @@ export default function GridComp({ fellowship }) {
                   />
                 </div>
               );
-            } else if (!toggleViewMode === false) {
+            } else if (toggleViewMode === true) {
+              //list view
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
                   <div>
                     {title}
-                    {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
+
                     <ul>
-                      {/* <li>{slug}</li>
-                          <li>{category}</li>
-                          <li>location</li> */}
+                      <li>{slug}</li>
+                      <li>{category}</li>
+                      <li>location</li>
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
@@ -291,23 +297,6 @@ export default function GridComp({ fellowship }) {
                     >
                       Read more
                     </button>
-
-                    <ResultModal
-                      fellowship={fellowship}
-                      trigger={resultPopup}
-                      setTrigger={setResultPopup}
-                    >
-                      {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
-                      {/* <h1>{slug}</h1>
-                      <h1>{title}</h1> */}
-                      <p>{category}</p>
-                      <p>{money}</p>
-                      <p>{paragraph}</p>
-                    </ResultModal>
                   </div>
                 </div>
               );
