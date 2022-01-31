@@ -295,8 +295,6 @@ export default function GridComp({ fellowship }) {
               : true;
           })
 
-          
-
           .map((fellowship) => {
             const timeStamp = fellowship.sys.createdAt;
 
@@ -311,14 +309,18 @@ export default function GridComp({ fellowship }) {
               type,
             } = fellowship.fields;
 
-            // timeStamp.sort((a, b) => {
-            //   if (toggleSorted === true) {
-            //     return a - b;
-            //   } else {
-            //     // create deadline time
-            //     // sort by deadline time
-            //   }
-            // })
+            // if (toggleSorted === true) {
+            //   timeStamp.sort((a, b) => {
+            //     if (toggleSorted === true) {
+            //       return a - b;
+            //     } else {
+            //       // create deadline time
+            //       // sort by deadline time
+            //     }
+            //   });
+            // }
+
+            console.log(timeStamp, "togglesorted");
 
             if (toggleViewMode === false) {
               return (
@@ -333,6 +335,7 @@ export default function GridComp({ fellowship }) {
                     fellowship={fellowship}
                     location={location}
                     type={type}
+                    timeStamp={timeStamp}
                   />
                 </div>
               );
@@ -350,6 +353,7 @@ export default function GridComp({ fellowship }) {
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
+                    <p>{timeStamp}</p>
 
                     <button
                       className="button is-text has-text-weight-bold"
