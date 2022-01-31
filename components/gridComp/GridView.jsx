@@ -12,6 +12,7 @@ const GridView = ({
   fellowship,
   location,
   type,
+  
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
@@ -50,6 +51,7 @@ const GridView = ({
           <p>{category}</p>
           <p>{money}</p>
           <p>{paragraph}</p>
+          
         </ResultModal>
       </div>
     </>

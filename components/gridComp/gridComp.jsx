@@ -10,13 +10,15 @@ import Image from "next/image";
 export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
+  const [toggleSorted, setToggleSorted] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
   const [type, setType] = useState(false);
   const [eligibility, setEligibility] = useState();
   const [duration, setDuration] = useState();
-  const [checked, setChecked] = useState(false);
+  const [fee, setFee] = useState(false);
+  const [field, setField] = useState();
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -32,7 +34,6 @@ export default function GridComp({ fellowship }) {
       const target = event.target;
 
       setSearchTerm(target.search.value);
-      event.currentTarget.reset();
     } catch (error) {
       console.error(error);
     }
@@ -79,21 +80,21 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  onChange={(e) => setType(e.target.checked)}
+                  onChange={(e) => setType("Production")}
                 />
                 <label htmlFor="production">production</label>
                 <input
                   type="checkbox"
                   id="Exhibition"
                   name="Exhibition"
-                  onChange={(e) => setType(e.target.checked)}
+                  onChange={(e) => setType("Exhibition")}
                 />
                 <label htmlFor="Exhibition">Exhibition</label>
                 <input
                   type="checkbox"
                   id="Research"
                   name="Research"
-                  onChange={(e) => setType(e.target.checked)}
+                  onChange={(e) => setType("Research")}
                 />
                 <label htmlFor="Research">Research</label>
               </div>
@@ -120,6 +121,7 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="Without Application Fee"
                   name="Without Application Fee"
+                  // onChange={(e) => setFee(e.target.value)}
                 />
                 <label htmlFor="Without Application Fee">
                   Without Application Fee
@@ -144,30 +146,61 @@ export default function GridComp({ fellowship }) {
 
               <div>
                 <h1>Field</h1>
-                <input type="checkbox" id="Visual" name="Visual" />
+                <input
+                  type="checkbox"
+                  id="Visual"
+                  name="Visual"
+                  onChange={(e) => setField("Visual")}
+                />
                 <label htmlFor="Visual">Visual</label>
                 <input
                   type="checkbox"
                   id="Multidisciplinary"
                   name="Multidisciplinary"
+                  onChange={(e) => setField("Multidisciplinary")}
                 />
                 <label htmlFor="Multidisciplinary">Multidisciplinary</label>
-                <input type="checkbox" id="Curatorial" name="Curatorial" />
+                <input
+                  type="checkbox"
+                  id="Curatorial"
+                  name="Curatorial"
+                  onChange={(e) => setField("Curatorial")}
+                />
                 <label htmlFor="Curatorial">Curatorial</label>
-                <input type="checkbox" id="Sound" name="Sound" />
+                <input
+                  type="checkbox"
+                  id="Sound"
+                  name="Sound"
+                  onChange={(e) => setField("Sound")}
+                />
                 <label htmlFor="Sound">Sound</label>
-                <input type="checkbox" id="Literature" name="Literature" />
+                <input
+                  type="checkbox"
+                  id="Literature"
+                  name="Literature"
+                  onChange={(e) => setField("Literature")}
+                />
                 <label htmlFor="Literature">Literature</label>
-                <input type="checkbox" id="Performance" name="Performance" />
+                <input
+                  type="checkbox"
+                  id="Performance"
+                  name="Performance"
+                  onChange={(e) => setField("Performance")}
+                />
                 <label htmlFor="Performance">Performance</label>
-                <input type="checkbox" id="Dance" name="Dance" />
+                <input
+                  type="checkbox"
+                  id="Dance"
+                  name="Dance"
+                  onChange={(e) => setField("Dance")}
+                />
                 <label htmlFor="Dance">Dance</label>
               </div>
 
               <button type="submit"> Search </button>
             </form>
           </SearchFilter>
-
+          {/* 
           <div>
             <div>
               <select className={styles.dropdownBtn} name="dateOrg">
@@ -180,7 +213,15 @@ export default function GridComp({ fellowship }) {
                 <option value="recently-added">Sort by: Recently added</option>
               </select>
             </div>
-          </div>
+          </div> */}
+          <button
+            className={styles.dropdownBtn}
+            onClick={() => setToggleSorted(!toggleSorted)}
+          >
+            {toggleSorted
+              ? "Sort by: Deadline approaching"
+              : " Sort by: Recently added"}
+          </button>
 
           <button
             className={styles.toggleBtn}
@@ -248,8 +289,17 @@ export default function GridComp({ fellowship }) {
                   duration.toLowerCase()
               : true;
           })
+          .filter((fellowship) => {
+            return field
+              ? fellowship?.fields?.field?.toLowerCase() === field.toLowerCase()
+              : true;
+          })
+
+          
 
           .map((fellowship) => {
+            const timeStamp = fellowship.sys.createdAt;
+
             const {
               title,
               slug,
@@ -260,6 +310,15 @@ export default function GridComp({ fellowship }) {
               location,
               type,
             } = fellowship.fields;
+
+            // timeStamp.sort((a, b) => {
+            //   if (toggleSorted === true) {
+            //     return a - b;
+            //   } else {
+            //     // create deadline time
+            //     // sort by deadline time
+            //   }
+            // })
 
             if (toggleViewMode === false) {
               return (
@@ -291,6 +350,7 @@ export default function GridComp({ fellowship }) {
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
+
                     <button
                       className="button is-text has-text-weight-bold"
                       onClick={() => setResultPopup(true)}
