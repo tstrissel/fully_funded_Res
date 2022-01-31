@@ -46,6 +46,8 @@ $spacing-values: ("small": 22px, "medium": 30px, "large": 60px);
 $linkcolor: black;
 $link: $linkcolor;
 
+
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
@@ -58,3 +60,4 @@ $link: $linkcolor;
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 @import "bulma/bulma";
+

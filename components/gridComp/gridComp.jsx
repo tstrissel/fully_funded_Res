@@ -39,132 +39,135 @@ export default function GridComp({ fellowship }) {
   };
 
   return (
-    <div>
+    <div classNames="columns is-vcentered">
+    <div >
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
           <div>
-            <button
-              className={styles.buttonFilters}
-              onClick={() => setButtonPopup(true)}
-            >
-              Filters:
-            </button>
+            <div className={styles.searchThreeButtons}>
+              <button
+                className={styles.buttonFilters}
+                onClick={() => setButtonPopup(true)}
+              >
+                Filters:
+              </button>
+            </div>
           </div>
 
-          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <div>
-              <h1 className="label">Filter open calls by</h1>
-            </div>
-            <form onSubmit={handleSubmit}>
+            <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
               <div>
-                <h1>location</h1>
-                <label htmlFor="location">location:</label>
-                <select
-                  className="select"
-                  onChange={(e) => setCountry(e.target.value)}
-                  id="location"
-                  name="location"
-                >
-                  <option isdisabled="true">select country</option>
-                  <option value="France">France</option>
-                  <option value="Germany">Germany</option>
-
-                  <option value="India">India</option>
-                  <option value="England">England</option>
-                </select>
+                <h1 className="label">Filter open calls by</h1>
               </div>
-              <div>
-                <h1>type</h1>
-                <input
-                  type="checkbox"
-                  id="production"
-                  name="production"
-                  onChange={(e) => setCheckBox("Production")}
-                />
-                <label htmlFor="production">production</label>
-                <input
-                  type="checkbox"
-                  id="Exhibition"
-                  name="Exhibition"
-                  onChange={(e) => setCheckBox("Exhibition")}
-                />
-                <label htmlFor="Exhibition">Exhibition</label>
-                <input
-                  type="checkbox"
-                  id="Research"
-                  name="Research"
-                  onChange={(e) => setCheckBox("Research")}
-                />
-                <label htmlFor="Research">Research</label>
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <h1>location</h1>
+                  <label htmlFor="location">location:</label>
+                  <select
+                    className="select"
+                    onChange={(e) => setCountry(e.target.value)}
+                    id="location"
+                    name="location"
+                  >
+                    <option isdisabled="true">select country</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
 
-              <div>
-                <h1>Eligibility</h1>
-                <label htmlFor="Eligibility">Eligibility:</label>
-                <select
-                  id="Eligibility"
-                  name="Eligibility"
-                  onChange={(e) => setEligibility(e.target.value)}
-                >
-                  <option isdisabled="true">select criteria</option>
-                  <option value="elig one">elig one</option>
-                  <option value="elig two">elig two</option>
-                  <option value="elig three">elig three</option>
-                  <option value="elig four">elig four</option>
-                </select>
-              </div>
+                    <option value="India">India</option>
+                    <option value="England">England</option>
+                  </select>
+                </div>
+                <div>
+                  <h1>type</h1>
+                  <input
+                    type="checkbox"
+                    id="production"
+                    name="production"
+                    onChange={(e) => setCheckBox("Production")}
+                  />
+                  <label htmlFor="production">production</label>
+                  <input
+                    type="checkbox"
+                    id="Exhibition"
+                    name="Exhibition"
+                    onChange={(e) => setCheckBox("Exhibition")}
+                  />
+                  <label htmlFor="Exhibition">Exhibition</label>
+                  <input
+                    type="checkbox"
+                    id="Research"
+                    name="Research"
+                    onChange={(e) => setCheckBox("Research")}
+                  />
+                  <label htmlFor="Research">Research</label>
+                </div>
 
-              <div>
-                <h1>Application Fee</h1>
-                <input
-                  type="checkbox"
-                  id="Without Application Fee"
-                  name="Without Application Fee"
-                />
-                <label htmlFor="Without Application Fee">
-                  Without Application Fee
-                </label>
-              </div>
+                <div>
+                  <h1>Eligibility</h1>
+                  <label htmlFor="Eligibility">Eligibility:</label>
+                  <select
+                    id="Eligibility"
+                    name="Eligibility"
+                    onChange={(e) => setEligibility(e.target.value)}
+                  >
+                    <option isdisabled="true">select criteria</option>
+                    <option value="elig one">elig one</option>
+                    <option value="elig two">elig two</option>
+                    <option value="elig three">elig three</option>
+                    <option value="elig four">elig four</option>
+                  </select>
+                </div>
 
-              <div>
-                <h1>Duration</h1>
-                <label htmlFor="Duration">Duration:</label>
-                <select id="Duration" name="Duration">
-                  <option isdisabled="true">select residency duration</option>
-                  <option value="duration one">duration one</option>
-                  <option value="duration two">duration two</option>
-                  <option value="duration three">duration three</option>
-                  <option value="duration four">duration four</option>
-                </select>
-              </div>
+                <div>
+                  <h1>Application Fee</h1>
+                  <input
+                    type="checkbox"
+                    id="Without Application Fee"
+                    name="Without Application Fee"
+                  />
+                  <label htmlFor="Without Application Fee">
+                    Without Application Fee
+                  </label>
+                </div>
 
-              <div>
-                <h1>Field</h1>
-                <input type="checkbox" id="Visual" name="Visual" />
-                <label htmlFor="Visual">Visual</label>
-                <input
-                  type="checkbox"
-                  id="Multidisciplinary"
-                  name="Multidisciplinary"
-                />
-                <label htmlFor="Multidisciplinary">Multidisciplinary</label>
-                <input type="checkbox" id="Curatorial" name="Curatorial" />
-                <label htmlFor="Curatorial">Curatorial</label>
-                <input type="checkbox" id="Sound" name="Sound" />
-                <label htmlFor="Sound">Sound</label>
-                <input type="checkbox" id="Literature" name="Literature" />
-                <label htmlFor="Literature">Literature</label>
-                <input type="checkbox" id="Performance" name="Performance" />
-                <label htmlFor="Performance">Performance</label>
-                <input type="checkbox" id="Dance" name="Dance" />
-                <label htmlFor="Dance">Dance</label>
-              </div>
+                <div>
+                  <h1>Duration</h1>
+                  <label htmlFor="Duration">Duration:</label>
+                  <select id="Duration" name="Duration">
+                    <option isdisabled="true">select residency duration</option>
+                    <option value="duration one">duration one</option>
+                    <option value="duration two">duration two</option>
+                    <option value="duration three">duration three</option>
+                    <option value="duration four">duration four</option>
+                  </select>
+                </div>
 
-              <button type="submit"> Search </button>
-            </form>
-          </SearchModal>
+                <div>
+                  <h1>Field</h1>
+                  <input type="checkbox" id="Visual" name="Visual" />
+                  <label htmlFor="Visual">Visual</label>
+                  <input
+                    type="checkbox"
+                    id="Multidisciplinary"
+                    name="Multidisciplinary"
+                  />
+                  <label htmlFor="Multidisciplinary">Multidisciplinary</label>
+                  <input type="checkbox" id="Curatorial" name="Curatorial" />
+                  <label htmlFor="Curatorial">Curatorial</label>
+                  <input type="checkbox" id="Sound" name="Sound" />
+                  <label htmlFor="Sound">Sound</label>
+                  <input type="checkbox" id="Literature" name="Literature" />
+                  <label htmlFor="Literature">Literature</label>
+                  <input type="checkbox" id="Performance" name="Performance" />
+                  <label htmlFor="Performance">Performance</label>
+                  <input type="checkbox" id="Dance" name="Dance" />
+                  <label htmlFor="Dance">Dance</label>
+                </div>
 
-          <div>
+                <button type="submit"> Search </button>
+              </form>
+            </SearchModal>
+
+          <div className={styles.searchThreeButtons}>
             <div>
               <select className={styles.dropdownBtn} name="dateOrg">
                 <label className="label" htmlFor="dateOrg">
@@ -314,6 +317,7 @@ export default function GridComp({ fellowship }) {
             }
           })}
       </ul>
+    </div>
     </div>
   );
 }

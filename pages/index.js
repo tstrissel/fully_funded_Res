@@ -29,10 +29,12 @@ export default function Index({ fellowship, interviews }) {
   
  
   return (
+  
     <div className={styles.container}>
       <div>
         <GridComp fellowship={fellowship} /> 
       </div>
     </div>
+    
   );
 }
