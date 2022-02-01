@@ -5,6 +5,8 @@ import Insta from "../..//public/Social links/icon_instagram.svg";
 import FaceBook from "../..//public/Social links/icon_facebook.svg";
 import styles from "../navBar/NavBar.module.css";
 import React from "react";
+import MobileNavigation from "./MobileNavigation";
+import Navigation from "./Navigation";
 
 
 export default function NavBar() {
@@ -13,16 +15,14 @@ export default function NavBar() {
 
   return (
     <div>
-      <div className="navbar is-transparent">
         <nav className={styles.navBar} role="navigation" aria-label="main navigation">
-          <div className="navbar-brand">
               <a className={styles.logo}>
                 <Image src={logo} alt="FFR2"></Image>
               </a> 
-          </div>
             
-          <div className={styles.navEntries}>
-            <Link href="/">
+          <MobileNavigation />
+          <Navigation />
+            {/* <Link href="/">
               <a className="navbar-item ">OPEN CALLS</a>
             </Link>
             <Link href="/resources">
@@ -48,11 +48,9 @@ export default function NavBar() {
                 <Image src={FaceBook} alt="FB" className="navbar-item"></Image>
               </a>
             </Link>
-            </div>
-          </div>
+            </div> */}
                 
         </nav>
-      </div>
 
       <div>
         <h1 className={styles.openCalls}>Open Calls</h1>
