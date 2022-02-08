@@ -294,6 +294,14 @@ export default function GridComp({ fellowship }) {
               ? fellowship?.fields?.field?.toLowerCase() === field.toLowerCase()
               : true;
           })
+          // .sort((a, b) => {
+          //       if (toggleSorted === true) {
+          //         return a - b;
+          //       } else {
+          //         // create deadline time
+          //         // sort by deadline time
+          //       }
+          //     });
 
           .map((fellowship) => {
             const timeStamp = fellowship.sys.createdAt;
@@ -308,17 +316,6 @@ export default function GridComp({ fellowship }) {
               location,
               type,
             } = fellowship.fields;
-
-            // if (toggleSorted === true) {
-            //   timeStamp.sort((a, b) => {
-            //     if (toggleSorted === true) {
-            //       return a - b;
-            //     } else {
-            //       // create deadline time
-            //       // sort by deadline time
-            //     }
-            //   });
-            // }
 
             console.log(timeStamp, "togglesorted");
 
