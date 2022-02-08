@@ -1,30 +1,31 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
-import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../ResultModal/ResultModal";
-import { useRouter } from "next/router";
+import SearchFilter from "../SearchFilter/SearchFilter";
+
 import { useState } from "react";
-import Modal from "./Modal";
+import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
 
 export default function GridComp({ fellowship }) {
-  //console.log(fellowship, "HERE");
-
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
+  const [toggleSorted, setToggleSorted] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
-  const [checkbox, setCheckBox] = useState(false);
+  const [type, setType] = useState(false);
   const [eligibility, setEligibility] = useState();
-  //console.log(checkbox, "checkbox");
+  const [duration, setDuration] = useState();
+  const [fee, setFee] = useState(false);
+  const [field, setField] = useState();
+
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+
     try {
       /**
        * Take the form's submit event and grab the target, extend it with the input by the name of the input
@@ -51,7 +52,7 @@ export default function GridComp({ fellowship }) {
             </button>
           </div>
 
-          <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
               <h1 className="label">Filter open calls by</h1>
             </div>
@@ -79,21 +80,21 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="production"
                   name="production"
-                  onChange={(e) => setCheckBox("Production")}
+                  onChange={(e) => setType("Production")}
                 />
                 <label htmlFor="production">production</label>
                 <input
                   type="checkbox"
                   id="Exhibition"
                   name="Exhibition"
-                  onChange={(e) => setCheckBox("Exhibition")}
+                  onChange={(e) => setType("Exhibition")}
                 />
                 <label htmlFor="Exhibition">Exhibition</label>
                 <input
                   type="checkbox"
                   id="Research"
                   name="Research"
-                  onChange={(e) => setCheckBox("Research")}
+                  onChange={(e) => setType("Research")}
                 />
                 <label htmlFor="Research">Research</label>
               </div>
@@ -120,6 +121,7 @@ export default function GridComp({ fellowship }) {
                   type="checkbox"
                   id="Without Application Fee"
                   name="Without Application Fee"
+                  // onChange={(e) => setFee(e.target.value)}
                 />
                 <label htmlFor="Without Application Fee">
                   Without Application Fee
@@ -129,7 +131,11 @@ export default function GridComp({ fellowship }) {
               <div>
                 <h1>Duration</h1>
                 <label htmlFor="Duration">Duration:</label>
-                <select id="Duration" name="Duration">
+                <select
+                  id="Duration"
+                  name="Duration"
+                  onChange={(e) => setDuration(e.target.value)}
+                >
                   <option isdisabled="true">select residency duration</option>
                   <option value="duration one">duration one</option>
                   <option value="duration two">duration two</option>
@@ -140,30 +146,61 @@ export default function GridComp({ fellowship }) {
 
               <div>
                 <h1>Field</h1>
-                <input type="checkbox" id="Visual" name="Visual" />
+                <input
+                  type="checkbox"
+                  id="Visual"
+                  name="Visual"
+                  onChange={(e) => setField("Visual")}
+                />
                 <label htmlFor="Visual">Visual</label>
                 <input
                   type="checkbox"
                   id="Multidisciplinary"
                   name="Multidisciplinary"
+                  onChange={(e) => setField("Multidisciplinary")}
                 />
                 <label htmlFor="Multidisciplinary">Multidisciplinary</label>
-                <input type="checkbox" id="Curatorial" name="Curatorial" />
+                <input
+                  type="checkbox"
+                  id="Curatorial"
+                  name="Curatorial"
+                  onChange={(e) => setField("Curatorial")}
+                />
                 <label htmlFor="Curatorial">Curatorial</label>
-                <input type="checkbox" id="Sound" name="Sound" />
+                <input
+                  type="checkbox"
+                  id="Sound"
+                  name="Sound"
+                  onChange={(e) => setField("Sound")}
+                />
                 <label htmlFor="Sound">Sound</label>
-                <input type="checkbox" id="Literature" name="Literature" />
+                <input
+                  type="checkbox"
+                  id="Literature"
+                  name="Literature"
+                  onChange={(e) => setField("Literature")}
+                />
                 <label htmlFor="Literature">Literature</label>
-                <input type="checkbox" id="Performance" name="Performance" />
+                <input
+                  type="checkbox"
+                  id="Performance"
+                  name="Performance"
+                  onChange={(e) => setField("Performance")}
+                />
                 <label htmlFor="Performance">Performance</label>
-                <input type="checkbox" id="Dance" name="Dance" />
+                <input
+                  type="checkbox"
+                  id="Dance"
+                  name="Dance"
+                  onChange={(e) => setField("Dance")}
+                />
                 <label htmlFor="Dance">Dance</label>
               </div>
 
               <button type="submit"> Search </button>
             </form>
-          </SearchModal>
-
+          </SearchFilter>
+          {/* 
           <div>
             <div>
               <select className={styles.dropdownBtn} name="dateOrg">
@@ -176,7 +213,15 @@ export default function GridComp({ fellowship }) {
                 <option value="recently-added">Sort by: Recently added</option>
               </select>
             </div>
-          </div>
+          </div> */}
+          <button
+            className={styles.dropdownBtn}
+            onClick={() => setToggleSorted(!toggleSorted)}
+          >
+            {toggleSorted
+              ? "Sort by: Deadline approaching"
+              : " Sort by: Recently added"}
+          </button>
 
           <button
             className={styles.toggleBtn}
@@ -228,9 +273,8 @@ export default function GridComp({ fellowship }) {
               : true;
           })
           .filter((fellowship) => {
-            return checkbox
-              ? fellowship?.fields?.type?.toLowerCase() ===
-                  checkbox.toLowerCase()
+            return type
+              ? fellowship?.fields?.type?.toLowerCase() === type.toLowerCase()
               : true;
           })
           .filter((fellowship) => {
@@ -239,8 +283,29 @@ export default function GridComp({ fellowship }) {
                   eligibility.toLowerCase()
               : true;
           })
+          .filter((fellowship) => {
+            return duration
+              ? fellowship?.fields?.duration?.toLowerCase() ===
+                  duration.toLowerCase()
+              : true;
+          })
+          .filter((fellowship) => {
+            return field
+              ? fellowship?.fields?.field?.toLowerCase() === field.toLowerCase()
+              : true;
+          })
+          // .sort((a, b) => {
+          //       if (toggleSorted === true) {
+          //         return a - b;
+          //       } else {
+          //         // create deadline time
+          //         // sort by deadline time
+          //       }
+          //     });
 
           .map((fellowship) => {
+            const timeStamp = fellowship.sys.createdAt;
+
             const {
               title,
               slug,
@@ -252,10 +317,12 @@ export default function GridComp({ fellowship }) {
               type,
             } = fellowship.fields;
 
-            if (!toggleViewMode === true) {
+            console.log(timeStamp, "togglesorted");
+
+            if (toggleViewMode === false) {
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
-                  <Modal
+                  <GridView
                     title={title}
                     slug={slug}
                     category={category}
@@ -265,49 +332,32 @@ export default function GridComp({ fellowship }) {
                     fellowship={fellowship}
                     location={location}
                     type={type}
+                    timeStamp={timeStamp}
                   />
                 </div>
               );
-            } else if (!toggleViewMode === false) {
+            } else if (toggleViewMode === true) {
+              //list view
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
                   <div>
                     {title}
-                    {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
+
                     <ul>
-                      {/* <li>{slug}</li>
-                          <li>{category}</li>
-                          <li>location</li> */}
+                      <li>{slug}</li>
+                      <li>{category}</li>
+                      <li>location</li>
                       <li>{money}</li>
                     </ul>
                     <p>{paragraph}</p>
+                    <p>{timeStamp}</p>
+
                     <button
                       className="button is-text has-text-weight-bold"
                       onClick={() => setResultPopup(true)}
                     >
                       Read more
                     </button>
-
-                    <ResultModal
-                      fellowship={fellowship}
-                      trigger={resultPopup}
-                      setTrigger={setResultPopup}
-                    >
-                      {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
-                      {/* <h1>{slug}</h1>
-                      <h1>{title}</h1> */}
-                      <p>{category}</p>
-                      <p>{money}</p>
-                      <p>{paragraph}</p>
-                    </ResultModal>
                   </div>
                 </div>
               );

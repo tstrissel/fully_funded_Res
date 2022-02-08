@@ -2,7 +2,7 @@ import ResultModal from "../ResultModal/ResultModal";
 import { useState } from "react";
 import styles from "./gridComp.module.css";
 
-const Modal = ({
+const GridView = ({
   title,
   slug,
   category,
@@ -12,6 +12,7 @@ const Modal = ({
   fellowship,
   location,
   type,
+  
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
@@ -50,10 +51,11 @@ const Modal = ({
           <p>{category}</p>
           <p>{money}</p>
           <p>{paragraph}</p>
+          
         </ResultModal>
       </div>
     </>
   );
 };
 
-export default Modal;
+export default GridView;
