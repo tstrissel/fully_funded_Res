@@ -317,7 +317,7 @@ export default function GridComp({ fellowship }) {
               type,
             } = fellowship.fields;
 
-            console.log(timeStamp, "togglesorted");
+            // console.log(timeStamp, "togglesorted");
 
             if (toggleViewMode === false) {
               return (
