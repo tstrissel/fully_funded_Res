@@ -23,6 +23,8 @@ export default function GridComp({ fellowship }) {
 
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
 
+  console.log(fellowship, "HERE");
+
   const applySearchTerm = () => {
     filteredFellowshipsSet(
       filteredFellowships.filter((val) => {
