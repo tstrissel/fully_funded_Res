@@ -14,11 +14,13 @@ export default function GridComp({ fellowship }) {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
-  const [type, setType] = useState(false);
+  const [type, setType] = useState({});
   const [eligibility, setEligibility] = useState();
   const [duration, setDuration] = useState();
   const [fee, setFee] = useState(false);
-  const [field, setField] = useState();
+  const [field, setField] = useState({});
+
+  console.log(fellowship);
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} event
@@ -62,41 +64,40 @@ export default function GridComp({ fellowship }) {
                 <label htmlFor="location">location:</label>
                 <select
                   className="select"
+                  value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   id="location"
                   name="location"
                 >
-                  <option isdisabled="true">select country</option>
+                  <option value="">Select Country</option>
                   <option value="France">France</option>
                   <option value="Germany">Germany</option>
-
                   <option value="India">India</option>
                   <option value="England">England</option>
                 </select>
               </div>
+
               <div>
-                <h1>type</h1>
-                <input
-                  type="checkbox"
-                  id="production"
-                  name="production"
-                  onChange={(e) => setType("Production")}
-                />
-                <label htmlFor="production">production</label>
-                <input
-                  type="checkbox"
-                  id="Exhibition"
-                  name="Exhibition"
-                  onChange={(e) => setType("Exhibition")}
-                />
-                <label htmlFor="Exhibition">Exhibition</label>
-                <input
-                  type="checkbox"
-                  id="Research"
-                  name="Research"
-                  onChange={(e) => setType("Research")}
-                />
-                <label htmlFor="Research">Research</label>
+                <h1>Type</h1>
+
+                {["Production", "Exhibition", "Research"].map((val, index) => (
+                  <div key={`${val}-${index}`}>
+                    <input
+                      type="checkbox"
+                      id={val}
+                      value={val}
+                      name="type"
+                      checked={type[val]}
+                      onChange={(event) =>
+                        setType((prev) => ({
+                          ...prev,
+                          [val]: event.target.checked,
+                        }))
+                      }
+                    />
+                    <label htmlFor={val}>{val}</label>
+                  </div>
+                ))}
               </div>
 
               <div>
@@ -105,9 +106,10 @@ export default function GridComp({ fellowship }) {
                 <select
                   id="Eligibility"
                   name="Eligibility"
+                  value={eligibility}
                   onChange={(e) => setEligibility(e.target.value)}
                 >
-                  <option isdisabled="true">select criteria</option>
+                  <option value="">select criteria</option>
                   <option value="elig one">elig one</option>
                   <option value="elig two">elig two</option>
                   <option value="elig three">elig three</option>
@@ -134,9 +136,10 @@ export default function GridComp({ fellowship }) {
                 <select
                   id="Duration"
                   name="Duration"
+                  value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 >
-                  <option isdisabled="true">select residency duration</option>
+                  <option value="">select residency duration</option>
                   <option value="duration one">duration one</option>
                   <option value="duration two">duration two</option>
                   <option value="duration three">duration three</option>
@@ -146,58 +149,36 @@ export default function GridComp({ fellowship }) {
 
               <div>
                 <h1>Field</h1>
-                <input
-                  type="checkbox"
-                  id="Visual"
-                  name="Visual"
-                  onChange={(e) => setField("Visual")}
-                />
-                <label htmlFor="Visual">Visual</label>
-                <input
-                  type="checkbox"
-                  id="Multidisciplinary"
-                  name="Multidisciplinary"
-                  onChange={(e) => setField("Multidisciplinary")}
-                />
-                <label htmlFor="Multidisciplinary">Multidisciplinary</label>
-                <input
-                  type="checkbox"
-                  id="Curatorial"
-                  name="Curatorial"
-                  onChange={(e) => setField("Curatorial")}
-                />
-                <label htmlFor="Curatorial">Curatorial</label>
-                <input
-                  type="checkbox"
-                  id="Sound"
-                  name="Sound"
-                  onChange={(e) => setField("Sound")}
-                />
-                <label htmlFor="Sound">Sound</label>
-                <input
-                  type="checkbox"
-                  id="Literature"
-                  name="Literature"
-                  onChange={(e) => setField("Literature")}
-                />
-                <label htmlFor="Literature">Literature</label>
-                <input
-                  type="checkbox"
-                  id="Performance"
-                  name="Performance"
-                  onChange={(e) => setField("Performance")}
-                />
-                <label htmlFor="Performance">Performance</label>
-                <input
-                  type="checkbox"
-                  id="Dance"
-                  name="Dance"
-                  onChange={(e) => setField("Dance")}
-                />
-                <label htmlFor="Dance">Dance</label>
+
+                {[
+                  "Visual",
+                  "Multidisciplinary",
+                  "Curatorial",
+                  "Sound",
+                  "Literature",
+                  "Performance",
+                  "Dance",
+                ].map((val, index) => (
+                  <div key={`${val}-${index}`}>
+                    <input
+                      type="checkbox"
+                      id={val}
+                      value={val}
+                      name="field"
+                      checked={field[val]}
+                      onChange={(event) =>
+                        setField((prev) => ({
+                          ...prev,
+                          [val]: event.target.checked,
+                        }))
+                      }
+                    />
+                    <label htmlFor={val}>{val}</label>
+                  </div>
+                ))}
               </div>
 
-              <button type="submit"> Search </button>
+              <button type="submit">Search</button>
             </form>
           </SearchFilter>
           {/* 
@@ -247,7 +228,7 @@ export default function GridComp({ fellowship }) {
                     className={styles.btnSearchIcon}
                     src={SearchIcon}
                     alt="search"
-                  ></Image>
+                  />
                 </button>
               </div>
             </div>
@@ -273,8 +254,14 @@ export default function GridComp({ fellowship }) {
               : true;
           })
           .filter((fellowship) => {
-            return type
-              ? fellowship?.fields?.type?.toLowerCase() === type.toLowerCase()
+            const arrayOfValidTypes = Object.entries(type)
+              .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
+              .map(([fieldName]) => fieldName.toLowerCase());
+
+            return arrayOfValidTypes.length > 0
+              ? arrayOfValidTypes.includes(
+                  fellowship?.fields?.type?.toLowerCase()
+                )
               : true;
           })
           .filter((fellowship) => {
@@ -290,19 +277,16 @@ export default function GridComp({ fellowship }) {
               : true;
           })
           .filter((fellowship) => {
-            return field
-              ? fellowship?.fields?.field?.toLowerCase() === field.toLowerCase()
+            const arrayOfValidFields = Object.entries(field)
+              .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
+              .map(([fieldName]) => fieldName.toLowerCase());
+
+            return arrayOfValidFields.length > 0
+              ? arrayOfValidFields.includes(
+                  fellowship?.fields?.field?.toLowerCase()
+                )
               : true;
           })
-          // .sort((a, b) => {
-          //       if (toggleSorted === true) {
-          //         return a - b;
-          //       } else {
-          //         // create deadline time
-          //         // sort by deadline time
-          //       }
-          //     });
-
           .map((fellowship) => {
             const timeStamp = fellowship.sys.createdAt;
 
@@ -317,31 +301,11 @@ export default function GridComp({ fellowship }) {
               type,
             } = fellowship.fields;
 
-            // console.log(timeStamp, "togglesorted");
-
-            if (toggleViewMode === false) {
-              return (
-                <div className={styles.cards} key={fellowship.sys.id}>
-                  <GridView
-                    title={title}
-                    slug={slug}
-                    category={category}
-                    money={money}
-                    paragraph={paragraph}
-                    thumbnail={thumbnail}
-                    fellowship={fellowship}
-                    location={location}
-                    type={type}
-                    timeStamp={timeStamp}
-                  />
-                </div>
-              );
-            } else if (toggleViewMode === true) {
-              //list view
+            if (toggleViewMode) {
               return (
                 <div className={styles.cards} key={fellowship.sys.id}>
                   <div>
-                    {title}
+                    <span>{title}</span>
 
                     <ul>
                       <li>{slug}</li>
@@ -362,6 +326,23 @@ export default function GridComp({ fellowship }) {
                 </div>
               );
             }
+
+            return (
+              <div className={styles.cards} key={fellowship.sys.id}>
+                <GridView
+                  title={title}
+                  slug={slug}
+                  category={category}
+                  money={money}
+                  paragraph={paragraph}
+                  thumbnail={thumbnail}
+                  fellowship={fellowship}
+                  location={location}
+                  type={type}
+                  timeStamp={timeStamp}
+                />
+              </div>
+            );
           })}
       </ul>
     </div>
