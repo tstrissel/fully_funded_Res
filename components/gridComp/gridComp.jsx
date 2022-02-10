@@ -19,12 +19,10 @@ export default function GridComp({ fellowship }) {
   const [duration, setDuration] = useState();
   const [fee, setFee] = useState(false);
   const [field, setField] = useState({});
-  const [sortDirection, sortDirectionSet] = useState("ASC");
+  // const [sortDirection, sortDirectionSet] = useState("ASC");
 
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
-
-  console.log(fellowship, "HERE");
-
+  console.log(filteredFellowships, "here");
   const applySearchTerm = () => {
     filteredFellowshipsSet(
       filteredFellowships.filter((val) => {
@@ -82,14 +80,15 @@ export default function GridComp({ fellowship }) {
               )
             : true;
         })
-        .sort((a, b) => {
+        .fields.deadline.sort((a, b) => {
           // Sorting By Deadline
+
           if (sortByDeadline) {
-            return new Date(b.fields.deadline) - new Date(a.fields.deadline);
+            return new Date(a.fields.deadline) - new Date(b.fields.deadline);
           }
 
           // Sorting By Date Added
-          return new Date(b.date) - new Date(a.date);
+          return new Date(a.date) - new Date(b.date);
         })
     );
   };
@@ -279,8 +278,7 @@ export default function GridComp({ fellowship }) {
 
       <ul className={styles.wrapper}>
         {filteredFellowships.map((fellowship) => {
-          const timeStamp = fellowship.sys.createdAt;
-
+          console.log(fellowship.fields.deadline, "fields");
           const {
             title,
             slug,
@@ -290,6 +288,7 @@ export default function GridComp({ fellowship }) {
             thumbnail,
             location,
             type,
+            deadline,
           } = fellowship.fields;
 
           if (toggleViewMode) {
@@ -305,7 +304,7 @@ export default function GridComp({ fellowship }) {
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>
-                  <p>{timeStamp}</p>
+                  <p>{deadline}</p>
 
                   <button
                     className="button is-text has-text-weight-bold"
@@ -330,7 +329,6 @@ export default function GridComp({ fellowship }) {
                 fellowship={fellowship}
                 location={location}
                 type={type}
-                timeStamp={timeStamp}
               />
             </div>
           );

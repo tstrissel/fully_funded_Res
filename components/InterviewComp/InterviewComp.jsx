@@ -3,6 +3,7 @@ import interImage from "../../public/FFR-assets/Buttons/Buttons/read-interview-b
 import Image from "next/image";
 
 export default function interviewComp({ interviews }) {
+  console.log(interviews);
   return (
     <div>
       <h1>Artist Reflections</h1>
