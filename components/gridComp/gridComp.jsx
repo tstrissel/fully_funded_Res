@@ -20,9 +20,8 @@ export default function GridComp({ fellowship }) {
   const [fee, setFee] = useState(false);
   const [field, setField] = useState({});
   // const [sortDirection, sortDirectionSet] = useState("ASC");
-
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
-  console.log(filteredFellowships, "here");
+
   const applySearchTerm = () => {
     filteredFellowshipsSet(
       filteredFellowships.filter((val) => {
@@ -80,11 +79,13 @@ export default function GridComp({ fellowship }) {
               )
             : true;
         })
-        .fields.deadline.sort((a, b) => {
+        .sort((a, b) => {
           // Sorting By Deadline
-
           if (sortByDeadline) {
-            return new Date(a.fields.deadline) - new Date(b.fields.deadline);
+            return (
+              new Date(a.fields.deadline).valueOf() -
+              new Date(b.fields.deadline).valueOf()
+            );
           }
 
           // Sorting By Date Added
@@ -127,6 +128,10 @@ export default function GridComp({ fellowship }) {
                 <option value="Germany">Germany</option>
                 <option value="India">India</option>
                 <option value="England">England</option>
+                <option value="France">Australia</option>
+                <option value="Germany">New Zealand</option>
+                <option value="India">Tonga</option>
+                <option value="England">America</option>
               </select>
             </div>
 
@@ -278,7 +283,7 @@ export default function GridComp({ fellowship }) {
 
       <ul className={styles.wrapper}>
         {filteredFellowships.map((fellowship) => {
-          console.log(fellowship.fields.deadline, "fields");
+          // console.log(fellowship.fields.deadline, "fields");
           const {
             title,
             slug,
