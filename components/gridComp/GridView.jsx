@@ -33,7 +33,7 @@ const GridView = ({
         <ul>
           <li className={styles.fontTitle}>{slug}</li>
           <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Time} alt='arrow' />{category}</li>
-          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Location} alt='loc' />location</li>
+          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Location} alt='loc' />{location}</li>
           <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Money} alt='money' />{money}</li>
           <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Type} alt='type' />{type}</li>
         </ul>
