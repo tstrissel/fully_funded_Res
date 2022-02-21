@@ -4,7 +4,7 @@ import styles from "./gridComp.module.css";
 import Image from "next/image";
 import ArrowRight from "../../public/FFR-assets/Icons/arrow-right.svg"
 
-const Modal = ({
+const GridView = ({
   title,
   slug,
   category,
@@ -14,6 +14,7 @@ const Modal = ({
   fellowship,
   location,
   type,
+  
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
@@ -51,10 +52,11 @@ const Modal = ({
           <p>{category}</p>
           <p>{money}</p>
           <p>{paragraph}</p>
+          
         </ResultModal>
       </div>
     </>
   );
 };
 
-export default Modal;
+export default GridView;

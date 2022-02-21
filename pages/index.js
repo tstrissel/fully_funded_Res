@@ -6,7 +6,7 @@ import Head from "next/head";
 import ResultModal from "../components/ResultModal/ResultModal";
 // import { MyDocument } from "./_document";
 // import SearchBar from "../components/searchBar"
-import styles from './index.module.css'
+import styles from "./index.module.scss";
 
 export const getStaticProps = async (context) => {
   const client = createClient({
@@ -16,23 +16,19 @@ export const getStaticProps = async (context) => {
 
   const res = await client.getEntries({ content_type: "fellowship" });
 
-
   return {
     props: {
       fellowship: res.items,
-    
     },
   };
 };
 
 export default function Index({ fellowship, interviews }) {
-  
- 
   return (
   
     <div className={styles.container}>
       <div>
-        <GridComp fellowship={fellowship} /> 
+        <GridComp fellowship={fellowship} />
       </div>
     </div>
     

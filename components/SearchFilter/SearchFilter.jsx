@@ -1,6 +1,6 @@
-import styles from "./SearchModal.module.css";
+import styles from "./SearchFilter.module.css";
 
-export default function SearchModal(props) {
+export default function SearchFilter(props) {
   return props.trigger ? (
     <div className={styles.popup}>
       <div className={styles.popupinner}>

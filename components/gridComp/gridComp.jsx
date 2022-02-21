@@ -1,41 +1,97 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
-import SearchModal from "../SearchModal/SearchModal";
-import ResultModal from "../ResultModal/ResultModal";
-import { useRouter } from "next/router";
+import SearchFilter from "../SearchFilter/SearchFilter";
+
 import { useState } from "react";
-import Modal from "./Modal";
+import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
 
 export default function GridComp({ fellowship }) {
-  //console.log(fellowship, "HERE");
-
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
+  const [sortByDeadline, setSortByDeadline] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   const [country, setCountry] = useState();
-  const [checkbox, setCheckBox] = useState(false);
+  const [type, setType] = useState({});
   const [eligibility, setEligibility] = useState();
-  //console.log(checkbox, "checkbox");
-  /**
-   * @param {React.FormEvent<HTMLFormElement>} event
-   */
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event);
-    try {
-      /**
-       * Take the form's submit event and grab the target, extend it with the input by the name of the input
-       * @type {HTMLFormElement & { search: HTMLInputElement }}
-       */
-      const target = event.target;
+  const [duration, setDuration] = useState();
+  const [fee, setFee] = useState(false);
+  const [field, setField] = useState({});
+  const [sortDirection, sortDirectionSet] = useState("ASC");
 
-      setSearchTerm(target.search.value);
-    } catch (error) {
-      console.error(error);
-    }
+  const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
+
+  console.log(fellowship, "HERE");
+
+  const applySearchTerm = () => {
+    filteredFellowshipsSet(
+      filteredFellowships.filter((val) => {
+        if (searchTerm === "") {
+          return true;
+        } else {
+          return val.fields.title
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase());
+        }
+      })
+    );
+  };
+
+  const applyFilters = () => {
+    filteredFellowshipsSet(
+      filteredFellowships
+        .filter((fellowship) => {
+          return country
+            ? fellowship?.fields?.location?.toLowerCase() ===
+                country.toLowerCase()
+            : true;
+        })
+        .filter((fellowship) => {
+          const arrayOfValidTypes = Object.entries(type)
+            .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
+            .map(([fieldName]) => fieldName.toLowerCase());
+
+          return arrayOfValidTypes.length > 0
+            ? arrayOfValidTypes.includes(
+                fellowship?.fields?.type?.toLowerCase()
+              )
+            : true;
+        })
+        .filter((fellowship) => {
+          return eligibility
+            ? fellowship?.fields?.eligibility?.toLowerCase() ===
+                eligibility.toLowerCase()
+            : true;
+        })
+        .filter((fellowship) => {
+          return duration
+            ? fellowship?.fields?.duration?.toLowerCase() ===
+                duration.toLowerCase()
+            : true;
+        })
+        .filter((fellowship) => {
+          const arrayOfValidFields = Object.entries(field)
+            .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
+            .map(([fieldName]) => fieldName.toLowerCase());
+
+          return arrayOfValidFields.length > 0
+            ? arrayOfValidFields.includes(
+                fellowship?.fields?.field?.toLowerCase()
+              )
+            : true;
+        })
+        .sort((a, b) => {
+          // Sorting By Deadline
+          if (sortByDeadline) {
+            return new Date(b.fields.deadline) - new Date(a.fields.deadline);
+          }
+
+          // Sorting By Date Added
+          return new Date(b.date) - new Date(a.date);
+        })
+    );
   };
 
   return (
@@ -44,142 +100,150 @@ export default function GridComp({ fellowship }) {
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
           <div>
-            <div className={styles.searchThreeButtons}>
-              <button
-                className={styles.buttonFilters}
-                onClick={() => setButtonPopup(true)}
-              >
-                Filters:
-              </button>
-            </div>
+            <button
+              className={styles.buttonFilters}
+              onClick={() => setButtonPopup(true)}
+            >
+              Filters:
+            </button>
           </div>
 
-            <SearchModal trigger={buttonPopup} setTrigger={setButtonPopup}>
-              <div>
-                <h1 className="label">Filter open calls by</h1>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <h1>location</h1>
-                  <label htmlFor="location">location:</label>
-                  <select
-                    className="select"
-                    onChange={(e) => setCountry(e.target.value)}
-                    id="location"
-                    name="location"
-                  >
-                    <option isdisabled="true">select country</option>
-                    <option value="France">France</option>
-                    <option value="Germany">Germany</option>
-
-                    <option value="India">India</option>
-                    <option value="England">England</option>
-                  </select>
-                </div>
-                <div>
-                  <h1>type</h1>
-                  <input
-                    type="checkbox"
-                    id="production"
-                    name="production"
-                    onChange={(e) => setCheckBox("Production")}
-                  />
-                  <label htmlFor="production">production</label>
-                  <input
-                    type="checkbox"
-                    id="Exhibition"
-                    name="Exhibition"
-                    onChange={(e) => setCheckBox("Exhibition")}
-                  />
-                  <label htmlFor="Exhibition">Exhibition</label>
-                  <input
-                    type="checkbox"
-                    id="Research"
-                    name="Research"
-                    onChange={(e) => setCheckBox("Research")}
-                  />
-                  <label htmlFor="Research">Research</label>
-                </div>
-
-                <div>
-                  <h1>Eligibility</h1>
-                  <label htmlFor="Eligibility">Eligibility:</label>
-                  <select
-                    id="Eligibility"
-                    name="Eligibility"
-                    onChange={(e) => setEligibility(e.target.value)}
-                  >
-                    <option isdisabled="true">select criteria</option>
-                    <option value="elig one">elig one</option>
-                    <option value="elig two">elig two</option>
-                    <option value="elig three">elig three</option>
-                    <option value="elig four">elig four</option>
-                  </select>
-                </div>
-
-                <div>
-                  <h1>Application Fee</h1>
-                  <input
-                    type="checkbox"
-                    id="Without Application Fee"
-                    name="Without Application Fee"
-                  />
-                  <label htmlFor="Without Application Fee">
-                    Without Application Fee
-                  </label>
-                </div>
-
-                <div>
-                  <h1>Duration</h1>
-                  <label htmlFor="Duration">Duration:</label>
-                  <select id="Duration" name="Duration">
-                    <option isdisabled="true">select residency duration</option>
-                    <option value="duration one">duration one</option>
-                    <option value="duration two">duration two</option>
-                    <option value="duration three">duration three</option>
-                    <option value="duration four">duration four</option>
-                  </select>
-                </div>
-
-                <div>
-                  <h1>Field</h1>
-                  <input type="checkbox" id="Visual" name="Visual" />
-                  <label htmlFor="Visual">Visual</label>
-                  <input
-                    type="checkbox"
-                    id="Multidisciplinary"
-                    name="Multidisciplinary"
-                  />
-                  <label htmlFor="Multidisciplinary">Multidisciplinary</label>
-                  <input type="checkbox" id="Curatorial" name="Curatorial" />
-                  <label htmlFor="Curatorial">Curatorial</label>
-                  <input type="checkbox" id="Sound" name="Sound" />
-                  <label htmlFor="Sound">Sound</label>
-                  <input type="checkbox" id="Literature" name="Literature" />
-                  <label htmlFor="Literature">Literature</label>
-                  <input type="checkbox" id="Performance" name="Performance" />
-                  <label htmlFor="Performance">Performance</label>
-                  <input type="checkbox" id="Dance" name="Dance" />
-                  <label htmlFor="Dance">Dance</label>
-                </div>
-
-                <button type="submit"> Search </button>
-              </form>
-            </SearchModal>
-
-          <div className={styles.searchThreeButtons}>
+          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
             <div>
-              <select className={styles.dropdownBtn} name="dateOrg">
-                <label className="label" htmlFor="dateOrg">
-                  sort by:
-                </label>
-                <option value="deadline-approaching">
-                  Sort by: Deadline approaching
-                </option>
-                <option value="recently-added">Sort by: Recently added</option>
+              <h1 className="label">Filter open calls by</h1>
+            </div>
+
+            <div>
+              <h1>location</h1>
+
+              <label htmlFor="location">location:</label>
+              <select
+                className="select"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                id="location"
+                name="location"
+              >
+                <option value="">Select Country</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="India">India</option>
+                <option value="England">England</option>
               </select>
             </div>
-          </div>
+
+            <div>
+              <h1>Type</h1>
+
+              {["Production", "Exhibition", "Research"].map((val, index) => (
+                <div key={`${val}-${index}`}>
+                  <input
+                    type="checkbox"
+                    id={val}
+                    value={val}
+                    name="type"
+                    checked={type[val]}
+                    onChange={(event) =>
+                      setType((prev) => ({
+                        ...prev,
+                        [val]: event.target.checked,
+                      }))
+                    }
+                  />
+                  <label htmlFor={val}>{val}</label>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h1>Eligibility</h1>
+              <label htmlFor="Eligibility">Eligibility:</label>
+              <select
+                id="Eligibility"
+                name="Eligibility"
+                value={eligibility}
+                onChange={(e) => setEligibility(e.target.value)}
+              >
+                <option value="">select criteria</option>
+                <option value="elig one">elig one</option>
+                <option value="elig two">elig two</option>
+                <option value="elig three">elig three</option>
+                <option value="elig four">elig four</option>
+              </select>
+            </div>
+
+            <div>
+              <h1>Application Fee</h1>
+              <input
+                type="checkbox"
+                id="Without Application Fee"
+                name="Without Application Fee"
+                // onChange={(e) => setFee(e.target.value)}
+              />
+              <label htmlFor="Without Application Fee">
+                Without Application Fee
+              </label>
+            </div>
+
+            <div>
+              <h1>Duration</h1>
+              <label htmlFor="Duration">Duration:</label>
+              <select
+                id="Duration"
+                name="Duration"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+              >
+                <option value="">select residency duration</option>
+                <option value="duration one">duration one</option>
+                <option value="duration two">duration two</option>
+                <option value="duration three">duration three</option>
+                <option value="duration four">duration four</option>
+              </select>
+            </div>
+
+            <div>
+              <h1>Field</h1>
+
+              {[
+                "Visual",
+                "Multidisciplinary",
+                "Curatorial",
+                "Sound",
+                "Literature",
+                "Performance",
+                "Dance",
+              ].map((val, index) => (
+                <div key={`${val}-${index}`}>
+                  <input
+                    type="checkbox"
+                    id={val}
+                    value={val}
+                    name="field"
+                    checked={field[val]}
+                    onChange={(event) =>
+                      setField((prev) => ({
+                        ...prev,
+                        [val]: event.target.checked,
+                      }))
+                    }
+                  />
+                  <label htmlFor={val}>{val}</label>
+                </div>
+              ))}
+            </div>
+
+            <button onClick={applyFilters}>Search</button>
+          </SearchFilter>
+
+          <button
+            className={styles.dropdownBtn}
+            onClick={() => setSortByDeadline(!sortByDeadline)}
+          >
+            {sortByDeadline
+              ? "Sort by: Deadline approaching"
+              : "Sort by: Recently added"}
+          </button>
 
           <button
             className={styles.toggleBtn}
@@ -188,134 +252,90 @@ export default function GridComp({ fellowship }) {
             {toggleViewMode ? "view as: Cards" : " view as: List"}
           </button>
         </div>
+
         <div>
-          <form className="is-align-content-end" onSubmit={handleSubmit}>
-            <div className="control is-flex has-addons">
-              <input
-                className={styles.searchBar}
-                type="search"
-                name="search"
-                id="search"
-                role="search"
-                placeholder="Search Opportunities....."
-              />
-              <div>
-                <button className={styles.searchBtn} type="submit">
-                  <Image
-                    className={styles.btnSearchIcon}
-                    src={SearchIcon}
-                    alt="search"
-                  ></Image>
-                </button>
-              </div>
+          <div className="control is-flex has-addons">
+            <input
+              className={styles.searchBar}
+              type="search"
+              name="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              id="search"
+              role="search"
+              placeholder="Search Opportunities....."
+            />
+            <div>
+              <button onClick={applySearchTerm} className={styles.searchBtn}>
+                <Image
+                  className={styles.btnSearchIcon}
+                  src={SearchIcon}
+                  alt="search"
+                />
+              </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
 
       <ul className={styles.wrapper}>
-        {fellowship
-          .filter((val) => {
-            if (searchTerm == "") {
-              return true;
-            } else {
-              return val.fields.title
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase());
-            }
-          })
-          .filter((fellowship) => {
-            return country
-              ? fellowship?.fields?.location?.toLowerCase() ===
-                  country.toLowerCase()
-              : true;
-          })
-          .filter((fellowship) => {
-            return checkbox
-              ? fellowship?.fields?.type?.toLowerCase() ===
-                  checkbox.toLowerCase()
-              : true;
-          })
-          .filter((fellowship) => {
-            return eligibility
-              ? fellowship?.fields?.eligibility?.toLowerCase() ===
-                  eligibility.toLowerCase()
-              : true;
-          })
+        {filteredFellowships.map((fellowship) => {
+          const timeStamp = fellowship.sys.createdAt;
 
-          .map((fellowship) => {
-            const {
-              title,
-              slug,
-              category,
-              money,
-              paragraph,
-              thumbnail,
-              location,
-              type,
-            } = fellowship.fields;
+          const {
+            title,
+            slug,
+            category,
+            money,
+            paragraph,
+            thumbnail,
+            location,
+            type,
+          } = fellowship.fields;
 
-            if (!toggleViewMode === true) {
-              return (
-                <div className={styles.cards} key={fellowship.sys.id}>
-                  <Modal
-                    title={title}
-                    slug={slug}
-                    category={category}
-                    money={money}
-                    paragraph={paragraph}
-                    thumbnail={thumbnail}
-                    fellowship={fellowship}
-                    location={location}
-                    type={type}
-                  />
+          if (toggleViewMode) {
+            return (
+              <div className={styles.cards} key={fellowship.sys.id}>
+                <div>
+                  <span>{title}</span>
+
+                  <ul>
+                    <li>{slug}</li>
+                    <li>{category}</li>
+                    <li>location</li>
+                    <li>{money}</li>
+                  </ul>
+                  <p>{paragraph}</p>
+                  <p>{timeStamp}</p>
+
+                  <button
+                    className="button is-text has-text-weight-bold"
+                    onClick={() => setResultPopup(true)}
+                  >
+                    Read more
+                  </button>
                 </div>
-              );
-            } else if (!toggleViewMode === false) {
-              return (
-                <div className={styles.cards} key={fellowship.sys.id}>
-                  <div>
-                    {title}
-                    {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
-                    <ul>
-                      {/* <li>{slug}</li>
-                          <li>{category}</li>
-                          <li>location</li> */}
-                      <li>{money}</li>
-                    </ul>
-                    <p>{paragraph}</p>
-                    <button
-                      className="button is-text has-text-weight-bold"
-                      onClick={() => setResultPopup(true)}
-                    >
-                      Read more
-                    </button>
+              </div>
+            );
+          }
 
-                    <ResultModal
-                      fellowship={fellowship}
-                      trigger={resultPopup}
-                      setTrigger={setResultPopup}
-                    >
-                      {/* <img
-                          src={thumbnail.fields.file.url}
-                          height="300px"
-                          width="350px"
-                        /> */}
-                      {/* <h1>{slug}</h1>
-                      <h1>{title}</h1> */}
-                      <p>{category}</p>
-                      <p>{money}</p>
-                      <p>{paragraph}</p>
-                    </ResultModal>
-                  </div>
-                </div>
-              );
-            }
-          })}
+          return (
+            <div className={styles.cards} key={fellowship.sys.id}>
+              <GridView
+                title={title}
+                slug={slug}
+                category={category}
+                money={money}
+                paragraph={paragraph}
+                thumbnail={thumbnail}
+                fellowship={fellowship}
+                location={location}
+                type={type}
+                timeStamp={timeStamp}
+              />
+            </div>
+          );
+        })}
       </ul>
     </div>
     </div>
