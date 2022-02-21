@@ -6,6 +6,8 @@
   
   .cards {
     margin-top: 86px;
+    width: 310px;
+    height: auto;
     padding-bottom:10px;
     background: #F6F6F6;
     box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);

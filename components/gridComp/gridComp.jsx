@@ -1,7 +1,6 @@
 import styles from "./gridComp.module.css";
 import Link from "next/link";
 import SearchFilter from "../SearchFilter/SearchFilter";
-
 import { useState } from "react";
 import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
@@ -95,7 +94,6 @@ export default function GridComp({ fellowship }) {
   };
 
   return (
-    <div classNames="columns is-vcentered">
     <div >
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
@@ -232,9 +230,12 @@ export default function GridComp({ fellowship }) {
                 </div>
               ))}
             </div>
+          
 
-            <button onClick={applyFilters}>Search</button>
+              <button onClick={applyFilters}>Search</button>
           </SearchFilter>
+            <div clcassName={styles.searchThreeButtons}>
+            </div>
 
           <button
             className={styles.dropdownBtn}
@@ -300,7 +301,7 @@ export default function GridComp({ fellowship }) {
                   <span>{title}</span>
 
                   <ul>
-                    <li>{slug}</li>
+                    <li><Image /> {slug}</li>
                     <li>{category}</li>
                     <li>location</li>
                     <li>{money}</li>
@@ -337,7 +338,6 @@ export default function GridComp({ fellowship }) {
           );
         })}
       </ul>
-    </div>
     </div>
   );
 }

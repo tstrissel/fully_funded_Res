@@ -20,21 +20,22 @@
 }
 
 .searchMain {
+
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
 }
 
 .searchThreeButtons {
-  display: flex;
+   display: flex;
   justify-content: space-around;
-  margin-right:10px;
-
+  
 }
 
 /* search filter elements section  */
 
 .buttonFilters {
+  margin-right:10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,6 +60,7 @@
 }
 
 .dropdownBtn {
+  margin-right: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -148,6 +150,8 @@
 }
 
 .cards {
+  /* width:310px; */
+  height: auto;
   padding:22px;
   background-color: white;
   background: #F6F6F6;
@@ -184,8 +188,64 @@
 }
 
 .fontLabels {
+  margin-top:0.7em;
+  width: 50%;
+  display:flex;
   font-family: "Frutiger", sans-serif;
   font-size:12px;
   font-weight:400;
+  
+}
+
+.fontLabelIcons {
+  width:20px !important;
+  height:20px !important;
+
+}
+
+.cardButtons {
+  display:flex;
+  justify-content: space-around;
+  padding:10px;
+}
+
+.btnReadMore {
+background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+font-family: "Frutiger", sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+text-decoration-line: underline;
+color: #000000;
+
+
+
+}
+
+.btnVisitWeb {
+  display:flex;
+  align-items: center;
+  /* Visit website */
+  background: none;
+	border: none;
+	cursor: pointer;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 14px;
+  /* Text black */
+  color: #000000;
+
+
+  /* Inside auto layout */
+ 
 }
 

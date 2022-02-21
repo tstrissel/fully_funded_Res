@@ -53,10 +53,11 @@ export default function Footer() {
           Write to us at <br></br>
           fullyfunded.residencies@gmail.com
         </h4>
-        <h6 className="label" >
+        
+        <h6 className={styles.footerApplication} >
           Like what we do? <br></br>
         </h6>
-        <button className="button is-primary is-rounded has-text-black has-text-weight-bold">SUPPORT US</button>
+        <button className={styles.footerAppButton}>SUPPORT US</button>
       </div>
     </div>
   );
