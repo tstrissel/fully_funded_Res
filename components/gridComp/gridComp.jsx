@@ -301,9 +301,9 @@ export default function GridComp({ fellowship }) {
                   <span>{title}</span>
 
                   <ul>
-                    <li><Image /> {slug}</li>
+                    <li>{slug}</li>
                     <li>{category}</li>
-                    <li>location</li>
+                    <li>{location}</li>
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>

@@ -5,28 +5,34 @@ import Insta from "../..//public/Social links/icon_instagram.svg";
 import FaceBook from "../..//public/Social links/icon_facebook.svg";
 import styles from "../navBar/NavBar.module.css";
 import React from "react";
+import RedDot from "../../public/FFR-assets/Navigation/nav_indicator.svg"
 
 const NavLinks = (props) => {
     return ( 
         <div className={styles.navEntries}>
             <Link href="/">
               <a onClick={() => props.isMobile && props.closeMobileMenu()} className={styles.navEntry}>
+              
               OPEN CALLS</a>
             </Link>
             <Link href="/resources">
                 <a onClick={() => props.isMobile && props.closeMobileMenu()} className={styles.navEntry}>
+                
                 RESOURCES</a>
             </Link>
             <Link href="/interviews">
                 <a onClick={() => props.isMobile && props.closeMobileMenu()} className={styles.navEntry}>
+                
                 INTERVIEWS</a>
             </Link>
             <Link href="/about">
                 <a onClick={() => props.isMobile && props.closeMobileMenu()} className={styles.navEntry}>
+                
                 ABOUT</a>
             </Link>
             <Link href="/contact">
                 <a onClick={() => props.isMobile && props.closeMobileMenu()} className={styles.navEntry}>
+                
                 CONTACT</a>
             </Link>
             <div className={styles.socialMedia}>

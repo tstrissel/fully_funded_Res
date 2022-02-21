@@ -16,6 +16,8 @@
 
 }
 .navEntry {
+  display:flex;
+  flex-direction: column-reverse;
   text-decoration: none;
   color: black;
   text-align: center;
@@ -26,6 +28,24 @@
   letter-spacing:0.1em;
   
 }
+
+.redDot {
+  display:hidden;
+}
+
+.navEntry:hover {
+  position: relative;
+}
+
+.navEntry:hover:after {
+  position:absolute;
+  content: url(../../public/FFR-assets/Navigation/nav_indicator.svg);
+  display: block;
+  left: 40%;
+  top: 20px;
+}
+
+
 
 .logo {
   width:180px;
