@@ -32,19 +32,19 @@ export default function Footer() {
       </div>
         <div className={styles.footerEntries}>
           <Link href="/">
-            <a className="footAbout">ABOUT</a>
+            <a className={styles.footerEntry}>ABOUT</a>
           </Link>
           <Link href="/">
-            <a className="footContact">CONTACT</a>
+            <a className={styles.footerEntry}>CONTACT</a>
           </Link>
           <Link href="/">
-            <a className="footOpenCalls">OPEN CALLS</a>
+            <a className={styles.footerEntry}>OPEN CALLS</a>
           </Link>
           <Link href="/">
-            <a className="footResources">RESOURCES</a>
+            <a className={styles.footerEntry}>RESOURCES</a>
           </Link>
           <Link href="/">
-            <a className="footInterviews">INTERVIEWS</a>
+            <a className={styles.footerEntry}>INTERVIEWS</a>
           </Link>
         </div>
       <div className="heroMessage">

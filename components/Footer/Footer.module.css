@@ -71,7 +71,39 @@ text-transform: uppercase;
 
 color: #000000;
 
-
-
-
 }
+
+
+@media (max-width:960px) {
+
+    .footer {
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 66px;
+      margin-top:2em;
+
+    }
+    .logoSocial {
+        display:flex;
+        flex-direction: row-reverse;
+
+    }
+
+    .socials {
+        display:flex;
+        flex-direction: row;
+        margin:10px;
+    }
+    .footerEntries {
+        display:flex;
+        flex-direction: row;
+        margin: 2em;
+    }
+
+    .footerEntry {
+        margin:10px;
+    }
+
+  }
