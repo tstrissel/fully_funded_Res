@@ -101,6 +101,11 @@
   text-align: center;
 }
 
+.searchText {
+  display:inline-flex;
+  
+}
+
 .searchBar {
   display:flex;
   float: left;
@@ -139,12 +144,10 @@
 }
 
 .btnSearchIcon {
-    
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(284deg) brightness(104%) contrast(104%);
 }
 
 .btnFont {
-  
   font-family: "Frutiger", sans-serif;
   font-weight: 700;
 }
@@ -159,6 +162,17 @@
   border-radius: 30px;
 }
 
+.cards  > div p {
+
+font-family: "Frutiger", sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+line-height: 19px;
+margin-top:1em;
+color: #000000;
+
+}
 
 .cardImg {
 
@@ -189,7 +203,7 @@
 
 .fontLabels {
   margin-top:0.7em;
-  width: 50%;
+  width: 60%;
   display:flex;
   font-family: "Frutiger", sans-serif;
   font-size:12px;
@@ -197,9 +211,13 @@
   
 }
 
-.fontLabelIcons {
-  width:20px !important;
-  height:20px !important;
+  .fontLabelIcons {
+   /* icon size won't change */
+  width:20px;
+  height:20px;
+  object-fit: cover;
+  background-color: red;
+  margin-left:10px;
 
 }
 
@@ -249,3 +267,47 @@ color: #000000;
  
 }
 
+
+@media (max-width:1200px){
+
+  .wrapper{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  margin:0 auto;
+  gap:10px;
+  
+  }
+  }
+
+@media (max-width:768px) {
+  .wrapper{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    margin:0 auto;
+    gap:10px;
+    
+    }
+  
+  .searchOpt {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .searchMain {
+    display:flex;
+    justify-content: center;
+    
+  }
+
+  .searchText {
+    width:100%;
+    margin-top:2em;
+  }
+
+  .searchBar {
+    width:100%;
+  }
+
+
+}

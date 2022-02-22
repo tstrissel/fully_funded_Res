@@ -255,7 +255,7 @@ export default function GridComp({ fellowship }) {
         </div>
 
         <div>
-          <div className="control is-flex has-addons">
+          <div className={styles.searchText}>
             <input
               className={styles.searchBar}
               type="search"

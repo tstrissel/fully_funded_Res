@@ -19,12 +19,12 @@ export default function Footer() {
             height="120.82"
           />
           <Link href="/">
-            <a className="navInsta">
+            <a className={styles.socials}>
               <Image src={Insta} alt="IG"></Image>
             </a>
           </Link>
           <Link href="/">
-            <a className="navFacebook">
+            <a className={styles.socials}>
               <Image src={FaceBook} alt="FB"></Image>
             </a>
           </Link>
