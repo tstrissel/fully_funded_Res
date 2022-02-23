@@ -32,6 +32,82 @@
   
 }
 
+/* Search Filter Pop-up section */
+
+.searchFilter {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.searchFilterTitle {
+/* Filter open calls by */
+font-family: "Frutiger", sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 23px;
+color: #000000;
+margin-bottom:1.5em;
+
+}
+
+.searchFilterSub {
+display:inline;
+font-family: "Frutiger", sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 21px;
+line-height: 20px;
+color: #000000;
+border-bottom: 4px solid #F58AE3;
+margin-bottom:1.5em;
+
+
+}
+
+.selectBox {
+  display:block;
+  margin-top:1em;
+  padding:5px 0;
+  border:none;
+  color:#575757;
+  border-bottom:2.4px solid #000000;
+  margin-bottom:1.5em;
+
+}
+
+
+.checkBox:before {
+  margin-top: 10px;
+  width: 24.94px;
+  height: 24.94px;
+  border: 2.375px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5.9375px;
+  
+}
+
+
+.checkBox:checked {
+  background-color: #F58AE3;
+  border: 2px solid #F58AE3;
+}
+
+.checkbox label {
+  display: inline;
+
+font-family: "Frutiger";
+font-style: normal;
+font-weight: normal;
+font-size: 17.8125px;
+line-height: 17px;
+color: #000000;
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 0px 13.0625px;
+       
+}
+
 /* search filter elements section  */
 
 .buttonFilters {
@@ -281,10 +357,13 @@ color: #000000;
   }
 
 @media (max-width:768px) {
+  .page-content {
+    margin:0 30px;
+  }
   .wrapper{
     display: grid;
     grid-template-columns: repeat(1,1fr);
-    margin:0 auto;
+    margin:0 0;
     gap:10px;
     
     }
@@ -319,3 +398,4 @@ color: #000000;
     flex: column;
   }
 }
+
