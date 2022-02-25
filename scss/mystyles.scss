@@ -30,21 +30,23 @@ $twitter-invert: findColorInvert($twitter);
 $github: #333;
 $github-invert: findColorInvert($github);
 
-// 5. Set up box shadow 
-$large-shadow: 0 10px 20px rgba(#000, 0.05);
-$box-padding:2rem;
-$box-shadow: $large-shadow;
-$card-shadow: $large-shadow;
+// // 5. Set up box shadow 
+// // $large-shadow: 0 10px 20px rgba(#000, 0.05);
+// $box-padding:2rem;
+// $box-shadow: $large-shadow;
+// $card-shadow: $large-shadow;
 
-//margin
-$spacing-shortcuts: ("margin": "mg");
-$spacing-horizontal: "h";
-$spacing-vertical: null;
-$spacing-values: ("small": 22px, "medium": 30px, "large": 60px);
+// //margin
+// $spacing-shortcuts: ("margin": "mg");
+// $spacing-horizontal: "h";
+// $spacing-vertical: null;
+// $spacing-values: ("small": 22px, "medium": 30px, "large": 60px);
 
 //link
 $linkcolor: black;
 $link: $linkcolor;
+
+
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
@@ -58,3 +60,4 @@ $link: $linkcolor;
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 @import "bulma/bulma";
+

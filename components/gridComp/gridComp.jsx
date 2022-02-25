@@ -1,7 +1,7 @@
 import styles from "./gridComp.module.css";
+import stylesFilter from "../SearchFilter/SearchFilter.module.css"
 import Link from "next/link";
 import SearchFilter from "../SearchFilter/SearchFilter";
-
 import { useState } from "react";
 import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
@@ -95,7 +95,7 @@ export default function GridComp({ fellowship }) {
   };
 
   return (
-    <div>
+    <div >
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
           <div>
@@ -107,17 +107,18 @@ export default function GridComp({ fellowship }) {
             </button>
           </div>
 
-          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <div>
-              <h1 className="label">Filter open calls by</h1>
+          <div className={styles.searchFilter}>
+          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup} className={styles.searchFilter}>
+            <div >
+              <h1 className={styles.searchFilterTitle}>Filter open calls by</h1>
             </div>
 
             <div>
-              <h1>location</h1>
+              <h1 className={styles.searchFilterSub}>Location</h1>
 
-              <label htmlFor="location">location:</label>
+              {/* <label htmlFor="location" >location:</label> */}
               <select
-                className="select"
+                className={styles.selectBox}
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 id="location"
@@ -132,12 +133,15 @@ export default function GridComp({ fellowship }) {
             </div>
 
             <div>
-              <h1>Type</h1>
+              <h1 className={styles.searchFilterSub}>Type</h1>
 
               {["Production", "Exhibition", "Research"].map((val, index) => (
-                <div key={`${val}-${index}`}>
+                <div 
+                  
+                  key={`${val}-${index}`}>
                   <input
                     type="checkbox"
+                    className={styles.checkBox}
                     id={val}
                     value={val}
                     name="type"
@@ -155,9 +159,10 @@ export default function GridComp({ fellowship }) {
             </div>
 
             <div>
-              <h1>Eligibility</h1>
-              <label htmlFor="Eligibility">Eligibility:</label>
+              <h1 className={styles.searchFilterSub}>Eligibility</h1>
+              {/* <label htmlFor="Eligibility">Eligibility:</label> */}
               <select
+                className={styles.selectBox}
                 id="Eligibility"
                 name="Eligibility"
                 value={eligibility}
@@ -172,7 +177,7 @@ export default function GridComp({ fellowship }) {
             </div>
 
             <div>
-              <h1>Application Fee</h1>
+              <h1 className={styles.searchFilterSub}>Application Fee</h1>
               <input
                 type="checkbox"
                 id="Without Application Fee"
@@ -185,9 +190,10 @@ export default function GridComp({ fellowship }) {
             </div>
 
             <div>
-              <h1>Duration</h1>
-              <label htmlFor="Duration">Duration:</label>
+              <h1 className={styles.searchFilterSub}>Duration</h1>
+              {/* <label htmlFor="Duration">Duration:</label> */}
               <select
+                className={styles.selectBox}
                 id="Duration"
                 name="Duration"
                 value={duration}
@@ -202,7 +208,7 @@ export default function GridComp({ fellowship }) {
             </div>
 
             <div>
-              <h1>Field</h1>
+              <h1 className={styles.searchFilterSub}>Field</h1>
 
               {[
                 "Visual",
@@ -231,9 +237,14 @@ export default function GridComp({ fellowship }) {
                 </div>
               ))}
             </div>
+          
 
-            <button onClick={applyFilters}>Search</button>
+              <button onClick={applyFilters}>Search</button>
+
           </SearchFilter>
+          </div>
+            <div clcassName={styles.searchThreeButtons}>
+            </div>
 
           <button
             className={styles.dropdownBtn}
@@ -253,7 +264,7 @@ export default function GridComp({ fellowship }) {
         </div>
 
         <div>
-          <div className="control is-flex has-addons">
+          <div className={styles.searchText}>
             <input
               className={styles.searchBar}
               type="search"
@@ -301,7 +312,7 @@ export default function GridComp({ fellowship }) {
                   <ul>
                     <li>{slug}</li>
                     <li>{category}</li>
-                    <li>location</li>
+                    <li>{location}</li>
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>

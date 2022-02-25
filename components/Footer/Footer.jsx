@@ -19,12 +19,12 @@ export default function Footer() {
             height="120.82"
           />
           <Link href="/">
-            <a className="navInsta">
+            <a className={styles.socials}>
               <Image src={Insta} alt="IG"></Image>
             </a>
           </Link>
           <Link href="/">
-            <a className="navFacebook">
+            <a className={styles.socials}>
               <Image src={FaceBook} alt="FB"></Image>
             </a>
           </Link>
@@ -32,19 +32,19 @@ export default function Footer() {
       </div>
         <div className={styles.footerEntries}>
           <Link href="/">
-            <a className="footAbout">ABOUT</a>
+            <a className={styles.footerEntry}>ABOUT</a>
           </Link>
           <Link href="/">
-            <a className="footContact">CONTACT</a>
+            <a className={styles.footerEntry}>CONTACT</a>
           </Link>
           <Link href="/">
-            <a className="footOpenCalls">OPEN CALLS</a>
+            <a className={styles.footerEntry}>OPEN CALLS</a>
           </Link>
           <Link href="/">
-            <a className="footResources">RESOURCES</a>
+            <a className={styles.footerEntry}>RESOURCES</a>
           </Link>
           <Link href="/">
-            <a className="footInterviews">INTERVIEWS</a>
+            <a className={styles.footerEntry}>INTERVIEWS</a>
           </Link>
         </div>
       <div className="heroMessage">
@@ -53,10 +53,11 @@ export default function Footer() {
           Write to us at <br></br>
           fullyfunded.residencies@gmail.com
         </h4>
-        <h6 className="label" >
+        
+        <h6 className={styles.footerApplication} >
           Like what we do? <br></br>
         </h6>
-        <button className="button is-primary is-rounded has-text-black has-text-weight-bold">SUPPORT US</button>
+        <button className={styles.footerAppButton}>SUPPORT US</button>
       </div>
     </div>
   );
