@@ -22,6 +22,9 @@ export default function GridComp({ fellowship }) {
   // const [sortDirection, sortDirectionSet] = useState("ASC");
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
 
+  console.log(filteredFellowships[0].fields.deadline.valueOf(), "FELLOW");
+  console.log(sortByDeadline, "deadline")
+
   const applySearchTerm = () => {
     filteredFellowshipsSet(
       filteredFellowships.filter((val) => {
@@ -80,6 +83,7 @@ export default function GridComp({ fellowship }) {
             : true;
         })
         .sort((a, b) => {
+          console.log(a,b, "HERERERERE")
           // Sorting By Deadline
           if (sortByDeadline) {
             return (
