@@ -1,8 +1,8 @@
 import styles from "./gridComp.module.css";
-import stylesFilter from "../SearchFilter/SearchFilter.module.css"
+import stylesFilter from "../SearchFilter/SearchFilter.module.css";
 import Link from "next/link";
 import SearchFilter from "../SearchFilter/SearchFilter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
 import Image from "next/image";
@@ -22,13 +22,10 @@ export default function GridComp({ fellowship }) {
   // const [sortDirection, sortDirectionSet] = useState("ASC");
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
 
-  console.log(filteredFellowships[0].fields.deadline.valueOf(), "FELLOW");
-  console.log(sortByDeadline, "deadline")
-
   const applySearchTerm = () => {
     filteredFellowshipsSet(
-      filteredFellowships.filter((val) => {
-        if (searchTerm === "") {
+      fellowship.filter((val) => {
+        if (searchTerm.trim() === "") {
           return true;
         } else {
           return val.fields.title
@@ -41,7 +38,7 @@ export default function GridComp({ fellowship }) {
 
   const applyFilters = () => {
     filteredFellowshipsSet(
-      filteredFellowships
+      fellowship
         .filter((fellowship) => {
           return country
             ? fellowship?.fields?.location?.toLowerCase() ===
@@ -83,23 +80,23 @@ export default function GridComp({ fellowship }) {
             : true;
         })
         .sort((a, b) => {
-          console.log(a,b, "HERERERERE")
           // Sorting By Deadline
           if (sortByDeadline) {
-            return (
-              new Date(a.fields.deadline).valueOf() -
-              new Date(b.fields.deadline).valueOf()
-            );
+            return new Date(a.fields.deadline) - new Date(b.fields.deadline);
           }
 
           // Sorting By Date Added
-          return new Date(a.date) - new Date(b.date);
+          return new Date(a.sys.createdAt) - new Date(b.sys.createdAt);
         })
     );
   };
 
+  useEffect(() => {
+    applyFilters();
+  }, [sortByDeadline]);
+
   return (
-    <div >
+    <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
           <div>
@@ -112,147 +109,154 @@ export default function GridComp({ fellowship }) {
           </div>
 
           <div className={styles.searchFilter}>
-          <SearchFilter trigger={buttonPopup} setTrigger={setButtonPopup} className={styles.searchFilter}>
-            <div >
-              <h1 className={styles.searchFilterTitle}>Filter open calls by</h1>
-            </div>
+            <SearchFilter
+              trigger={buttonPopup}
+              setTrigger={setButtonPopup}
+              className={styles.searchFilter}
+            >
+              <div>
+                <h1 className={styles.searchFilterTitle}>
+                  Filter open calls by
+                </h1>
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Location</h1>
+              <div>
+                <h1 className={styles.searchFilterSub}>Location</h1>
 
-              {/* <label htmlFor="location" >location:</label> */}
-              <select
-                className={styles.selectBox}
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                id="location"
-                name="location"
-              >
-                <option value="">Select Country</option>
-                <option value="France">France</option>
-                <option value="Germany">Germany</option>
-                <option value="India">India</option>
-                <option value="England">England</option>
-                <option value="France">Australia</option>
-                <option value="Germany">New Zealand</option>
-                <option value="India">Tonga</option>
-                <option value="England">America</option>
-              </select>
-            </div>
+                {/* <label htmlFor="location" >location:</label> */}
+                <select
+                  className={styles.selectBox}
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  id="location"
+                  name="location"
+                >
+                  <option value="">Select Country</option>
+                  {[
+                    "France",
+                    "Germany",
+                    "India",
+                    "England",
+                    "Australia",
+                    "New Zealand",
+                    "Tonga",
+                    "America",
+                  ].map((datum) => (
+                    <option key={datum} value={datum}>
+                      {datum}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Type</h1>
+              <div>
+                <h1 className={styles.searchFilterSub}>Type</h1>
 
-              {["Production", "Exhibition", "Research"].map((val, index) => (
-                <div 
-                  
-                  key={`${val}-${index}`}>
-                  <input
-                    type="checkbox"
-                    className={styles.checkBox}
-                    id={val}
-                    value={val}
-                    name="type"
-                    checked={type[val]}
-                    onChange={(event) =>
-                      setType((prev) => ({
-                        ...prev,
-                        [val]: event.target.checked,
-                      }))
-                    }
-                  />
-                  <label htmlFor={val}>{val}</label>
-                </div>
-              ))}
-            </div>
+                {["Production", "Exhibition", "Research"].map((val, index) => (
+                  <div key={`${val}-${index}`}>
+                    <input
+                      type="checkbox"
+                      className={styles.checkBox}
+                      id={val}
+                      value={val}
+                      name="type"
+                      checked={type[val]}
+                      onChange={(event) =>
+                        setType((prev) => ({
+                          ...prev,
+                          [val]: event.target.checked,
+                        }))
+                      }
+                    />
+                    <label htmlFor={val}>{val}</label>
+                  </div>
+                ))}
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Eligibility</h1>
-              {/* <label htmlFor="Eligibility">Eligibility:</label> */}
-              <select
-                className={styles.selectBox}
-                id="Eligibility"
-                name="Eligibility"
-                value={eligibility}
-                onChange={(e) => setEligibility(e.target.value)}
-              >
-                <option value="">select criteria</option>
-                <option value="elig one">elig one</option>
-                <option value="elig two">elig two</option>
-                <option value="elig three">elig three</option>
-                <option value="elig four">elig four</option>
-              </select>
-            </div>
+              <div>
+                <h1 className={styles.searchFilterSub}>Eligibility</h1>
+                {/* <label htmlFor="Eligibility">Eligibility:</label> */}
+                <select
+                  className={styles.selectBox}
+                  id="Eligibility"
+                  name="Eligibility"
+                  value={eligibility}
+                  onChange={(e) => setEligibility(e.target.value)}
+                >
+                  <option value="">select criteria</option>
+                  <option value="elig one">elig one</option>
+                  <option value="elig two">elig two</option>
+                  <option value="elig three">elig three</option>
+                  <option value="elig four">elig four</option>
+                </select>
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Application Fee</h1>
-              <input
-                type="checkbox"
-                id="Without Application Fee"
-                name="Without Application Fee"
-                // onChange={(e) => setFee(e.target.value)}
-              />
-              <label htmlFor="Without Application Fee">
-                Without Application Fee
-              </label>
-            </div>
+              <div>
+                <h1 className={styles.searchFilterSub}>Application Fee</h1>
+                <input
+                  type="checkbox"
+                  id="Without Application Fee"
+                  name="Without Application Fee"
+                  // onChange={(e) => setFee(e.target.value)}
+                />
+                <label htmlFor="Without Application Fee">
+                  Without Application Fee
+                </label>
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Duration</h1>
-              {/* <label htmlFor="Duration">Duration:</label> */}
-              <select
-                className={styles.selectBox}
-                id="Duration"
-                name="Duration"
-                value={duration}
-                onChange={(e) => setDuration(e.target.value)}
-              >
-                <option value="">select residency duration</option>
-                <option value="duration one">duration one</option>
-                <option value="duration two">duration two</option>
-                <option value="duration three">duration three</option>
-                <option value="duration four">duration four</option>
-              </select>
-            </div>
+              <div>
+                <h1 className={styles.searchFilterSub}>Duration</h1>
+                {/* <label htmlFor="Duration">Duration:</label> */}
+                <select
+                  className={styles.selectBox}
+                  id="Duration"
+                  name="Duration"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                >
+                  <option value="">select residency duration</option>
+                  <option value="duration one">duration one</option>
+                  <option value="duration two">duration two</option>
+                  <option value="duration three">duration three</option>
+                  <option value="duration four">duration four</option>
+                </select>
+              </div>
 
-            <div>
-              <h1 className={styles.searchFilterSub}>Field</h1>
+              <div>
+                <h1 className={styles.searchFilterSub}>Field</h1>
 
-              {[
-                "Visual",
-                "Multidisciplinary",
-                "Curatorial",
-                "Sound",
-                "Literature",
-                "Performance",
-                "Dance",
-              ].map((val, index) => (
-                <div key={`${val}-${index}`}>
-                  <input
-                    type="checkbox"
-                    id={val}
-                    value={val}
-                    name="field"
-                    checked={field[val]}
-                    onChange={(event) =>
-                      setField((prev) => ({
-                        ...prev,
-                        [val]: event.target.checked,
-                      }))
-                    }
-                  />
-                  <label htmlFor={val}>{val}</label>
-                </div>
-              ))}
-            </div>
-          
+                {[
+                  "Visual",
+                  "Multidisciplinary",
+                  "Curatorial",
+                  "Sound",
+                  "Literature",
+                  "Performance",
+                  "Dance",
+                ].map((val, index) => (
+                  <div key={`${val}-${index}`}>
+                    <input
+                      type="checkbox"
+                      id={val}
+                      value={val}
+                      name="field"
+                      checked={field[val]}
+                      onChange={(event) =>
+                        setField((prev) => ({
+                          ...prev,
+                          [val]: event.target.checked,
+                        }))
+                      }
+                    />
+                    <label htmlFor={val}>{val}</label>
+                  </div>
+                ))}
+              </div>
 
               <button onClick={applyFilters}>Search</button>
-
-          </SearchFilter>
+            </SearchFilter>
           </div>
-            <div clcassName={styles.searchThreeButtons}>
-            </div>
+          <div className={styles.searchThreeButtons}></div>
 
           <button
             className={styles.dropdownBtn}
@@ -275,7 +279,7 @@ export default function GridComp({ fellowship }) {
           <div className={styles.searchText}>
             <input
               className={styles.searchBar}
-              type="search"
+              type="text"
               name="search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
