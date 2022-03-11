@@ -1,6 +1,6 @@
 import { createClient } from "contentful";
 import GridComp from "../components/gridComp/gridComp";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import Head from "next/head";
 import ResultModal from "../components/ResultModal/ResultModal";

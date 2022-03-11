@@ -1,7 +1,7 @@
 import  Navlinks from "./NavLinks"
 import styles from "../navBar/NavBar.module.css";
-import {ImMenu} from 'react-icons/Im'
-import {FaWindowClose} from 'react-icons/Fa'
+import {ImMenu} from 'react-icons/im'
+import {FaWindowClose} from 'react-icons/fa'
 import {useState} from 'react'
 
 const MobileNavigation = () => {
