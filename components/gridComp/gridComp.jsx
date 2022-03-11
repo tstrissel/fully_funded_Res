@@ -19,11 +19,11 @@ export default function GridComp({ fellowship }) {
   const [duration, setDuration] = useState();
   const [fee, setFee] = useState(false);
   const [field, setField] = useState({});
-  const [sortDirection, sortDirectionSet] = useState("ASC");
-
+  // const [sortDirection, sortDirectionSet] = useState("ASC");
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
 
-  console.log(fellowship, "HERE");
+  console.log(filteredFellowships[0].fields.deadline.valueOf(), "FELLOW");
+  console.log(sortByDeadline, "deadline")
 
   const applySearchTerm = () => {
     filteredFellowshipsSet(
@@ -83,13 +83,17 @@ export default function GridComp({ fellowship }) {
             : true;
         })
         .sort((a, b) => {
+          console.log(a,b, "HERERERERE")
           // Sorting By Deadline
           if (sortByDeadline) {
-            return new Date(b.fields.deadline) - new Date(a.fields.deadline);
+            return (
+              new Date(a.fields.deadline).valueOf() -
+              new Date(b.fields.deadline).valueOf()
+            );
           }
 
           // Sorting By Date Added
-          return new Date(b.date) - new Date(a.date);
+          return new Date(a.date) - new Date(b.date);
         })
     );
   };
@@ -129,6 +133,10 @@ export default function GridComp({ fellowship }) {
                 <option value="Germany">Germany</option>
                 <option value="India">India</option>
                 <option value="England">England</option>
+                <option value="France">Australia</option>
+                <option value="Germany">New Zealand</option>
+                <option value="India">Tonga</option>
+                <option value="England">America</option>
               </select>
             </div>
 
@@ -290,8 +298,7 @@ export default function GridComp({ fellowship }) {
 
       <ul className={styles.wrapper}>
         {filteredFellowships.map((fellowship) => {
-          const timeStamp = fellowship.sys.createdAt;
-
+          // console.log(fellowship.fields.deadline, "fields");
           const {
             title,
             slug,
@@ -301,6 +308,7 @@ export default function GridComp({ fellowship }) {
             thumbnail,
             location,
             type,
+            deadline,
           } = fellowship.fields;
 
           if (toggleViewMode) {
@@ -316,7 +324,7 @@ export default function GridComp({ fellowship }) {
                     <li>{money}</li>
                   </ul>
                   <p>{paragraph}</p>
-                  <p>{timeStamp}</p>
+                  <p>{deadline}</p>
 
                   <button
                     className="button is-text has-text-weight-bold"
@@ -341,7 +349,6 @@ export default function GridComp({ fellowship }) {
                 fellowship={fellowship}
                 location={location}
                 type={type}
-                timeStamp={timeStamp}
               />
             </div>
           );
