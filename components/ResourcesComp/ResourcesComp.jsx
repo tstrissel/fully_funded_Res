@@ -7,12 +7,6 @@ export default function resourcesComp({
   practicalAdviceAndOpportunities,
   databaseOpp,
 }) {
-  //   console.log(
-  //     grantAndFunds,
-  //       practicalAdviceAndOpportunities,
-  //       databaseOpp,
-  //     "BHLSHJD"
-  //   );
   return (
     <div>
       <h1>Resources</h1>
@@ -98,7 +92,6 @@ export default function resourcesComp({
                 width="350px"
               />
               <p>{databaseOppText}</p>
-              {/* <p>{dataBaseOppWebsite}</p> */}
             </div>
           );
         })}
