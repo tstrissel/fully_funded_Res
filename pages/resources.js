@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { createClient } from "contentful";
-import ResourcesComp from "../components/resourcesComp/resourcesComp";
+import ResourcesComp from "../components/ResourcesComp/ResourcesComp";
 
 export const getStaticProps = async (context) => {
   const client = createClient({
