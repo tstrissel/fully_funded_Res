@@ -85,6 +85,7 @@ export default function resourcesComp({
 
           return (
             <div className={styles.cards} key={DO.sys.id}>
+              <h1></h1>
               <h1>{databaseOppTitle}</h1>
               <img
                 src={databaseOppImage.fields.file.url}
