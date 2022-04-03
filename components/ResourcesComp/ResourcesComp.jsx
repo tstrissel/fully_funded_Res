@@ -2,7 +2,7 @@ import { getMiddlewareManifest } from "next/dist/client/route-loader";
 import Image from "next/image";
 import styles from "./ResourcesComp.module.css";
 
-export default function resourcesComp({
+export default function ResourcesComp({
   grantAndFunds,
   practicalAdviceAndOpportunities,
   databaseOpp,
