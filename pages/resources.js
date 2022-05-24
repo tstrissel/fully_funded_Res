@@ -1,13 +1,8 @@
 import Image from "next/image";
-import { createClient } from "contentful";
+import { client } from "../lib/contentful.js";
 import ResourcesComp from "../components/ResourcesComp/ResourcesComp";
 
 export const getStaticProps = async (context) => {
-  const client = createClient({
-    space: process.env.SPACE_ID,
-    accessToken: process.env.ACCESS_TOKEN,
-  });
-
   const res = await client.getEntries({ content_type: "grantAndFunds" });
   const res2 = await client.getEntries({
     content_type: "databaseOpp",
