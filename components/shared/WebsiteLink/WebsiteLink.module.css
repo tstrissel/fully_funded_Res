@@ -1,0 +1,12 @@
+.link {
+  padding: 16px;
+  margin: -16px;
+
+  font-weight: 700;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

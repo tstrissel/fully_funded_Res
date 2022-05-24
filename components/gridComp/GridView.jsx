@@ -1,12 +1,10 @@
 import ResultModal from "../ResultModal/ResultModal";
 import { useState } from "react";
-import styles from "./gridComp.module.css";
 import Image from "next/image";
-import ArrowRight from "../../public/FFR-assets/Icons/arrow-right.svg"
-import Time from "../../public/FFR-assets/Icons/clock_icon.svg"
-import Location from "../../public/FFR-assets/Icons/location_icon.svg"
-import Money from "../../public/FFR-assets/Icons/money_icon.svg"
-import Type from "../../public/FFR-assets/Icons/profile_icon.svg"
+import WebsiteLink from "../shared/WebsiteLink/WebsiteLink";
+import InfoLabel from "../shared/InfoLabel/InfoLabel";
+
+import styles from "./GridView.module.css";
 
 const GridView = ({
   title,
@@ -19,7 +17,8 @@ const GridView = ({
   location,
   type,
   deadline,
-  
+  field,
+  status,
 }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const closeCard = () => {
@@ -27,46 +26,54 @@ const GridView = ({
   };
 
   return (
-    <>
-      {""}
-      <div >
-        <img src={thumbnail.fields.file.url} className={styles.card} />
-        <ul>
-          <li className={styles.fontTitle}>{slug}</li>
-          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Time} alt='time' />{category}</li>
-          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Money} alt='money' />{money}</li>
-          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Location} alt='loc' />{location}</li>
-          <li className={styles.fontLabels}><Image className={styles.fontLabelIcons} src={Type} alt='type' />{type}</li>
-        </ul>
-        <p>{paragraph}</p>
-        <div className={styles.cardButtons}>
-          <button
-            className={styles.btnReadMore}
-            onClick={() => setIsCardOpen(true)}
-          >
-            Read more
-          </button>
-          <button className={styles.btnVisitWeb}>Visit Website
-            <Image src={ArrowRight} alt='arrow' />
-          </button>
-        </div>
+    <div>
+      <img src={thumbnail.fields.file.url} className={styles.card} />
+      <h3 className="fontTitle">{title}</h3>
+      <ul>
+        <li>
+          <InfoLabel type="status">{status}</InfoLabel>
+        </li>
+        <li>
+          <InfoLabel type="money">{money}</InfoLabel>
+        </li>
+        <li>
+          <InfoLabel type="location">{location}</InfoLabel>
+        </li>
+        <li>
+          <InfoLabel type="type">{type}</InfoLabel>
+        </li>
+      </ul>
 
-        <ResultModal
-          fellowship={fellowship}
-          trigger={isCardOpen}
-          setTrigger={closeCard}
+      <p className={styles.clippedParagraph}>{paragraph}</p>
+      <div className={styles.cardButtons}>
+        <button
+          className={styles.btnReadMore}
+          onClick={() => setIsCardOpen(true)}
         >
-          <img src={thumbnail.fields.file.url} height="300px" width="350px" />
-          <h1>{slug}</h1>
-          <h1>{title}</h1>
-          <p>{category}</p>
-          <p>{money}</p>
-          <p>{paragraph}</p>
-          <p>{deadline}</p>
-          
-        </ResultModal>
+          Read more
+        </button>
+        <WebsiteLink
+
+        // todo: set the url here
+        />
       </div>
-    </>
+
+      <ResultModal
+        fellowship={fellowship}
+        trigger={isCardOpen}
+        setTrigger={closeCard}
+        title={title}
+        category={category}
+        paragraph={paragraph}
+        deadline={deadline}
+        money={money}
+        thumbnail={thumbnail.fields.file.url}
+        featuredImage={fellowship.fields.featuredImage?.fields.file.url}
+        location={location}
+        field={field}
+        type={type}
+      />
+    </div>
   );
 };
 

@@ -2,7 +2,6 @@ import GridComp from "../components/gridComp/gridComp";
 import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import Head from "next/head";
-import ResultModal from "../components/ResultModal/ResultModal";
 // import { MyDocument } from "./_document";
 // import SearchBar from "../components/searchBar"
 import styles from "../public/index.module.css";

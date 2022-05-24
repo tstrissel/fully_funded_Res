@@ -304,6 +304,7 @@ export default function GridComp({ fellowship }) {
         {filteredFellowships.map((fellowship) => {
           // console.log(fellowship.fields.deadline, "fields");
           const {
+            status,
             title,
             slug,
             category,
@@ -344,6 +345,7 @@ export default function GridComp({ fellowship }) {
           return (
             <div className={styles.cards} key={fellowship.sys.id}>
               <GridView
+                status={status}
                 title={title}
                 slug={slug}
                 category={category}
@@ -353,6 +355,7 @@ export default function GridComp({ fellowship }) {
                 fellowship={fellowship}
                 location={location}
                 type={type}
+                deadline={deadline}
               />
             </div>
           );
