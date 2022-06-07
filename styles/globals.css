@@ -2,6 +2,7 @@
   background-image: url("../public/FFR-assets/Backgrounds/BACKROUND.png");
 } */
 @import "./tokens.css";
+@import "./fonts.css";
 
 html,
 body {
@@ -18,25 +19,6 @@ body {
   font-family: "Frutiger", sans-serif;
   color: black;
 }
-
-/* @font-face {
-  font-family: "Istok";
-  src: url("/fonts/Istok/istok/Istok-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  format: true;
-}
-
-@font-face {
-  font-family: "Istok";
-  src: url("/fonts/Istok/istok/Istok-Bold.ttf") format("truetype");
-  font-style: bold;
-  font-weight: 600;
-  font-display: swap;
-}
-
- */
 
 .titleContent {
   font-family: "Montserrat", sans-serif;

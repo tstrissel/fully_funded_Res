@@ -7,16 +7,11 @@ export default function ResultModal(props) {
   return (
     <Modal
       isOpen={props.trigger}
-      closeTimeoutMS={200}
-      className={styles.modal}
-      overlayClassName={styles.overlay}
-      onRequestClose={() => props.setTrigger(false)}
+      onClose={() => props.setTrigger(false)}
+      variant="primary"
+      header={<h3 className="fontTitle">{props.title}</h3>}
     >
       <article class={styles.inner}>
-        <div className={styles.header}>
-          <h3 className="fontTitle">{props.title}</h3>
-        </div>
-
         <section className={styles.topSection}>
           <img
             className={styles.image}

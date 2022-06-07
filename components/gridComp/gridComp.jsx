@@ -1,7 +1,6 @@
 import styles from "./gridComp.module.css";
-import stylesFilter from "../SearchFilter/SearchFilter.module.css";
 import Link from "next/link";
-import SearchFilter from "../SearchFilter/SearchFilter";
+import FellowshipFilters from "../FellowshipFilters/FellowshipFilters";
 import { useState, useEffect } from "react";
 import GridView from "./GridView";
 import SearchIcon from "../..//public/FFR-assets/Icons/search_icon.svg";
@@ -11,16 +10,12 @@ export default function GridComp({ fellowship }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleViewMode, setToggleViewMode] = useState(false);
   const [sortByDeadline, setSortByDeadline] = useState(false);
-  const [buttonPopup, setButtonPopup] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
-  const [country, setCountry] = useState();
-  const [type, setType] = useState({});
-  const [eligibility, setEligibility] = useState();
-  const [duration, setDuration] = useState();
-  const [fee, setFee] = useState(false);
-  const [field, setField] = useState({});
   // const [sortDirection, sortDirectionSet] = useState("ASC");
   const [filteredFellowships, filteredFellowshipsSet] = useState(fellowship);
+
+  const closeFilters = () => setIsFiltersOpen(false);
 
   const applySearchTerm = () => {
     filteredFellowshipsSet(
@@ -36,7 +31,7 @@ export default function GridComp({ fellowship }) {
     );
   };
 
-  const applyFilters = () => {
+  const onApplyFilters = ({ country, type, eligibility, duration, field }) => {
     filteredFellowshipsSet(
       fellowship
         .filter((fellowship) => {
@@ -89,11 +84,13 @@ export default function GridComp({ fellowship }) {
           return new Date(a.sys.createdAt) - new Date(b.sys.createdAt);
         })
     );
+
+    closeFilters();
   };
 
-  useEffect(() => {
-    applyFilters();
-  }, [sortByDeadline]);
+  // useEffect(() => {
+  //   applyFilters();
+  // }, [sortByDeadline]);
 
   return (
     <div>
@@ -102,160 +99,18 @@ export default function GridComp({ fellowship }) {
           <div>
             <button
               className={styles.buttonFilters}
-              onClick={() => setButtonPopup(true)}
+              onClick={() => setIsFiltersOpen(true)}
             >
               Filters:
             </button>
           </div>
 
-          <div className={styles.searchFilter}>
-            <SearchFilter
-              trigger={buttonPopup}
-              setTrigger={setButtonPopup}
-              className={styles.searchFilter}
-            >
-              <div>
-                <h1 className={styles.searchFilterTitle}>
-                  Filter open calls by
-                </h1>
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Location</h1>
-
-                {/* <label htmlFor="location" >location:</label> */}
-                <select
-                  className={styles.selectBox}
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  id="location"
-                  name="location"
-                >
-                  <option value="">Select Country</option>
-                  {[
-                    "France",
-                    "Germany",
-                    "India",
-                    "England",
-                    "Australia",
-                    "New Zealand",
-                    "Tonga",
-                    "America",
-                  ].map((datum) => (
-                    <option key={datum} value={datum}>
-                      {datum}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Type</h1>
-
-                {["Production", "Exhibition", "Research"].map((val, index) => (
-                  <div key={`${val}-${index}`}>
-                    <input
-                      type="checkbox"
-                      className={styles.checkBox}
-                      id={val}
-                      value={val}
-                      name="type"
-                      checked={type[val]}
-                      onChange={(event) =>
-                        setType((prev) => ({
-                          ...prev,
-                          [val]: event.target.checked,
-                        }))
-                      }
-                    />
-                    <label htmlFor={val}>{val}</label>
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Eligibility</h1>
-                {/* <label htmlFor="Eligibility">Eligibility:</label> */}
-                <select
-                  className={styles.selectBox}
-                  id="Eligibility"
-                  name="Eligibility"
-                  value={eligibility}
-                  onChange={(e) => setEligibility(e.target.value)}
-                >
-                  <option value="">select criteria</option>
-                  <option value="elig one">elig one</option>
-                  <option value="elig two">elig two</option>
-                  <option value="elig three">elig three</option>
-                  <option value="elig four">elig four</option>
-                </select>
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Application Fee</h1>
-                <input
-                  type="checkbox"
-                  id="Without Application Fee"
-                  name="Without Application Fee"
-                  // onChange={(e) => setFee(e.target.value)}
-                />
-                <label htmlFor="Without Application Fee">
-                  Without Application Fee
-                </label>
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Duration</h1>
-                {/* <label htmlFor="Duration">Duration:</label> */}
-                <select
-                  className={styles.selectBox}
-                  id="Duration"
-                  name="Duration"
-                  value={duration}
-                  onChange={(e) => setDuration(e.target.value)}
-                >
-                  <option value="">select residency duration</option>
-                  <option value="duration one">duration one</option>
-                  <option value="duration two">duration two</option>
-                  <option value="duration three">duration three</option>
-                  <option value="duration four">duration four</option>
-                </select>
-              </div>
-
-              <div>
-                <h1 className={styles.searchFilterSub}>Field</h1>
-
-                {[
-                  "Visual",
-                  "Multidisciplinary",
-                  "Curatorial",
-                  "Sound",
-                  "Literature",
-                  "Performance",
-                  "Dance",
-                ].map((val, index) => (
-                  <div key={`${val}-${index}`}>
-                    <input
-                      type="checkbox"
-                      id={val}
-                      value={val}
-                      name="field"
-                      checked={field[val]}
-                      onChange={(event) =>
-                        setField((prev) => ({
-                          ...prev,
-                          [val]: event.target.checked,
-                        }))
-                      }
-                    />
-                    <label htmlFor={val}>{val}</label>
-                  </div>
-                ))}
-              </div>
-
-              <button onClick={applyFilters}>Search</button>
-            </SearchFilter>
-          </div>
+          <FellowshipFilters
+            isOpen={isFiltersOpen}
+            onClose={closeFilters}
+            className={styles.searchFilter}
+            onApplyFilters={onApplyFilters}
+          />
           <div className={styles.searchThreeButtons}></div>
 
           <button
@@ -285,7 +140,7 @@ export default function GridComp({ fellowship }) {
               onChange={(event) => setSearchTerm(event.target.value)}
               id="search"
               role="search"
-              placeholder="Search Opportunities....."
+              placeholder="Search opportunities..."
             />
             <div>
               <button onClick={applySearchTerm} className={styles.searchBtn}>

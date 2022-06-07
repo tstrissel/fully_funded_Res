@@ -27,74 +27,6 @@
   justify-content: space-around;
 }
 
-/* Search Filter Pop-up section */
-
-.searchFilter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.searchFilterTitle {
-  /* Filter open calls by */
-  font-family: "Frutiger", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 23px;
-  color: #000000;
-  margin-bottom: 1.5em;
-}
-
-.searchFilterSub {
-  display: inline;
-  font-family: "Frutiger", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 21px;
-  line-height: 20px;
-  color: #000000;
-  border-bottom: 4px solid #f58ae3;
-  margin-bottom: 1.5em;
-}
-
-.selectBox {
-  display: block;
-  margin-top: 1em;
-  padding: 5px 0;
-  border: none;
-  color: #575757;
-  border-bottom: 2.4px solid #000000;
-  margin-bottom: 1.5em;
-}
-
-.checkBox:before {
-  margin-top: 10px;
-  width: 24.94px;
-  height: 24.94px;
-  border: 2.375px solid #000000;
-  box-sizing: border-box;
-  border-radius: 5.9375px;
-}
-
-.checkBox:checked {
-  background-color: #f58ae3;
-  border: 2px solid #f58ae3;
-}
-
-.checkbox label {
-  display: inline;
-
-  font-family: "Frutiger";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 17.8125px;
-  line-height: 17px;
-  color: #000000;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  margin: 0px 13.0625px;
-}
-
 /* search filter elements section  */
 
 .buttonFilters {
@@ -115,7 +47,7 @@
   font-family: "Frutiger" sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 14px;
   text-align: center;
   padding: 15.5px;
@@ -131,7 +63,7 @@
   /* background-image: url("/public/FFR-assets/Buttons/Filters/Filters.svg"); */
   border: none;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   border-radius: 8.71px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -157,7 +89,7 @@
   border-radius: 8.71px;
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 14px;
   text-align: center;
 }
@@ -177,7 +109,7 @@
   border-bottom-left-radius: 8.71px;
   border: none;
   font-style: normal;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 14px;
   padding-left: 10px;
   text-align: left;
@@ -226,7 +158,7 @@
   font-family: "Frutiger", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 19px;
   margin-top: 1em;
   color: #000000;
@@ -282,7 +214,7 @@
   font-family: "Frutiger", sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 14px;
   /* Text black */
   color: #000000;

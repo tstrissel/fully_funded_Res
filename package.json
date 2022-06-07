@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bulma": "^0.9.3",
+    "clsx": "^1.1.1",
     "contentful": "^9.1.12",
     "icons": "^1.0.0",
     "next": "^12.1.0",
