@@ -1,3 +1,34 @@
+export {
+  Clock,
+  Search,
+  Profile,
+  ArtField,
+  Checkmark,
+  ArrowRight,
+  DollarSign,
+  LocationPin,
+  ChevronDown,
+};
+
+// Paste here and add to export above
+
+function ChevronDown() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="8"
+      fill="none"
+      viewBox="0 0 14 8"
+    >
+      <path
+        fill="#000"
+        d="M.785.59a.89.89 0 011.26 0l4.714 4.713L11.473.59a.89.89 0 111.26 1.26L7.387 7.192a.89.89 0 01-1.259 0L.785 1.85a.89.89 0 010-1.26z"
+      ></path>
+    </svg>
+  );
+}
+
 function ArrowRight(props) {
   return (
     <svg
@@ -110,4 +141,28 @@ function ArtField(props) {
   );
 }
 
-export { ArrowRight, Clock, DollarSign, LocationPin, Profile, ArtField };
+function Checkmark() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="13"
+      height="10"
+      fill="#000"
+      viewBox="0 0 13 10"
+    >
+      <path d="M4.625 9.762L.744 5.882l1.769-1.77 2.112 2.12L10.8.05l1.769 1.769-7.944 7.943z"></path>
+    </svg>
+  );
+}
+
+const Search = (props) => (
+  <svg
+    width={33}
+    height={33}
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#000"
+    {...props}
+  >
+    <path d="M14.247 5.377a8.016 8.016 0 1 0 0 16.033 8.016 8.016 0 0 0 0-16.033ZM3.56 13.394a10.69 10.69 0 1 1 19.132 6.555l7.198 7.197a1.336 1.336 0 0 1-1.89 1.89l-7.197-7.198A10.689 10.689 0 0 1 3.56 13.394Z" />
+  </svg>
+);

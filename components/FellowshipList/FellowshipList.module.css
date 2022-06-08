@@ -1,0 +1,166 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.2em;
+}
+
+.searchOpt {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 88px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.searchMain {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* search filter elements section  */
+
+.filterBtn {
+  position: static;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  gap: 1ch;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 8.71px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  font-size: 15px;
+  text-align: center;
+}
+
+.filterBtn:hover {
+  background: var(--color-primary-2);
+}
+
+.filterBtnValue {
+  font-weight: 700;
+}
+
+.filterBtnIcon {
+}
+
+.cards {
+  /* width:310px; */
+  height: auto;
+  padding: 22px;
+  background-color: white;
+  background: #f6f6f6;
+  box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+  border-radius: 30px;
+}
+
+.cards > div p {
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 19px;
+  margin-top: 1em;
+  color: #000000;
+}
+
+.cardImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8.93817px;
+}
+
+.iconArrow {
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  border-radius: 55px;
+}
+
+.fontTitle {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.fontLabels {
+  margin-top: 0.7em;
+  width: 60%;
+  display: flex;
+  font-family: "Frutiger", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.fontLabelIcons {
+  /* icon size won't change */
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.btnVisitWeb {
+  display: flex;
+  align-items: center;
+  /* Visit website */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 14px;
+  /* Text black */
+  color: #000000;
+
+  /* Inside auto layout */
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    gap: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+  }
+
+  .searchOpt {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .searchMain {
+    justify-content: flex-start;
+  }
+
+  .searchInput {
+    width: 100%;
+    margin-top: 2em;
+  }
+}
+
+@media (max-width: 960px) {
+  .footer {
+    display: flex;
+    flex: column;
+  }
+}

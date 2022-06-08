@@ -74,31 +74,11 @@ ul li {
   margin-bottom: 45px;
 }
 
-/* Standard checkbox visibility */
-/* input[type=checkbox] {
-  visibility: hidden;
-} */
-
-input[type="checkbox"]:before {
-  /* Rectangle 18 */
-  position: static;
-  width: 24.94px;
-  height: 24.94px;
-  left: 0px;
-  top: 0px;
-  outline: 2.375px solid #000000;
-  box-sizing: border-box;
-  border-radius: 5.9375px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 13.0625px;
-}
-
-input[type="checkbox"]:checked {
-  background-color: #f58ae3;
-  outline: 2px solid #f58ae3;
-  border: #f58ae3;
+@media (max-width: 768px) {
+  .page {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
 .ReactModal__Overlay {

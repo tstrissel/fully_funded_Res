@@ -1,11 +1,12 @@
 :root {
-    --color-primary-1: #24C7D2;
-    --color-primary-2: #F58AE3;
-    --color-secondary: #9985FF;
-    --color-link: #145053;
-    --color-text: #000000;
-    --color-title: #424141:
+  --color-primary-1: #24c7d2;
+  --color-primary-2: #f58ae3;
+  --color-secondary: #9985ff;
+  --color-link: #145053;
+  --color-text: #000000;
+  --color-title: #424141;
+  --color-faded: #575757;
 
-    --shadow-button: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    --shadow-card: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
-  }
+  --shadow-button: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-card: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+}

@@ -1,4 +1,4 @@
-import GridComp from "../components/gridComp/gridComp";
+import FellowshipList from "../components/FellowshipList";
 import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import Head from "next/head";
@@ -12,17 +12,15 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      fellowship: res.items,
+      fellowships: res.items,
     },
   };
 };
 
-export default function Index({ fellowship, interviews }) {
+export default function Index({ fellowships, interviews }) {
   return (
     <div className={styles.container}>
-      <div>
-        <GridComp fellowship={fellowship} />
-      </div>
+      <FellowshipList fellowships={fellowships} />
     </div>
   );
 }
