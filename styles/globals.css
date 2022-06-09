@@ -1,125 +1,94 @@
 /* * {
   background-image: url("../public/FFR-assets/Backgrounds/BACKROUND.png");
 } */
+@import "./tokens.css";
+@import "./fonts.css";
 
-html,body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;    
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+
+  font-size: 15px;
 }
 
 body {
   font-family: "Frutiger", sans-serif;
-  color:black;
+  color: black;
 }
 
-
-/* @font-face {
-  font-family: "Istok";
-  src: url("/fonts/Istok/istok/Istok-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  format: true;
-}
-
-@font-face {
-  font-family: "Istok";
-  src: url("/fonts/Istok/istok/Istok-Bold.ttf") format("truetype");
-  font-style: bold;
-  font-weight: 600;
-  font-display: swap;
-}
-
- */
-
- .titleContent {
+.titleContent {
   font-family: "Montserrat", sans-serif;
+}
 
+.fontTitle {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.219;
 }
 
 .openCalls {
-  padding:150px 0px 21px;
+  padding: 150px 0px 21px;
   font-size: 54px;
   line-height: 78px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: bold;
-  color:#424141;
-  margin:15px 0px;
+  color: #424141;
+  margin: 15px 0px;
 }
-
 
 .subtitleOpenCalls {
-  color:#424141;
+  color: #424141;
   line-height: 133.9%;
-  margin-bottom:110px;
+  margin-bottom: 110px;
   font-size: 20px;
   font-family: "Frutiger", sans-serif;
-  margin:15px 0px;
-  font-weight:bold;
-
+  margin: 15px 0px;
+  font-weight: bold;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   font-family: "Montserrat", sans-serif;
-  
-}
-.fontTitle {
-  font-family: "Montserrat", 700;
-  font-size: 24px;
 }
 
- h2, h3, h4, h6, p {
-     font-family: "Frutiger" ,sans-serif;
- }
+h4,
+h6,
+p {
+  font-family: "Frutiger", sans-serif;
+}
 
- ul li {
-     font-family: "Frutiger" ,sans-serif;
-     font-weight: 700;
- }
-
+ul li {
+  font-family: "Frutiger", sans-serif;
+}
 
 .page {
-  
   margin-left: 62px;
   margin-right: 62px;
   margin-bottom: 45px;
 }
 
-
-.fontTitle {
-  font-family: "Montserrat", 700;
-  font-size: 24px;
+@media (max-width: 768px) {
+  .page {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
-/* Standard checkbox visibility */
-/* input[type=checkbox] {
-  visibility: hidden;
-} */
-
-input[type="checkbox"]:before{
-  /* Rectangle 18 */
-position: static;
-width: 24.94px;
-height: 24.94px;
-left: 0px;
-top: 0px;
-outline: 2.375px solid #000000;
-box-sizing: border-box;
-border-radius: 5.9375px;
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px 13.0625px;
-
+.ReactModal__Overlay {
+  opacity: 0;
 }
 
-input[type="checkbox"]:checked {
-  background-color: #F58AE3;
-  outline: 2px solid #F58AE3;
-  border:#F58AE3;
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
 }

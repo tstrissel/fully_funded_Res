@@ -1,0 +1,17 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+.icon {
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon svg {
+  height: 1.5em;
+}

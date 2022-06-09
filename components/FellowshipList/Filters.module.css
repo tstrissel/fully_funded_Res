@@ -1,0 +1,126 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.filtersHeader {
+  font-family: "Frutiger", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 1.5em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.filterLabel {
+  display: inline;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.8rem;
+  border-bottom: 4px solid var(--color-primary-2);
+}
+
+.selectInput {
+  font-size: 18px;
+  display: block;
+  padding: 5px 0;
+  border: none;
+  color: var(--color-text);
+  border-bottom: 2.4px solid var(--color-text);
+}
+
+.selectInput.unselected {
+  color: var(--color-faded);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  cursor: inherit;
+  width: 1.4em;
+  height: 1.4em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.35em;
+
+  display: grid;
+  place-content: center;
+}
+
+.checkbox:hover input[type="checkbox"],
+.checkbox:focus input[type="checkbox"] {
+  border-color: var(--color-primary-2);
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: var(--color-primary-2);
+  border-color: var(--color-primary-2);
+  outline: none;
+}
+
+/* checkmark */
+.checkbox input[type="checkbox"]::before {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  transform: scale(0);
+  transition: 0.1s ease-in-out;
+  background: var(--color-text);
+
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+/* checkmark when checked  */
+.checkbox input[type="checkbox"]:checked::before {
+  transform: scale(1) rotate(10deg);
+}
+
+.footer {
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmBtn {
+  padding: 16px 64px;
+  min-width: 320px;
+  background: white;
+  border: 2px solid var(--color-primary-2);
+  border-radius: 10px;
+
+  font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
+
+  cursor: pointer;
+  transition: background-color 0.1s ease-out;
+}
+
+.confirmBtn:hover,
+.confirmBtn:focus {
+  background-color: var(--color-primary-2);
+}
