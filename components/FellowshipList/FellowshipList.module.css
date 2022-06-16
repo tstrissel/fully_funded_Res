@@ -158,6 +158,12 @@
   }
 }
 
+@media (max-width: 540px) {
+  .searchMain {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 960px) {
   .footer {
     display: flex;
