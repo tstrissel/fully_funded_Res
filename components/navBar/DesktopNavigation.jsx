@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import Insta from "../..//public/Social links/icon_instagram.svg";
-import FaceBook from "../..//public/Social links/icon_facebook.svg";
 
 import styles from "./DesktopNavigation.module.css";
+import { Facebook, Instagram } from "../shared/Socials/Socials";
 
 const DesktopNavigation = ({ routes, activePath }) => {
   const navElement = React.useRef();
@@ -50,18 +47,10 @@ const DesktopNavigation = ({ routes, activePath }) => {
       <span className={styles.navIndicator} ref={indicatorElement} />
 
       <li>
-        <Link href="https://www.instagram.com/fullyfundedresidencies/">
-          <a className={styles.social} target="_blank">
-            <Image src={Insta} alt="IG"></Image>
-          </a>
-        </Link>
+        <Instagram />
       </li>
       <li>
-        <Link href="https://www.facebook.com/fullyfundedresidenices/">
-          <a className={styles.social} target="_blank">
-            <Image src={FaceBook} alt="FB"></Image>
-          </a>
-        </Link>
+        <Facebook />
       </li>
     </ul>
   );

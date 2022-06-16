@@ -15,8 +15,8 @@ export default function Layout({ children }) {
       <div className={styles.pageContainer}>
         <NavBar />
         <main>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import styles from "./FellowshipList.module.css";
 import Link from "next/link";
 import { isEmpty } from "lodash";
 import Filters from "./Filters";
-import GridView from "./GridView";
+import FellowshipItem from "./FellowshipItem";
 import Image from "next/image";
 import Search from "./Search";
 import { sortFellowships, filterFellowships } from "./listUtils";
@@ -85,9 +85,8 @@ export default function GridComp({ fellowships = [] }) {
           >
             {"View as:"}
             <span className={styles.filterBtnValue}>
-              {toggleViewMode ? "Cards" : " List"}
+              {!toggleViewMode ? "Cards" : " List"}
             </span>
-            <ChevronDown className={styles.filterBtnIcon} />
           </button>
 
           <button className={styles.filterBtn} onClick={handleToggleSort}>
@@ -97,7 +96,6 @@ export default function GridComp({ fellowships = [] }) {
                 ? "Deadline approaching"
                 : "Recently added"}
             </span>
-            <ChevronDown className={styles.filterBtnIcon} />
           </button>
 
           <button
@@ -126,7 +124,7 @@ export default function GridComp({ fellowships = [] }) {
       </div>
 
       <ul className={styles.wrapper}>
-        {filteredFellowships.map((fellowship) => {
+        {filteredFellowships.map((fellowship, index) => {
           // console.log(fellowship.fields.deadline, "fields");
           const {
             status,
@@ -168,8 +166,12 @@ export default function GridComp({ fellowships = [] }) {
           }
 
           return (
-            <div className={styles.cards} key={fellowship.sys.id}>
-              <GridView
+            <div
+              className={styles.cards}
+              key={fellowship.sys.id}
+              style={{ animationDelay: `${index * 40}ms` }}
+            >
+              <FellowshipItem
                 status={status}
                 title={title}
                 slug={slug}

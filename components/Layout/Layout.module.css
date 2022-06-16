@@ -1,5 +1,8 @@
 .background {
   background-image: url("../../public/FFR-assets//Backgrounds//BACKROUND.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .pageContainer {

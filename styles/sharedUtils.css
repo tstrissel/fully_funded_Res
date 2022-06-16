@@ -27,3 +27,33 @@
 
   max-width: 50ch;
 }
+
+.cta {
+  all: unset;
+
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 6px 10px;
+  margin: -6px -10px;
+
+  font-weight: 700;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+}
+
+.cta:hover,
+.cta:focus {
+  border-color: var(--color-primary-2);
+}
+
+.underlined {
+  text-decoration: underline;
+}

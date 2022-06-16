@@ -1,11 +1,8 @@
-import Navlinks from "./NavLinks";
 import styles from "./MobileNavigation.module.css";
 import { useState } from "react";
-import Insta from "../..//public/Social links/icon_instagram.svg";
-import FaceBook from "../..//public/Social links/icon_facebook.svg";
 import cx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
+import { Facebook, Instagram } from "../shared/Socials/Socials";
 
 const ToggleMenuButton = ({ isOpen, onClick }) => {
   return (
@@ -43,18 +40,10 @@ const MobileNavigation = ({ routes, activePath }) => {
         ))}
 
         <li>
-          <Link href="https://www.instagram.com/fullyfundedresidencies/">
-            <a className={styles.social} target="_blank">
-              <Image src={Insta} alt="IG"></Image>
-            </a>
-          </Link>
+          <Instagram />
         </li>
         <li>
-          <Link href="https://www.facebook.com/fullyfundedresidenices/">
-            <a className={styles.social} target="_blank">
-              <Image src={FaceBook} alt="FB"></Image>
-            </a>
-          </Link>
+          <Facebook />
         </li>
       </ul>
     </div>

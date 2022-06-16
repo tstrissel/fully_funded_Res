@@ -58,6 +58,21 @@
   background: #f6f6f6;
   box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
   border-radius: 30px;
+
+  animation: slideIn 0.2s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cards > div p {

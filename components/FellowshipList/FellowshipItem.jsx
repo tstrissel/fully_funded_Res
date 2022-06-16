@@ -4,9 +4,10 @@ import Image from "next/image";
 import WebsiteLink from "../shared/WebsiteLink/WebsiteLink";
 import InfoLabel from "../shared/InfoLabel/InfoLabel";
 
-import styles from "./GridView.module.css";
+import styles from "./FellowshipItem.module.css";
+import cx from "clsx";
 
-const GridView = ({
+const FellowshipItem = ({
   title,
   slug,
   category,
@@ -46,10 +47,7 @@ const GridView = ({
 
       <p className={styles.clippedParagraph}>{paragraph}</p>
       <div className={styles.cardButtons}>
-        <button
-          className={styles.btnReadMore}
-          onClick={() => setIsCardOpen(true)}
-        >
+        <button className="cta underlined" onClick={() => setIsCardOpen(true)}>
           Read more
         </button>
         <WebsiteLink
@@ -77,4 +75,4 @@ const GridView = ({
   );
 };
 
-export default GridView;
+export default FellowshipItem;
