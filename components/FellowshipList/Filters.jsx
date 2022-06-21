@@ -3,7 +3,7 @@ import Modal from "../Modal/Modal";
 import { useEffect, useState } from "react";
 import cx from "clsx";
 
-export default function Filters({ onApplyFilters, isOpen, onClose }) {
+export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
   const [country, setCountry] = useState();
   const [type, setType] = useState({});
   const [eligibility, setEligibility] = useState();
@@ -186,9 +186,12 @@ export default function Filters({ onApplyFilters, isOpen, onClose }) {
         </div>
       </div>
       <div className={styles.footer}>
-        <button className={styles.confirmBtn} onClick={handleApplyFilters}>
-          Search
+        <button className={styles.cancelBtn} onClick={onClear}>
+          Reset
         </button>
+        {/* <button className={styles.confirmBtn} onClick={handleApplyFilters}>
+          Search
+        </button> */}
       </div>
     </Modal>
   );
