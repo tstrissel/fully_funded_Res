@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.openCalls {
+  margin-top: 100px;
+  font-size: 54px;
+  line-height: 78px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  color: #424141;
+}
+
+.subtitleOpenCalls {
+  color: #424141;
+  line-height: 32.14px;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #424141;
+  margin-top: 15px;
+}

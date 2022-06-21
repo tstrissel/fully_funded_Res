@@ -3,15 +3,16 @@ import styles from "./FellowshipList.module.css";
 import Link from "next/link";
 import { isEmpty } from "lodash";
 import Filters from "./Filters";
-import GridView from "./GridView";
+import FellowshipItem from "./FellowshipItem";
 import Image from "next/image";
 import Search from "./Search";
 import { sortFellowships, filterFellowships } from "./listUtils";
 import { ChevronDown } from "../icons";
+import cx from "clsx";
 
 export default function GridComp({ fellowships = [] }) {
   const [sortBy, setSortBy] = useState("createdAt");
-  const [toggleViewMode, setToggleViewMode] = useState(false);
+  const [viewMode, setViewMode] = useState("cards");
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [resultPopup, setResultPopup] = useState(false);
   // const [sortDirection, sortDirectionSet] = useState("ASC");
@@ -21,6 +22,9 @@ export default function GridComp({ fellowships = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [appliedFilters, setAppliedFilters] = useState(0);
+
+  const handleToggleViewMode = () =>
+    setViewMode(viewMode === "cards" ? "list" : "cards");
 
   const applySearchTerm = (newSearchTerm = "") => {
     setSearchTerm(newSearchTerm);
@@ -79,15 +83,9 @@ export default function GridComp({ fellowships = [] }) {
     <div>
       <div className={styles.searchOpt}>
         <div className={styles.searchMain}>
-          <button
-            className={styles.filterBtn}
-            onClick={() => setToggleViewMode(!toggleViewMode)}
-          >
+          <button className={styles.filterBtn} onClick={handleToggleViewMode}>
             {"View as:"}
-            <span className={styles.filterBtnValue}>
-              {toggleViewMode ? "Cards" : " List"}
-            </span>
-            <ChevronDown className={styles.filterBtnIcon} />
+            <span className={styles.filterBtnValue}>{viewMode}</span>
           </button>
 
           <button className={styles.filterBtn} onClick={handleToggleSort}>
@@ -97,7 +95,6 @@ export default function GridComp({ fellowships = [] }) {
                 ? "Deadline approaching"
                 : "Recently added"}
             </span>
-            <ChevronDown className={styles.filterBtnIcon} />
           </button>
 
           <button
@@ -115,6 +112,7 @@ export default function GridComp({ fellowships = [] }) {
             onClose={() => setIsFiltersOpen(false)}
             className={styles.searchFilter}
             onApplyFilters={handleApplyFilters}
+            onClear={clearFilters}
           />
         </div>
 
@@ -125,62 +123,19 @@ export default function GridComp({ fellowships = [] }) {
         />
       </div>
 
-      <ul className={styles.wrapper}>
-        {filteredFellowships.map((fellowship) => {
+      <ul className={cx(styles.wrapper, viewMode === "list" && styles.list)}>
+        {filteredFellowships.map((fellowship, index) => {
           // console.log(fellowship.fields.deadline, "fields");
-          const {
-            status,
-            title,
-            slug,
-            category,
-            money,
-            paragraph,
-            thumbnail,
-            location,
-            type,
-            deadline,
-          } = fellowship.fields;
-
-          if (toggleViewMode) {
-            return (
-              <div className={styles.cards} key={fellowship.sys.id}>
-                <div>
-                  <span>{title}</span>
-
-                  <ul>
-                    <li>{slug}</li>
-                    <li>{category}</li>
-                    <li>{location}</li>
-                    <li>{money}</li>
-                  </ul>
-                  <p>{paragraph}</p>
-                  <p>{deadline}</p>
-
-                  <button
-                    className="button is-text has-text-weight-bold"
-                    onClick={() => setResultPopup(true)}
-                  >
-                    Read more
-                  </button>
-                </div>
-              </div>
-            );
-          }
 
           return (
-            <div className={styles.cards} key={fellowship.sys.id}>
-              <GridView
-                status={status}
-                title={title}
-                slug={slug}
-                category={category}
-                money={money}
-                paragraph={paragraph}
-                thumbnail={thumbnail}
-                fellowship={fellowship}
-                location={location}
-                type={type}
-                deadline={deadline}
+            <div
+              className={styles.item}
+              key={fellowship.sys.id}
+              style={{ animationDelay: `${index * 40}ms` }}
+            >
+              <FellowshipItem
+                viewMode={viewMode}
+                fellowship={fellowship.fields}
               />
             </div>
           );

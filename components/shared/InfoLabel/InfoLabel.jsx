@@ -3,13 +3,13 @@ import { Clock, DollarSign, LocationPin, Profile, ArtField } from "../../icons";
 
 const getIconForLabel = (label) => {
   switch (label) {
-    case "status":
+    case "deadline":
       return Clock;
     case "money":
       return DollarSign;
     case "location":
       return LocationPin;
-    case "type":
+    case "eligibility":
       return Profile;
     case "field":
       return ArtField;

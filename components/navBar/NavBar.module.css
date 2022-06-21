@@ -1,184 +1,21 @@
-
-
 .navBar {
+  position: relative;
+  width: 100%;
+  padding: 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left:60px;
-  margin-right:60px;
   /* background-color: rgba(255, 255, 255, .4); */
 }
 
-.navEntries {
-  display: flex;
-  justify-content: flex-end;
-  align-items:center;
-
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0 20px;
+  }
 }
-.navEntry {
-  display:flex;
-  flex-direction: column-reverse;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  margin: 30px;
-  font-weight:700;
-  font-size:15px;
-  line-height:17px;
-  letter-spacing:0.1em;
-  
-}
-
-.redDot {
-  display:hidden;
-}
-
-.navEntry:hover {
-  position: relative;
-}
-
-.navEntry:hover:after {
-  position:absolute;
-  content: url(../../public/FFR-assets/Navigation/nav_indicator.svg);
-  display: block;
-  left: 45%;
-  top: 20px;
-}
-
-
 
 .logo {
-  width:180px;
-  height:auto; 
-  margin-top:30px;
-
+  width: 180px;
+  height: auto;
+  margin-top: 30px;
 }
-
-
-
-.socialMedia {
-  display:inline-flex;
-  justify-content: space-between;
-  width:100px;
-  margin-left:20px;
-  
-}
- .social {
-  display: flex;
-} 
-
-.social:hover {
-  filter: invert(26%) sepia(0%) saturate(0%) hue-rotate(18deg) brightness(94%) contrast(94%);
-
-}
-
-
-
-.openCalls {
-  margin-top:100px;
-  font-size:54px;
-  line-height: 78px;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: bold;
-  color: #424141;
-  margin-left:60px;
-  
-}
-
-.subtitleOpenCalls {
-  color:#424141;
-  line-height:32.14px;
-  font-family: "Frutiger", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size:20px;
-  color: #424141;
-  margin-top:15px;
-  margin-left: 60px;
-  margin-bottom:5rem;
-}
-
-.verticalMenu {
-  display:flex;
-  width:200px;
-}
-
-.MobileNavigation {
-  display: none;
-}
-
-@media (max-width:1200px) {
-  .Navigation {
-    display:none;
-  }
-  
-  .navBar .MobileNavigation {
-    display:flex;
-    align-items: flex-start;
-    
-  }
-  .MobileNavigation .Hamburger {
-    display:flex;
-    height:70px;
-    color:#424141;
-    cursor:pointer;
-  }
-
-  .Hamburger:hover {
-    color:black;
-  }
-
-  .navEntries {
-    display:flex;
-    flex-direction: column;
-    position:absolute;
-    top: 150px;
-    right:60px;
-    left: 60px;
-    width: auto;
-    background: #ffadf1d3;
-    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius:25px;
-    color:purple;
-  }
-
-  .navEntry  {
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size:18px;
-    margin: 20px;
-    color:#424141;
-  }
-
-  .navEntry:hover {
-    color:black;
-  }
-
-  .socialMedia {
-    display:inline-flex;
-    justify-content: space-between;
-    width:100px;
-    margin-left:0px;
-    
-  }
-  .social {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:10px;
-    margin-bottom:20px;
-    filter: invert(26%) sepia(0%) saturate(0%) hue-rotate(18deg) brightness(94%) contrast(94%);
-
-  }
-
-  .social:hover {
-    filter: invert(0%) sepia(7%) saturate(7500%) hue-rotate(144deg) brightness(100%) contrast(95%);
-
-  }
-
-
-}
-

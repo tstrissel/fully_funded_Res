@@ -1,109 +1,117 @@
 .footer {
-    
-    display:flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    background-color: white;
-    padding: 66px 25% 66px 66px;
-    
+  background-color: white;
+  font-family: "Frutiger", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.container {
+  padding-top: 70px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  padding: 62px;
+  gap: 16px;
+}
+
+.inner {
+  flex: 0.8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .logoSocial {
-    display:flex;
-    /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 
 .socials {
-    display:flex;
-    flex-direction: column;
-    
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
 
 .footerEntries {
-    display:flex;
-    flex-direction: column;
-    font-family: "Frutiger", sans-serif;
-    text-decoration: underline;   
-    font-weight: 700;
-    font-style:normal;
-    font-size: 16px;
-    line-height: 40px;
-    color: black;
-    
-    
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.footerApplication {
-    display:flex;
-    flex-direction: column;
-    font-family: "Frutiger", sans-serif;
-    font-weight: 600;
-    font-style:normal;
-    font-size: 16px;
-    line-height: 30px;
-    color: black;
-    margin-bottom:30px;
-    letter-spacing: 0.1em;
-    
+.footerEntry {
+  padding: 8px;
+  text-transform: uppercase;
 
+  color: black;
+  text-decoration: underline;
+  text-align: center;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 
-.footerAppButton {
-margin-top:-25px; 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-background: #24C7D2;
-/* button shadow */
-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-border-radius: 73.913px;
-border:none;
-padding:15px;
-cursor:pointer;
-font-family: "Frutiger",sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 15.5217px;
-line-height: 15px;
-letter-spacing: 0.1em;
-text-transform: uppercase;
+.application {
+  display: flex;
+  flex-direction: column;
+  font-family: "Frutiger", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 30px;
+  color: black;
 
-color: #000000;
-
+  margin-right: min(300px, 10vw);
 }
 
+.support {
+  margin-top: 30px;
+}
 
-@media (max-width:960px) {
+.supportBtn {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-primary-1);
+  /* button shadow */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 73.913px;
+  border: none;
+  padding: 10px 32px;
+  cursor: pointer;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15.5217px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-    .footer {
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 66px;
-      margin-top:2em;
+  color: #000000;
+}
 
-    }
-    .logoSocial {
-        display:flex;
-        flex-direction: row-reverse;
-
-    }
-
-    .socials {
-        display:flex;
-        flex-direction: row;
-        margin:10px;
-    }
-    .footerEntries {
-        display:flex;
-        flex-direction: row;
-        margin: 2em;
-    }
-
-    .footerEntry {
-        margin:10px;
-    }
-
+@media screen and (max-width: 1000px) {
+  .application {
+    margin-right: 0;
   }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 62px 24px;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .application {
+    margin: 0 auto;
+  }
+}

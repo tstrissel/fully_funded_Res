@@ -1,0 +1,140 @@
+.buttonContainer {
+  all: unset;
+  cursor: pointer;
+}
+
+.cardContainer {
+  padding: 18px;
+  background: #f6f6f6;
+  box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 4px solid transparent;
+}
+
+.cardContainer:focus-within,
+.cardContainer:hover {
+  transition: border-color 0.1s ease-in-out;
+  border-color: var(--color-primary-1);
+}
+
+.rowContainer {
+  background: inherit;
+  padding: 22px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  border: 4px solid transparent;
+}
+
+.rowContainer:focus-within,
+.rowContainer:hover {
+  transition: border-color 0.1s ease-in-out;
+  border-color: var(--color-primary-1);
+}
+
+.description {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.attributes {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
+  align-items: inherit;
+  flex-wrap: wrap;
+  gap: inherit;
+}
+
+.attributes > li {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+}
+
+.websiteLink {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.219;
+}
+
+.thumbnail {
+  max-height: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8.93817px;
+  overflow: hidden;
+}
+
+.cardParagraph {
+  line-height: 19.5px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.rowParagraph {
+  line-height: 19.5px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.btnReadMore {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Frutiger", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #000000;
+}
+
+.cardButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .rowContainer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .websiteLink {
+    flex: 1;
+    justify-content: center;
+  }
+}

@@ -6,17 +6,17 @@ import Footer from "../Footer/Footer";
 
 export default function Layout({ children }) {
   return (
-    <div className={styles.layout}>
+    <div className={styles.background}>
       <Head></Head>
       <header>
         <title>Fully Funded Recidencies</title>
         <link rel="icon" href="/favicon.ico" />
       </header>
-      <div className="page-content">
+      <div className={styles.pageContainer}>
         <NavBar />
-        {children}
-        <Footer />
+        <main>{children}</main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -7,6 +7,8 @@
   --color-title: #424141;
   --color-faded: #575757;
 
+  --color-primary-2-transparent: rgba(245, 138, 227, 0.25);
+
   --shadow-button: 0px 2px 4px rgba(0, 0, 0, 0.25);
   --shadow-card: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
 }
