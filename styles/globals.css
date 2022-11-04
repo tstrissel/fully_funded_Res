@@ -11,9 +11,13 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+
+  overflow: auto;
   overflow-x: hidden;
 
   font-size: 15px;
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -46,6 +50,10 @@ p {
 
 ul li {
   font-family: "Frutiger", sans-serif;
+}
+
+hr {
+  background-color: currentColor;
 }
 
 .page {

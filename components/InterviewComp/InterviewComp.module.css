@@ -1,52 +1,53 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-  }
-  
-  .cards {
-    margin-top: 86px;
-    width: 310px;
-    height: auto;
-    padding-bottom:10px;
-    background: #F6F6F6;
-    box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
-    border-radius: 30px;
-  }
-  
-  .cardImg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2em;
+}
 
-    display:flex;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    align-items: stretch;
-    align-content:stretch;
-    justify-content: center;
-    
-    
-  }
+.item {
+  background: #f6f6f6;
+  overflow: hidden;
+  box-shadow: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+  border-radius: 30px;
 
-  .interviewTitle {
-    font-family: "Montserrat";
-    font-weight: 700;
-    font-size: 24px;
-    padding:22px;
-    color:black;
+  display: flex;
+  flex-direction: column;
+}
 
-  }
+.cardContainer {
+  padding: 20px;
 
-  .interviewText {
-    font-family: "Frutiger", sans-serif;
-    font-weight:400px;
-    font-size:15px;
-    line-height:19.5px;
-    color:black;
-    padding:0px 22px 0px 25px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .interviewButton {
-    fill:black;
-    display: flex;
-    justify-content: center;
-    margin: 18px;
-  }
+.description {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.219;
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.cardParagraph {
+  line-height: 19.5px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}

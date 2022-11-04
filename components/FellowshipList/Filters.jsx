@@ -189,9 +189,9 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
         <button className={styles.cancelBtn} onClick={onClear}>
           Reset
         </button>
-        {/* <button className={styles.confirmBtn} onClick={handleApplyFilters}>
+        <button className={styles.confirmBtn} onClick={handleApplyFilters}>
           Search
-        </button> */}
+        </button>
       </div>
     </Modal>
   );

@@ -8,9 +8,25 @@ export {
   DollarSign,
   LocationPin,
   ChevronDown,
+  ArrowDown,
 };
 
 // Paste here and add to export above
+
+const ArrowDown = (props) => (
+  <svg
+    width={14}
+    height={14}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M6.167.333h1.667v10l4.583-4.583L13.6 6.933l-6.6 6.6-6.6-6.6L1.584 5.75l4.583 4.583v-10Z"
+      fill="#000"
+    />
+  </svg>
+);
 
 function ChevronDown() {
   return (

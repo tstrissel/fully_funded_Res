@@ -1,6 +1,7 @@
 import { getMiddlewareManifest } from "next/dist/client/route-loader";
 import Image from "next/image";
 import styles from "./ResourcesComp.module.css";
+import { ArrowDown } from "../icons";
 
 export default function ResourcesComp({
   grantAndFunds,
@@ -9,17 +10,30 @@ export default function ResourcesComp({
 }) {
   return (
     <div>
-      <h1>Resources</h1>
-      <p>
-        FFR compiled a list of useful links, including ongoing grants and funds,
-        professional advice, best and worst practices of art institutions and
-        more.
-      </p>
-
-      <p>
-        ----------------------------------------------------------------------
-      </p>
-      <h1>Grants and Funds</h1>
+      <div>
+        <div>
+          <a href="#grants" className={styles.sectionButton}>
+            <span>Grants & Funds</span>
+            <ArrowDown />
+          </a>
+        </div>
+        <div>
+          <a href="#practicalAdvice" className={styles.sectionButton}>
+            <span>Practical advice on artist opportunities</span>
+            <ArrowDown />
+          </a>
+        </div>
+        <div>
+          <a href="#databases" className={styles.sectionButton}>
+            <span>Databases for Artist Opportunities</span>
+            <ArrowDown />
+          </a>
+        </div>
+      </div>
+      <hr />
+      <h3 id="grants" className={styles.sectionTitle}>
+        Grants & Funds
+      </h3>
       <ul className={styles.wrapper}>
         {grantAndFunds.map((GAF) => {
           const {
@@ -42,10 +56,10 @@ export default function ResourcesComp({
         })}
       </ul>
 
-      <p>
-        ----------------------------------------------------------------------
-      </p>
-      <h1>Practical advice on artist opportunities</h1>
+      <hr />
+      <h3 id="practicalAdvice" className={styles.sectionTitle}>
+        Practical advice on artist opportunities
+      </h3>
       <ul className={styles.wrapper}>
         {practicalAdviceAndOpportunities.map((PAO) => {
           const {
@@ -70,10 +84,10 @@ export default function ResourcesComp({
         })}
       </ul>
 
-      <p>
-        ----------------------------------------------------------------------
-      </p>
-      <h1>Databases for Artist opportunities</h1>
+      <hr />
+      <h3 id="databases" className={styles.sectionTitle}>
+        Databases for Artist Opportunities
+      </h3>
       <ul className={styles.wrapper}>
         {databaseOpp.map((DO) => {
           const {
