@@ -1,20 +1,20 @@
-import styles from "./Filters.module.css";
-import Modal from "../Modal/Modal";
-import { useEffect, useState } from "react";
-import cx from "clsx";
+import styles from "./Filters.module.css"
+import Modal from "../Modal/Modal"
+import { useEffect, useState } from "react"
+import cx from "clsx"
 
 export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
-  const [country, setCountry] = useState();
-  const [type, setType] = useState({});
-  const [eligibility, setEligibility] = useState();
-  const [duration, setDuration] = useState();
-  const [noFees, setNoFees] = useState(false);
-  const [field, setField] = useState({});
+  const [country, setCountry] = useState()
+  const [type, setType] = useState({})
+  const [eligibility, setEligibility] = useState()
+  const [duration, setDuration] = useState()
+  const [noFees, setNoFees] = useState(false)
+  const [field, setField] = useState({})
 
   // Uncomment to apply filters on each change:
   // useEffect(() => {
-  //   handleApplyFilters();
-  // }, [country, type, eligibility, duration, field, noFees]);
+  //   handleApplyFilters()
+  // }, [country, type, eligibility, duration, field, noFees])
 
   const handleApplyFilters = () => {
     onApplyFilters({
@@ -24,15 +24,15 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
       country,
       duration,
       eligibility,
-    });
-    onClose();
-  };
+    })
+    onClose()
+  }
 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      header={<h2 className={styles.filtersHeader}>Filter open calls by</h2>}
+      header={<h2 className={styles.filtersHeader}>Filter by</h2>}
     >
       <div className={styles.container}>
         <div>
@@ -186,7 +186,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
         </div>
       </div>
       <div className={styles.footer}>
-        <button className={styles.cancelBtn} onClick={onClear}>
+        <button className={styles.resetBtn} onClick={onClear}>
           Reset
         </button>
         <button className={styles.confirmBtn} onClick={handleApplyFilters}>
@@ -194,5 +194,5 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
         </button>
       </div>
     </Modal>
-  );
+  )
 }

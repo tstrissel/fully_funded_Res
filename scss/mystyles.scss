@@ -1,9 +1,5 @@
-
 @charset "utf-8";
 
-// Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-@import url('https://fonts.googleapis.com/css?family=Frutiger:400,700');
 // 1. Import the initial variables
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
@@ -11,9 +7,9 @@
 // Update blue
 $lightblue: #24c7d2;
 // Add pink
-$pink: #F58AE3;
+$pink: #f58ae3;
 // background color
-$navbar-background-color: rgba(255, 255, 255, .0);
+$navbar-background-color: rgba(255, 255, 255, 0);
 // Add a sans serif family
 $family-sansserif: "Frutiger", sans-serif;
 $family-titles: "Montserrat", sans-serif;
@@ -30,7 +26,7 @@ $twitter-invert: findColorInvert($twitter);
 $github: #333;
 $github-invert: findColorInvert($github);
 
-// // 5. Set up box shadow 
+// // 5. Set up box shadow
 // // $large-shadow: 0 10px 20px rgba(#000, 0.05);
 // $box-padding:2rem;
 // $box-shadow: $large-shadow;
@@ -46,8 +42,6 @@ $github-invert: findColorInvert($github);
 $linkcolor: black;
 $link: $linkcolor;
 
-
-
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
@@ -60,4 +54,3 @@ $link: $linkcolor;
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 @import "bulma/bulma";
-

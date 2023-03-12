@@ -1,7 +1,7 @@
-import styles from "./Resultmodal.module.css";
-import Modal from "../Modal/Modal";
-import WebsiteLink from "../shared/WebsiteLink/WebsiteLink";
-import InfoLabel from "../shared/InfoLabel/InfoLabel";
+import styles from "./Resultmodal.module.css"
+import Modal from "../Modal/Modal"
+import WebsiteLink from "../shared/WebsiteLink/WebsiteLink"
+import InfoLabel from "../shared/InfoLabel/InfoLabel"
 
 export default function ResultModal(props) {
   return (
@@ -11,7 +11,7 @@ export default function ResultModal(props) {
       variant="primary"
       header={<h3 className="fontTitle">{props.title}</h3>}
     >
-      <article class={styles.inner}>
+      <article className={styles.inner}>
         <section className={styles.topSection}>
           <img
             className={styles.image}
@@ -51,5 +51,5 @@ export default function ResultModal(props) {
         </div>
       </article>
     </Modal>
-  );
+  )
 }
