@@ -1,7 +1,7 @@
-import styles from "./Resultmodal.module.css"
-import Modal from "../Modal/Modal"
-import WebsiteLink from "../shared/WebsiteLink/WebsiteLink"
-import InfoLabel from "../shared/InfoLabel/InfoLabel"
+import styles from './Resultmodal.module.css'
+import Modal from '../Modal/Modal'
+import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
+import InfoLabel from '../shared/InfoLabel/InfoLabel'
 
 export default function ResultModal(props) {
   return (

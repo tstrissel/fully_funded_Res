@@ -9,7 +9,7 @@ export {
   LocationPin,
   ChevronDown,
   ArrowDown,
-};
+}
 
 // Paste here and add to export above
 
@@ -26,7 +26,7 @@ const ArrowDown = (props) => (
       fill="#000"
     />
   </svg>
-);
+)
 
 function ChevronDown() {
   return (
@@ -42,7 +42,7 @@ function ChevronDown() {
         d="M.785.59a.89.89 0 011.26 0l4.714 4.713L11.473.59a.89.89 0 111.26 1.26L7.387 7.192a.89.89 0 01-1.259 0L.785 1.85a.89.89 0 010-1.26z"
       ></path>
     </svg>
-  );
+  )
 }
 
 function ArrowRight(props) {
@@ -60,7 +60,7 @@ function ArrowRight(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function Clock(props) {
@@ -78,7 +78,7 @@ function Clock(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function DollarSign(props) {
@@ -96,7 +96,7 @@ function DollarSign(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function LocationPin(props) {
@@ -118,7 +118,7 @@ function LocationPin(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function Profile(props) {
@@ -136,7 +136,7 @@ function Profile(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function ArtField(props) {
@@ -154,7 +154,7 @@ function ArtField(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
 function Checkmark() {
@@ -168,7 +168,7 @@ function Checkmark() {
     >
       <path d="M4.625 9.762L.744 5.882l1.769-1.77 2.112 2.12L10.8.05l1.769 1.769-7.944 7.943z"></path>
     </svg>
-  );
+  )
 }
 
 const Search = (props) => (
@@ -181,4 +181,4 @@ const Search = (props) => (
   >
     <path d="M14.247 5.377a8.016 8.016 0 1 0 0 16.033 8.016 8.016 0 0 0 0-16.033ZM3.56 13.394a10.69 10.69 0 1 1 19.132 6.555l7.198 7.197a1.336 1.336 0 0 1-1.89 1.89l-7.197-7.198A10.689 10.689 0 0 1 3.56 13.394Z" />
   </svg>
-);
+)

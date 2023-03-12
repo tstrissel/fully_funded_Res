@@ -1,7 +1,7 @@
-import "../styles/reset.css";
-import "../scss/mystyles.scss";
-import Layout from "../components/Layout/Layout.jsx";
-import "../styles/globals.css";
+import '../styles/reset.css'
+import '../scss/mystyles.scss'
+import Layout from '../components/Layout/Layout.jsx'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </div>
     </Layout>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

@@ -1,1 +1,1 @@
-export { default } from "./FellowshipList.jsx";
+export { default } from './FellowshipList.jsx'

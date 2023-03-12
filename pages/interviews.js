@@ -1,15 +1,15 @@
-import InterviewComp from "../components/InterviewComp/InterviewComp.jsx";
-import { client } from "../lib/contentful.js";
+import InterviewComp from '../components/InterviewComp/InterviewComp.jsx'
+import { client } from '../lib/contentful.js'
 
 export const getStaticProps = async (context) => {
-  const res = await client.getEntries({ content_type: "interviews" });
+  const res = await client.getEntries({ content_type: 'interviews' })
 
   return {
     props: {
       interviews: res.items,
     },
-  };
-};
+  }
+}
 
 export default function interviews({ interviews }) {
   return (
@@ -25,5 +25,5 @@ export default function interviews({ interviews }) {
       </div>
       <InterviewComp interviews={interviews} />
     </div>
-  );
+  )
 }

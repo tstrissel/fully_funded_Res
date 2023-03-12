@@ -1,6 +1,6 @@
-import ReactModal from "react-modal";
-import cx from "clsx";
-import styles from "./Modal.module.css";
+import ReactModal from 'react-modal'
+import cx from 'clsx'
+import styles from './Modal.module.css'
 
 export default function Modal({ isOpen, header, onClose, variant, children }) {
   return (
@@ -18,5 +18,5 @@ export default function Modal({ isOpen, header, onClose, variant, children }) {
       </button>
       {children}
     </ReactModal>
-  );
+  )
 }

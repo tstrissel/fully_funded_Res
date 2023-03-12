@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "bulma": "^0.9.3",
@@ -18,5 +19,8 @@
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
     "sass": "^1.49.9"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
   }
 }

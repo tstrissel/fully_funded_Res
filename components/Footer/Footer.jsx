@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "/public/FFR-assets/Logo/FFR-logo.png";
-import styles from "../Footer/Footer.module.css";
-import { Facebook, Instagram } from "../shared/Socials/Socials";
+import React, { Component, Fragment } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import Logo from '/public/FFR-assets/Logo/FFR-logo.png'
+import styles from '../Footer/Footer.module.css'
+import { Facebook, Instagram } from '../shared/Socials/Socials'
 
 export default function Footer() {
   return (
@@ -57,5 +57,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

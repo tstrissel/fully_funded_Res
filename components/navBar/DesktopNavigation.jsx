@@ -1,37 +1,37 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
-import styles from "./DesktopNavigation.module.css";
-import { Facebook, Instagram } from "../shared/Socials/Socials";
+import styles from './DesktopNavigation.module.css'
+import { Facebook, Instagram } from '../shared/Socials/Socials'
 
 const DesktopNavigation = ({ routes, activePath }) => {
-  const navElement = React.useRef();
-  const indicatorElement = React.useRef();
+  const navElement = React.useRef()
+  const indicatorElement = React.useRef()
 
   // on Mount, set the indicator to the active link
   React.useEffect(() => {
     const activeLink = navElement.current.querySelector(
       `a[href="${activePath}"]`
-    );
+    )
     if (activeLink) {
-      moveIndicator(activeLink);
+      moveIndicator(activeLink)
     }
-  }, []);
+  }, [])
 
   const moveIndicator = (targetElement) => {
-    const navLeft = navElement.current.getBoundingClientRect().left;
+    const navLeft = navElement.current.getBoundingClientRect().left
     const indicatorWidth =
-      indicatorElement.current.getBoundingClientRect().width;
+      indicatorElement.current.getBoundingClientRect().width
 
-    const linkLeft = targetElement.getBoundingClientRect().left;
-    const linkWidth = targetElement.getBoundingClientRect().width;
+    const linkLeft = targetElement.getBoundingClientRect().left
+    const linkWidth = targetElement.getBoundingClientRect().width
 
-    const offset = linkLeft - navLeft + linkWidth / 2 - indicatorWidth / 2;
+    const offset = linkLeft - navLeft + linkWidth / 2 - indicatorWidth / 2
 
-    indicatorElement.current.style.transform = `translateX(${offset}px)`;
-  };
+    indicatorElement.current.style.transform = `translateX(${offset}px)`
+  }
 
-  const handleMoveIndicator = (event) => moveIndicator(event.target);
+  const handleMoveIndicator = (event) => moveIndicator(event.target)
 
   return (
     <ul className={styles.nav} ref={navElement}>
@@ -53,7 +53,7 @@ const DesktopNavigation = ({ routes, activePath }) => {
         <Facebook />
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default DesktopNavigation;
+export default DesktopNavigation

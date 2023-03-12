@@ -1,8 +1,8 @@
-import styles from "./MobileNavigation.module.css";
-import { useState } from "react";
-import cx from "clsx";
-import Link from "next/link";
-import { Facebook, Instagram } from "../shared/Socials/Socials";
+import styles from './MobileNavigation.module.css'
+import { useState } from 'react'
+import cx from 'clsx'
+import Link from 'next/link'
+import { Facebook, Instagram } from '../shared/Socials/Socials'
 
 const ToggleMenuButton = ({ isOpen, onClick }) => {
   return (
@@ -11,13 +11,13 @@ const ToggleMenuButton = ({ isOpen, onClick }) => {
       <div />
       <div />
     </div>
-  );
-};
+  )
+}
 
 const MobileNavigation = ({ routes, activePath }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
-  const closeMenu = () => setOpen(false);
+  const closeMenu = () => setOpen(false)
 
   return (
     <div className={styles.wrapper}>
@@ -47,7 +47,7 @@ const MobileNavigation = ({ routes, activePath }) => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default MobileNavigation;
+export default MobileNavigation

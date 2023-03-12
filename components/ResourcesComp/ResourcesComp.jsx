@@ -1,7 +1,7 @@
-import { getMiddlewareManifest } from "next/dist/client/route-loader";
-import Image from "next/image";
-import styles from "./ResourcesComp.module.css";
-import { ArrowDown } from "../icons";
+import { getMiddlewareManifest } from 'next/dist/client/route-loader'
+import Image from 'next/image'
+import styles from './ResourcesComp.module.css'
+import { ArrowDown } from '../icons'
 
 export default function ResourcesComp({
   grantAndFunds,
@@ -42,7 +42,7 @@ export default function ResourcesComp({
             grantfundstatus,
             grantfundLocation,
             grantfundWebsite,
-          } = GAF.fields;
+          } = GAF.fields
 
           return (
             <div className={styles.cards} key={GAF.sys.id}>
@@ -52,7 +52,7 @@ export default function ResourcesComp({
               <p>{grantfundLocation}</p>
               <p>{grantfundWebsite}</p>
             </div>
-          );
+          )
         })}
       </ul>
 
@@ -67,7 +67,7 @@ export default function ResourcesComp({
             practicalAdviceImage,
             practicalAdviceText,
             practicalAdviceWebsite,
-          } = PAO.fields;
+          } = PAO.fields
 
           return (
             <div className={styles.cards} key={PAO.sys.id}>
@@ -80,7 +80,7 @@ export default function ResourcesComp({
               <p>{practicalAdviceText}</p>
               <p>{practicalAdviceWebsite}</p>
             </div>
-          );
+          )
         })}
       </ul>
 
@@ -95,7 +95,7 @@ export default function ResourcesComp({
             databaseOppImage,
             databaseOppText,
             dataBaseOppWebsite,
-          } = DO.fields;
+          } = DO.fields
 
           return (
             <div className={styles.cards} key={DO.sys.id}>
@@ -108,9 +108,9 @@ export default function ResourcesComp({
               />
               <p>{databaseOppText}</p>
             </div>
-          );
+          )
         })}
       </ul>
     </div>
-  );
+  )
 }

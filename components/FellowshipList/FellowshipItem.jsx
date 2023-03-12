@@ -1,11 +1,11 @@
-import ResultModal from "../ResultModal/ResultModal";
-import { useState } from "react";
-import Image from "next/image";
-import WebsiteLink from "../shared/WebsiteLink/WebsiteLink";
-import InfoLabel from "../shared/InfoLabel/InfoLabel";
+import ResultModal from '../ResultModal/ResultModal'
+import { useState } from 'react'
+import Image from 'next/image'
+import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
+import InfoLabel from '../shared/InfoLabel/InfoLabel'
 
-import styles from "./FellowshipItem.module.css";
-import cx from "clsx";
+import styles from './FellowshipItem.module.css'
+import cx from 'clsx'
 
 const FellowshipItem = ({ viewMode, fellowship }) => {
   const {
@@ -22,17 +22,17 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
     field,
     status,
     featuredImage,
-  } = fellowship;
+  } = fellowship
 
-  const [isCardOpen, setIsCardOpen] = useState(false);
+  const [isCardOpen, setIsCardOpen] = useState(false)
   const closeCard = () => {
-    setIsCardOpen(false);
-  };
+    setIsCardOpen(false)
+  }
 
   const handleWebsiteClick = (e) => {
-    e.stopPropagation();
-    alert("opens website...");
-  };
+    e.stopPropagation()
+    alert('opens website...')
+  }
 
   return (
     <>
@@ -40,7 +40,7 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
         className={styles.buttonContainer}
         onClick={() => setIsCardOpen(true)}
       >
-        {viewMode === "cards" ? (
+        {viewMode === 'cards' ? (
           <div className={styles.cardContainer}>
             <div className={styles.thumbnail}>
               <img src={thumbnail.fields.file.url} />
@@ -114,7 +114,7 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
         type={type}
       />
     </>
-  );
-};
+  )
+}
 
-export default FellowshipItem;
+export default FellowshipItem

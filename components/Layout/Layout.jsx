@@ -1,8 +1,8 @@
-import styles from "../Layout/Layout.module.css";
-import Link from "next/link";
-import Head from "next/head";
-import NavBar from "../navBar/NavBar";
-import Footer from "../Footer/Footer";
+import styles from '../Layout/Layout.module.css'
+import Link from 'next/link'
+import Head from 'next/head'
+import NavBar from '../navBar/NavBar'
+import Footer from '../Footer/Footer'
 
 export default function Layout({ children }) {
   return (
@@ -18,5 +18,5 @@ export default function Layout({ children }) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

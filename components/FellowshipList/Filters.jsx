@@ -1,7 +1,7 @@
-import styles from "./Filters.module.css"
-import Modal from "../Modal/Modal"
-import { useEffect, useState } from "react"
-import cx from "clsx"
+import styles from './Filters.module.css'
+import Modal from '../Modal/Modal'
+import { useEffect, useState } from 'react'
+import cx from 'clsx'
 
 export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
   const [country, setCountry] = useState()
@@ -49,14 +49,14 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
             >
               <option value="">Select country &nbsp;</option>
               {[
-                "France",
-                "Germany",
-                "India",
-                "England",
-                "Australia",
-                "New Zealand",
-                "Tonga",
-                "America",
+                'France',
+                'Germany',
+                'India',
+                'England',
+                'Australia',
+                'New Zealand',
+                'Tonga',
+                'America',
               ].map((datum) => (
                 <option key={datum} value={datum}>
                   {datum}
@@ -69,7 +69,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
             <div className={styles.field}>
               <legend className={styles.filterLabel}>Type</legend>
 
-              {["Production", "Exhibition", "Research"].map((val) => (
+              {['Production', 'Exhibition', 'Research'].map((val) => (
                 <label key={val} className={styles.checkbox}>
                   <input
                     type="checkbox"
@@ -91,7 +91,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
 
           <div className={styles.field}>
             <label
-              htmlFor={"filter-eligibility"}
+              htmlFor={'filter-eligibility'}
               className={styles.filterLabel}
             >
               Eligibility
@@ -115,7 +115,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
             </select>
           </div>
 
-          <div className={styles.field} htmlFor={"filter-fee"}>
+          <div className={styles.field} htmlFor={'filter-fee'}>
             <span className={styles.filterLabel}>Application Fee</span>
             <label className={styles.checkbox}>
               <input
@@ -133,7 +133,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
 
         <div>
           <div className={styles.field}>
-            <label htmlFor={"filter-duration"} className={styles.filterLabel}>
+            <label htmlFor={'filter-duration'} className={styles.filterLabel}>
               Duration
             </label>
             {/* <label htmlFor="Duration">Duration:</label> */}
@@ -157,13 +157,13 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
               <legend className={styles.filterLabel}>Field</legend>
 
               {[
-                "Visual",
-                "Multidisciplinary",
-                "Curatorial",
-                "Sound",
-                "Literature",
-                "Performance",
-                "Dance",
+                'Visual',
+                'Multidisciplinary',
+                'Curatorial',
+                'Sound',
+                'Literature',
+                'Performance',
+                'Dance',
               ].map((val) => (
                 <label key={val} className={styles.checkbox}>
                   <input

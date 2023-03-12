@@ -1,13 +1,13 @@
-import styles from "./InterviewComp.module.css";
-import interButton from "../../public/FFR-assets/Buttons/Buttons/read-interview-button.svg";
-import Image from "next/image";
-import Link from "next/link";
+import styles from './InterviewComp.module.css'
+import interButton from '../../public/FFR-assets/Buttons/Buttons/read-interview-button.svg'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function interviewComp({ interviews }) {
   return (
     <ul className={styles.wrapper}>
       {interviews.map((interviews, index) => {
-        const { title, paragraph, interviewImage } = interviews.fields;
+        const { title, paragraph, interviewImage } = interviews.fields
 
         // Todo: add link to interview page once its on contentful
 
@@ -31,8 +31,8 @@ export default function interviewComp({ interviews }) {
               </div>
             </div>
           </div>
-        );
+        )
       })}
     </ul>
-  );
+  )
 }

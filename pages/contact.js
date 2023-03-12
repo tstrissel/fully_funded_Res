@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import styles from "./contact.module.css";
+import Link from 'next/link'
+import Image from 'next/image'
+import styles from './contact.module.css'
 
 export default function contact() {
   return (
@@ -22,10 +22,10 @@ export default function contact() {
       <br />
       <p className={styles.contactSubtitle}>
         Do you need help with writing an application, motivation letter or
-        project proposal?{" "}
+        project proposal?{' '}
       </p>
       <p className={styles.contactSubtitle}>
-        We can help! Write to us at <br></br>{" "}
+        We can help! Write to us at <br></br>{' '}
         <a
           href="mailto:fullyfunded.residencies@gmail.com"
           className="underlined"
@@ -40,5 +40,5 @@ export default function contact() {
         based on donations and pay-what-you-can.
       </p>
     </div>
-  );
+  )
 }

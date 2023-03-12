@@ -1,4 +1,4 @@
-import { ArrowRight } from "../../icons";
+import { ArrowRight } from '../../icons'
 
 export default function WebsiteLink(props) {
   return (
@@ -6,5 +6,5 @@ export default function WebsiteLink(props) {
       <span>Visit website</span>
       <ArrowRight />
     </a>
-  );
+  )
 }

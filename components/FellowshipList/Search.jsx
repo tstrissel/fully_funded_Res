@@ -1,23 +1,23 @@
-import Image from "next/image";
-import { useState } from "react";
-import { Search as SearchIcon } from "../icons";
-import styles from "./Search.module.css";
+import Image from 'next/image'
+import { useState } from 'react'
+import { Search as SearchIcon } from '../icons'
+import styles from './Search.module.css'
 
 export default function Search({
   value: appliedSearchTerm,
   onApplySearch,
   onClearSearch,
 }) {
-  const [inputValue, setInputValue] = useState(appliedSearchTerm);
+  const [inputValue, setInputValue] = useState(appliedSearchTerm)
 
   const handleApplySearch = () => {
-    onApplySearch(inputValue);
-  };
+    onApplySearch(inputValue)
+  }
 
   const handleClearSearch = () => {
-    onClearSearch();
-    setInputValue("");
-  };
+    onClearSearch()
+    setInputValue('')
+  }
 
   return (
     <div>
@@ -31,7 +31,7 @@ export default function Search({
           id="search"
           role="search"
           placeholder="Search opportunities..."
-          onKeyPress={(e) => e.key === "Enter" && handleApplySearch()}
+          onKeyPress={(e) => e.key === 'Enter' && handleApplySearch()}
         />
         {!appliedSearchTerm ? (
           <button onClick={handleApplySearch} className={styles.searchBtn}>
@@ -44,5 +44,5 @@ export default function Search({
         )}
       </div>
     </div>
-  );
+  )
 }

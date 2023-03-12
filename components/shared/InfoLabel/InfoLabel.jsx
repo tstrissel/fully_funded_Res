@@ -1,25 +1,25 @@
-import styles from "./InfoLabel.module.css";
-import { Clock, DollarSign, LocationPin, Profile, ArtField } from "../../icons";
+import styles from './InfoLabel.module.css'
+import { Clock, DollarSign, LocationPin, Profile, ArtField } from '../../icons'
 
 const getIconForLabel = (label) => {
   switch (label) {
-    case "deadline":
-      return Clock;
-    case "money":
-      return DollarSign;
-    case "location":
-      return LocationPin;
-    case "eligibility":
-      return Profile;
-    case "field":
-      return ArtField;
+    case 'deadline':
+      return Clock
+    case 'money':
+      return DollarSign
+    case 'location':
+      return LocationPin
+    case 'eligibility':
+      return Profile
+    case 'field':
+      return ArtField
     default:
-      return () => null;
+      return () => null
   }
-};
+}
 
 export default function InfoLabel(props) {
-  const Icon = getIconForLabel(props.type);
+  const Icon = getIconForLabel(props.type)
   return (
     <div className={styles.wrapper} href={props.website}>
       <span className={styles.icon}>
@@ -27,5 +27,5 @@ export default function InfoLabel(props) {
       </span>
       <span className={styles.content}>{props.children}</span>
     </div>
-  );
+  )
 }

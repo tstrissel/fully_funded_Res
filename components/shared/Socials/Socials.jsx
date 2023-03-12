@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import styles from "./Socials.module.css";
-import instaIcon from "../../..//public/Social links/icon_instagram.svg";
-import fbIcon from "../../..//public/Social links/icon_facebook.svg";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import styles from './Socials.module.css'
+import instaIcon from '../../..//public/Social links/icon_instagram.svg'
+import fbIcon from '../../..//public/Social links/icon_facebook.svg'
 
 export const Instagram = () => {
   return (
@@ -12,8 +12,8 @@ export const Instagram = () => {
         <Image src={instaIcon} alt="IG"></Image>
       </a>
     </Link>
-  );
-};
+  )
+}
 
 export const Facebook = () => {
   return (
@@ -22,5 +22,5 @@ export const Facebook = () => {
         <Image src={fbIcon} alt="FB"></Image>
       </a>
     </Link>
-  );
-};
+  )
+}

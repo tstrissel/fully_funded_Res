@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import exampleImage from "../public/FFR-assets/Icons/profile_icon.svg";
-import patron from "../public/FFR-assets/Social links/Patreon button/Patreon.png";
-import payPal from "../public/FFR-assets/Social links/PayPal button/Paypal.png";
-import styles from "./about.module.css";
+import Link from 'next/link'
+import Image from 'next/image'
+import exampleImage from '../public/FFR-assets/Icons/profile_icon.svg'
+import patron from '../public/FFR-assets/Social links/Patreon button/Patreon.png'
+import payPal from '../public/FFR-assets/Social links/PayPal button/Paypal.png'
+import styles from './about.module.css'
 
 export default function about() {
   return (
@@ -91,5 +91,5 @@ export default function about() {
         </div>
       </div>
     </div>
-  );
+  )
 }
