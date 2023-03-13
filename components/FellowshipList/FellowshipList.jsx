@@ -62,22 +62,26 @@ export default function GridComp({ fellowships = [] }) {
   }
 
   const handleApplyFilters = (filters) => {
-    console.log(filters)
-    // TODO: correctly count the all filters
-    const countAppliedFilters = Object.values(filters).reduce(
-      (acc, curr) => (!curr ? acc : acc + 1),
-      0
-    )
-    console.log(countAppliedFilters)
+    clearSearch()
 
-    setAppliedFilters(countAppliedFilters)
+    const countAppliedFilters = () => {
+      const type = Object.values(filters.type).some(Boolean)
+      const field = Object.values(filters.field).some(Boolean)
+      const fees = filters.noFees
+      const country = !!filters.country
+      const dur = !!filters.duration
+      const elig = !!filters.eligibility
+
+      return type + field + fees + country + dur + elig
+    }
+
+    setAppliedFilters(countAppliedFilters())
 
     // filter
     const filtered = filterFellowships(fellowships, filters)
     // reapply sort and set
     filteredFellowshipsSet(sortFellowships(filtered, sortBy))
 
-    clearSearch()
     setIsFiltersOpen(false)
   }
 
@@ -125,10 +129,12 @@ export default function GridComp({ fellowships = [] }) {
         />
       </div>
 
+      {filteredFellowships.length == 0 && (
+        <h2 className={styles.noResult}>No Results</h2>
+      )}
+
       <ul className={cx(styles.wrapper, viewMode === 'list' && styles.list)}>
         {filteredFellowships.map((fellowship, index) => {
-          // console.log(fellowship.fields.deadline, "fields");
-
           return (
             <div
               className={styles.item}

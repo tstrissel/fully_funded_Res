@@ -5,11 +5,23 @@ import cx from 'clsx'
 
 export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
   const [country, setCountry] = useState()
-  const [type, setType] = useState({})
+  const [type, setType] = useState({
+    Production: false,
+    Exhibition: false,
+    Research: false,
+  })
   const [eligibility, setEligibility] = useState()
   const [duration, setDuration] = useState()
   const [noFees, setNoFees] = useState(false)
-  const [field, setField] = useState({})
+  const [field, setField] = useState({
+    Visual: false,
+    Multidisciplinary: false,
+    Curatorial: false,
+    Sound: false,
+    Literature: false,
+    Performance: false,
+    Dance: false,
+  })
 
   // Uncomment to apply filters on each change:
   // useEffect(() => {
@@ -41,13 +53,13 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
               Location
             </label>
             <select
-              value={country}
+              value={country || ''}
               onChange={(e) => setCountry(e.target.value)}
               id="filter-location"
               name="location"
               className={cx(styles.selectInput, !country && styles.unselected)}
             >
-              <option value="">Select country &nbsp;</option>
+              <option value="">any country &nbsp;</option>
               {[
                 'France',
                 'Germany',

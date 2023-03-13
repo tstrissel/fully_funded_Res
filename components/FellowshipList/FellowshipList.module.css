@@ -30,6 +30,14 @@
   gap: 10px;
 }
 
+.noResult {
+  font-size: 18px;
+  font-family: 'Frutiger', sans-serif;
+  color: var(--color-title);
+  text-align: center;
+  font-weight: 600;
+}
+
 /* search filter elements section  */
 
 .filterBtn {
@@ -90,7 +98,7 @@
 }
 
 .fontTitle {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 700;
   font-size: 20px;
 }
@@ -99,7 +107,7 @@
   margin-top: 0.7em;
   width: 60%;
   display: flex;
-  font-family: "Frutiger", sans-serif;
+  font-family: 'Frutiger', sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
@@ -119,7 +127,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: "Frutiger", sans-serif;
+  font-family: 'Frutiger', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
