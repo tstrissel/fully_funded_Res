@@ -1,5 +1,5 @@
 import styles from './MobileNavigation.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cx from 'clsx'
 import Link from 'next/link'
 import { Facebook, Instagram } from '../shared/Socials/Socials'
@@ -18,6 +18,14 @@ const MobileNavigation = ({ routes, activePath }) => {
   const [isOpen, setOpen] = useState(false)
 
   const closeMenu = () => setOpen(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isOpen])
 
   return (
     <div className={styles.wrapper}>

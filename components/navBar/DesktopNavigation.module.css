@@ -40,9 +40,9 @@
 
   position: absolute;
   bottom: 5px;
-  left: -1em;
+  left: 0;
 
-  background-color: #d16a24;
+  background-color: var(--color-primary-2);
   border-radius: 0.3em;
 
   transition: transform 0.25s ease-in-out;

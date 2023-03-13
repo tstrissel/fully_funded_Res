@@ -13,6 +13,7 @@
 .menu {
   position: absolute;
 
+  height: 100vh;
   top: 0;
   left: 0;
   right: 0;
@@ -27,8 +28,8 @@
   align-items: center;
   gap: 20px;
 
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
   visibility: hidden;
   transform: translateY(-100%);
@@ -61,7 +62,7 @@
 }
 
 .navEntry.active::before {
-  content: "";
+  content: '';
 }
 
 .navEntry::before {
