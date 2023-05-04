@@ -9,6 +9,8 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.16.3",
+    "@contentful/rich-text-types": "^16.0.3",
     "bulma": "^0.9.3",
     "clsx": "^1.2.1",
     "contentful": "^9.1.12",

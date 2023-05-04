@@ -3,7 +3,6 @@ import { client } from '../lib/contentful.js'
 
 export const getStaticProps = async (context) => {
   const res = await client.getEntries({ content_type: 'interviews' })
-
   return {
     props: {
       interviews: res.items,
@@ -12,6 +11,10 @@ export const getStaticProps = async (context) => {
 }
 
 export default function interviews({ interviews }) {
+  const sortedInterviews = interviews.sort(
+    (a, b) =>
+      new Date(b.fields.publicationDate) - new Date(a.fields.publicationDate)
+  )
   return (
     <div>
       <div className="titleContainer">
@@ -23,7 +26,7 @@ export default function interviews({ interviews }) {
           </h2>
         </div>
       </div>
-      <InterviewComp interviews={interviews} />
+      <InterviewComp interviews={sortedInterviews} />
     </div>
   )
 }

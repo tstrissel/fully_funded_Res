@@ -11,4 +11,8 @@
 
   --shadow-button: 0px 2px 4px rgba(0, 0, 0, 0.25);
   --shadow-card: 2px 5px 13px 4px rgba(87, 87, 87, 0.25);
+
+  --font-family-main: 'Montserrat', sans-serif;
+  --font-weight-main: 500;
+  --font-weight-bold: 700;
 }
