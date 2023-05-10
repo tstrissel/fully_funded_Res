@@ -1,6 +1,5 @@
 .aboutSubtitle {
   max-width: 50ch;
-  font-family: "Montserrat";
   color: #424141;
   font-size: 24px;
   line-height: 149%;
@@ -9,7 +8,6 @@
 
 .aboutMission {
   max-width: 75ch;
-  font-family: "Frutiger", sans-serif;
   color: black;
   font-size: 20px;
   line-height: 133.9%;
@@ -18,7 +16,6 @@
 }
 
 .aboutSupport {
-  font-family: "Frutiger", sans-serif;
   color: black;
   font-size: 20px;
   line-height: 133.9%;

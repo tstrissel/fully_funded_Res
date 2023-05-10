@@ -1,3 +1,19 @@
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1em;
+}
+@media (min-width: 768px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .titleContainer {
   margin: 60px 0;
   display: flex;
@@ -8,19 +24,18 @@
 
 .pageTitle {
   font-size: clamp(30px, 5vw, 54px);
-  font-family: "Montserrat";
+  font-family: var(--font-family-main);
   font-style: normal;
-  font-weight: bold;
-  color: #424141;
+  font-weight: 800;
+  color: var(--color-faded);
 }
 
 .pageSubtitle {
-  color: #424141;
-  font-family: "Frutiger", sans-serif;
+  color: var(--color-faded);
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
   font-size: clamp(18px, 3vw, 20px);
-  color: #424141;
+  color: var(--color-faded);
 
   max-width: 50ch;
 }

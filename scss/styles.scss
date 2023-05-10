@@ -1,13 +1,12 @@
-@import "../scss/mystyles.scss";
+@import '../scss/mystyles.scss';
 $primary: $lightblue;
 
 h1 {
-    font-family: "Montserrat", sans-serif;
-    
+  font-family: 'Sono', sans-serif;
 }
 .fontTitle {
-    font-family: "Montserrat", 700;
-    font-size: 24px;
+  font-family: 'Sono', 700;
+  font-size: 24px;
 }
 
 // h2, h3, h4, h6, p {
@@ -18,22 +17,3 @@ h1 {
 //     font-family: "Frutiger" ,sans-serif;
 //     font-weight: 700;
 // }
-
-
-.page {
-    
-    margin-left: 62px;
-    margin-right: 62px;
-    margin-bottom: 45px;
-}
-
-
-.fontTitle {
-    font-family: "Montserrat", 700;
-    font-size: 24px;
-  }
-  
-
-
-
-

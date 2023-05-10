@@ -3,11 +3,13 @@ import Link from 'next/link'
 import Head from 'next/head'
 import NavBar from '../navBar/NavBar'
 import Footer from '../Footer/Footer'
+import BackgroundGradient from './BackgroundGradient'
 
 export default function Layout({ children }) {
   return (
     <div className={styles.background}>
       <Head></Head>
+      <BackgroundGradient />
       <header>
         <title>Fully Funded Recidencies</title>
         <link rel="icon" href="/favicon.ico" />

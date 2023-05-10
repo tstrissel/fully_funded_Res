@@ -1,6 +1,18 @@
 .page {
   margin-left: auto;
   margin-right: auto;
+  padding: 1rem;
+}
+
+.page p {
+  max-width: var(--max-w-sm);
+  margin: 0 auto;
+}
+
+.page h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 3rem;
 }
 
 .page__content {

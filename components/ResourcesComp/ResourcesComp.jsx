@@ -2,6 +2,7 @@ import { getMiddlewareManifest } from 'next/dist/client/route-loader'
 import Image from 'next/image'
 import styles from './ResourcesComp.module.css'
 import { ArrowDown } from '../icons'
+import WebsiteLink from '@components/shared/WebsiteLink'
 
 export default function ResourcesComp({
   grantAndFunds,
@@ -10,31 +11,25 @@ export default function ResourcesComp({
 }) {
   return (
     <div>
-      <div>
-        <div>
-          <a href="#grants" className={styles.sectionButton}>
-            <span>Grants & Funds</span>
-            <ArrowDown />
-          </a>
-        </div>
-        <div>
-          <a href="#practicalAdvice" className={styles.sectionButton}>
-            <span>Practical advice on artist opportunities</span>
-            <ArrowDown />
-          </a>
-        </div>
-        <div>
-          <a href="#databases" className={styles.sectionButton}>
-            <span>Databases for Artist Opportunities</span>
-            <ArrowDown />
-          </a>
-        </div>
+      <div className={styles.jumpSection}>
+        <a href="#grants" className={styles.sectionButton}>
+          <ArrowDown />
+          <span>Grants & Funds</span>
+        </a>
+        <a href="#practicalAdvice" className={styles.sectionButton}>
+          <ArrowDown />
+          <span>Practical advice on artist opportunities</span>
+        </a>
+        <a href="#databases" className={styles.sectionButton}>
+          <ArrowDown />
+          <span>Databases for Artist Opportunities</span>
+        </a>
       </div>
       <hr />
       <h3 id="grants" className={styles.sectionTitle}>
         Grants & Funds
       </h3>
-      <ul className={styles.wrapper}>
+      <ul className="grid-wrapper">
         {grantAndFunds.map((GAF) => {
           const {
             grantsFundsTitle,
@@ -60,7 +55,7 @@ export default function ResourcesComp({
       <h3 id="practicalAdvice" className={styles.sectionTitle}>
         Practical advice on artist opportunities
       </h3>
-      <ul className={styles.wrapper}>
+      <ul className="grid-wrapper">
         {practicalAdviceAndOpportunities.map((PAO) => {
           const {
             practicalOppTitle,
@@ -71,14 +66,22 @@ export default function ResourcesComp({
 
           return (
             <div className={styles.cards} key={PAO.sys.id}>
-              <h1>{practicalOppTitle}</h1>
-              <img
-                src={practicalAdviceImage.fields.file.url}
-                height="300px"
-                width="350px"
-              />
-              <p>{practicalAdviceText}</p>
-              <p>{practicalAdviceWebsite}</p>
+              {practicalAdviceImage && (
+                <img
+                  src={practicalAdviceImage.fields.file.url}
+                  height="300px"
+                  width="350px"
+                />
+              )}
+              <div className={styles.card__info}>
+                <div>
+                  <h3>{practicalOppTitle}</h3>
+                  <p>{practicalAdviceText}</p>
+                </div>
+                <div className={styles.websiteLink}>
+                  <WebsiteLink website={practicalAdviceWebsite} />
+                </div>
+              </div>
             </div>
           )
         })}
@@ -88,7 +91,7 @@ export default function ResourcesComp({
       <h3 id="databases" className={styles.sectionTitle}>
         Databases for Artist Opportunities
       </h3>
-      <ul className={styles.wrapper}>
+      <ul className="grid-wrapper">
         {databaseOpp.map((DO) => {
           const {
             databaseOppTitle,
@@ -99,14 +102,22 @@ export default function ResourcesComp({
 
           return (
             <div className={styles.cards} key={DO.sys.id}>
-              <h1></h1>
-              <h1>{databaseOppTitle}</h1>
-              <img
-                src={databaseOppImage.fields.file.url}
-                height="300px"
-                width="350px"
-              />
-              <p>{databaseOppText}</p>
+              {databaseOppImage && (
+                <img
+                  src={databaseOppImage.fields.file.url}
+                  height="300px"
+                  width="350px"
+                />
+              )}
+              <div className={styles.card__info}>
+                <div>
+                  <h3>{databaseOppTitle}</h3>
+                  <p>{databaseOppText}</p>
+                </div>
+                <div className={styles.websiteLink}>
+                  <WebsiteLink website={dataBaseOppWebsite} />
+                </div>
+              </div>
             </div>
           )
         })}

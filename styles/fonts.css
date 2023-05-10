@@ -1,44 +1,64 @@
 @font-face {
-  font-family: "Frutiger";
+  font-family: 'Frutiger';
   font-style: normal;
   font-weight: normal;
-  src: local("Frutiger"), url("/fonts/Frutiger.woff") format("woff");
+  src: local('Frutiger'), url('/fonts/Frutiger.woff') format('woff');
 }
 
 @font-face {
-  font-family: "Frutiger Bold";
+  font-family: 'Frutiger Bold';
   font-style: normal;
   font-weight: normal;
-  src: local("Frutiger Bold"), url("/fonts/Frutiger-Bold.woff") format("woff");
+  src: local('Frutiger Bold'), url('/fonts/Frutiger-Bold.woff') format('woff');
 }
 
 /* montserrat-regular - latin */
 @font-face {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: local("Montserrat"),
-    url("/fonts/montserrat-v25-latin-regular.woff2") format("woff2"),
+  src: local('Montserrat'),
+    url('/fonts/montserrat-v25-latin-regular.woff2') format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/montserrat-v25-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url('/fonts/montserrat-v25-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* montserrat-600 - latin */
 @font-face {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  src: local("Montserrat"),
-    url("/fonts/montserrat-v25-latin-600.woff2") format("woff2"),
+  src: local('Montserrat'),
+    url('/fonts/montserrat-v25-latin-600.woff2') format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/montserrat-v25-latin-600.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url('/fonts/montserrat-v25-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* montserrat-700 - latin */
 @font-face {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  src: local("Montserrat"),
-    url("/fonts/montserrat-v25-latin-700.woff2") format("woff2"),
+  src: local('Montserrat'),
+    url('/fonts/montserrat-v25-latin-700.woff2') format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/montserrat-v25-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url('/fonts/montserrat-v25-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/Nunito-Italic-VariableFont_wght.woff2')
+    format('woff2-variations');
+  font-style: italic;
+  font-weight: 200 800;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/Nunito-VariableFont_wght.woff2') format('woff2-variations');
+  font-style: normal;
+  font-weight: 200 800;
+}
+@font-face {
+  font-family: 'Sono Var';
+  src: url('/fonts/Sono[MONO,wght].woff2') format('woff-variations'),
+    url('/fonts/Sono[MONO,wght].ttf') format('ttf-variations');
+  font-style: normal;
+  font-weight: 200 800;
 }

@@ -111,7 +111,6 @@ export default function GridComp({ fellowships = [] }) {
             <span className={styles.filterBtnValue}>
               {appliedFilters > 0 ? appliedFilters : 'None'}
             </span>
-            <ChevronDown className={styles.filterBtnIcon} />
           </button>
           <Filters
             isOpen={isFiltersOpen}
@@ -133,7 +132,7 @@ export default function GridComp({ fellowships = [] }) {
         <h2 className={styles.noResult}>No Results</h2>
       )}
 
-      <ul className={cx(styles.wrapper, viewMode === 'list' && styles.list)}>
+      <ul className={cx('grid-wrapper', viewMode === 'list' && styles.list)}>
         {filteredFellowships.map((fellowship, index) => {
           return (
             <div

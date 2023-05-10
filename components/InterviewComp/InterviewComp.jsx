@@ -13,7 +13,7 @@ export default function interviewComp({ interviews }) {
   },...]*/
 
   return (
-    <ul className={styles.wrapper}>
+    <ul className="grid-wrapper">
       {interviews.map((interviews, index) => {
         const { title, paragraph, interviewImage, slug, publicationDate } =
           interviews.fields

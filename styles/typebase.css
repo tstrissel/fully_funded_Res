@@ -1,0 +1,68 @@
+/*! Typebase.less v0.1.0 | MIT License */
+/* Setup */
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+/* Copy & Lists */
+p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+ul,
+ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+ul li,
+ol li {
+  line-height: 1rem;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+blockquote {
+  line-height: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tables */
+table {
+  margin-top: 1.5rem;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+table td,
+table th {
+  padding: 0;
+  line-height: 33px;
+}
+/* Code blocks */
+code {
+  vertical-align: bottom;
+}
+/* Leading paragraph text */
+.lead {
+  font-size: 1.414rem;
+}
+/* Hug the block above you */
+.hug {
+  margin-top: 0;
+}
+b {
+  font-weight: var(--font-weight-bold);
+}
+a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-link);
+}
+a:hover {
+  color: var(--color-link);
+}

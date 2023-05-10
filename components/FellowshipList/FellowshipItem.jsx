@@ -1,7 +1,7 @@
 import ResultModal from '../ResultModal/ResultModal'
 import { useState } from 'react'
 import Image from 'next/image'
-import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
+import WebsiteLink from '../shared/WebsiteLink'
 import InfoLabel from '../shared/InfoLabel/InfoLabel'
 
 import styles from './FellowshipItem.module.css'

@@ -5,7 +5,6 @@
 }
 
 .filtersHeader {
-  font-family: "Frutiger", sans-serif;
   font-weight: bold;
   font-size: 24px;
   margin-bottom: 1.5em;
@@ -53,7 +52,7 @@
   font-size: 18px;
 }
 
-.checkbox input[type="checkbox"] {
+.checkbox input[type='checkbox'] {
   appearance: none;
   background-color: #fff;
   margin: 0;
@@ -70,20 +69,20 @@
   place-content: center;
 }
 
-.checkbox:hover input[type="checkbox"],
-.checkbox:focus input[type="checkbox"] {
+.checkbox:hover input[type='checkbox'],
+.checkbox:focus input[type='checkbox'] {
   border-color: var(--color-primary-2);
 }
 
-.checkbox input[type="checkbox"]:checked {
+.checkbox input[type='checkbox']:checked {
   background-color: var(--color-primary-2);
   border-color: var(--color-primary-2);
   outline: none;
 }
 
 /* checkmark */
-.checkbox input[type="checkbox"]::before {
-  content: "";
+.checkbox input[type='checkbox']::before {
+  content: '';
   width: 0.6em;
   height: 0.6em;
   transform: scale(0);
@@ -94,7 +93,7 @@
 }
 
 /* checkmark when checked  */
-.checkbox input[type="checkbox"]:checked::before {
+.checkbox input[type='checkbox']:checked::before {
   transform: scale(1) rotate(10deg);
 }
 
