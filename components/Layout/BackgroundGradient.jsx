@@ -56,8 +56,8 @@ export default function BackgroundGradient(props) {
               height="100%"
               x="0%"
               y="0%"
-              baseFrequency={1.25}
-              numOctaves={2}
+              baseFrequency={1000}
+              numOctaves={100}
               result="turbulence"
               seed={102}
               stitchTiles="stitch"
@@ -104,7 +104,7 @@ export default function BackgroundGradient(props) {
           height="100%"
           fill="transparent"
           filter="url(#c)"
-          opacity={0.53}
+          opacity={0.33}
           style={{
             mixBlendMode: 'soft-light',
           }}

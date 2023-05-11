@@ -23,6 +23,7 @@
     "sass": "^1.49.9"
   },
   "devDependencies": {
+    "@notionhq/client": "^2.2.5",
     "prettier": "^2.8.4"
   }
 }

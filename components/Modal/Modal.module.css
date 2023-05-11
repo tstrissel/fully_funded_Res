@@ -12,6 +12,23 @@
   backdrop-filter: blur(2px);
 }
 
+.modal.primary {
+  max-width: min(1000px, calc(100vw - 64px));
+}
+
+@media (max-width: 768px) {
+  .modal,
+  .modal.primary {
+    margin: 16px auto;
+    max-width: calc(100vw - 4px);
+  }
+}
+
+.modal .header {
+  margin-right: 48px;
+  margin-bottom: 32px;
+}
+
 .modal {
   position: relative;
 
@@ -31,37 +48,20 @@
   padding: 32px;
 }
 
-.modal.primary {
-  max-width: min(1000px, calc(100vw - 64px));
-}
-
-@media (max-width: 768px) {
-  .modal {
-    margin: 16px auto;
-    max-width: calc(100vw - 32px);
-  }
-}
-
-.modal .header {
-  margin-right: 48px;
-  margin-bottom: 32px;
-}
-
-.modal .closebtn {
+.closebtn {
   all: unset;
   cursor: pointer;
 
-  margin: 16px;
-  padding: 16px;
+  padding: 12px;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
 
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 2rem;
 }
 
 .closebtn:hover,
 .closebtn:focus {
-  color: var(--color-secondary);
+  color: var(--color-faded);
 }

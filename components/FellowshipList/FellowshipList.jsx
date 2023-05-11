@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { isEmpty } from 'lodash'
 import Filters from './Filters'
 import FellowshipItem from './FellowshipItem'
+import FellowshipItemNotion from './FellowshipItemNotion'
 import Image from 'next/image'
 import Search from './Search'
 import { sortFellowships, filterFellowships } from './listUtils'
 import { ChevronDown } from '../icons'
 import cx from 'clsx'
 
-export default function GridComp({ fellowships = [] }) {
+export default function GridComp({ fellowships = [], calls = [] }) {
   const [sortBy, setSortBy] = useState('createdAt')
   const [viewMode, setViewMode] = useState('cards')
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
@@ -133,7 +134,21 @@ export default function GridComp({ fellowships = [] }) {
       )}
 
       <ul className={cx('grid-wrapper', viewMode === 'list' && styles.list)}>
-        {filteredFellowships.map((fellowship, index) => {
+        {calls.map((call, index) => {
+          return (
+            <div
+              className={styles.item}
+              key={call.id}
+              style={{ animationDelay: `${index * 40}ms` }}
+            >
+              <FellowshipItemNotion
+                viewMode={viewMode}
+                fellowship={call.properties}
+              />
+            </div>
+          )
+        })}
+        {/* {filteredFellowships.map((fellowship, index) => {
           return (
             <div
               className={styles.item}
@@ -146,7 +161,7 @@ export default function GridComp({ fellowships = [] }) {
               />
             </div>
           )
-        })}
+        })} */}
       </ul>
     </div>
   )

@@ -22,7 +22,8 @@ export default function ResultModal(props) {
           <div className={styles.details}>
             <ul>
               <li>
-                <InfoLabel type="deadline">{props.deadline}</InfoLabel>
+                <strong>Deadline</strong>
+                <span>{props.deadline}</span>
               </li>
               <li>
                 <InfoLabel type="money">{props.money}</InfoLabel>

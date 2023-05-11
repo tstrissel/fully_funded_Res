@@ -5,18 +5,32 @@ import Head from 'next/head'
 // import { MyDocument } from "./_document";
 // import SearchBar from "../components/searchBar"
 import { client } from '../lib/contentful.js'
+import { Client } from '@notionhq/client'
 
 export const getStaticProps = async (context) => {
   const res = await client.getEntries({ content_type: 'fellowship' })
+  const notion = new Client({ auth: process.env.NOTION_API_KEY })
+  const notionDBID = process.env.NOTION_OPEN_CALLS
+  const notionResponse = await notion.databases.query({
+    database_id: notionDBID,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
+  })
 
   return {
     props: {
       fellowships: res.items,
+      notionCalls: notionResponse.results,
     },
+    revalidate: 30,
   }
 }
 
-export default function Index({ fellowships, interviews }) {
+export default function Index({ fellowships, interviews, notionCalls }) {
   return (
     <div>
       <div className="titleContainer">
@@ -28,7 +42,7 @@ export default function Index({ fellowships, interviews }) {
           </h2>
         </div>
       </div>
-      <FellowshipList fellowships={fellowships} />
+      <FellowshipList fellowships={fellowships} calls={notionCalls} />
     </div>
   )
 }
