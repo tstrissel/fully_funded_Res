@@ -30,7 +30,6 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
     setIsCardOpen(false)
   }
 
-  console.log(linkUrl)
   return (
     <>
       <div
