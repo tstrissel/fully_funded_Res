@@ -1,4 +1,7 @@
 export const sortFellowships = (fellowships, sortBy = 'createdAt') => {
+  if (fellowships.length == 0) {
+    return [];
+  }
   return fellowships.sort((a, b) => {
     if (sortBy === 'deadline') {
       return new Date(a.fields.deadline) - new Date(b.fields.deadline)
@@ -15,6 +18,10 @@ export const filterFellowships = (
   fellowships,
   { country, type, eligibility, duration, field }
 ) => {
+  if (fellowships.length == 0) {
+    return [];
+  }
+
   return fellowships
     .filter((fellowship) => {
       return country

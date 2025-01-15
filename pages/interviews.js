@@ -1,11 +1,24 @@
 import InterviewComp from '../components/InterviewComp/InterviewComp.jsx'
 import { client } from '../lib/contentful.js'
+import { Client } from '@notionhq/client'
 
 export const getStaticProps = async (context) => {
-  const res = await client.getEntries({ content_type: 'interviews' })
+  const notion = new Client({ auth: process.env.NOTION_API_KEY })
+  const notionDBID = process.env.NOTION_INTERVIEWS
+  const notionResponse = await notion.databases.query({
+    database_id: notionDBID,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
+  })
+  console.log(notionResponse.results);
+  
   return {
     props: {
-      interviews: res.items,
+      interviews: [],
     },
   }
 }

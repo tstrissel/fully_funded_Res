@@ -8,7 +8,7 @@ import { client } from '../lib/contentful.js'
 import { Client } from '@notionhq/client'
 
 export const getStaticProps = async (context) => {
-  const res = await client.getEntries({ content_type: 'fellowship' })
+  //const res = await client.getEntries({ content_type: 'fellowship' })
   const notion = new Client({ auth: process.env.NOTION_API_KEY })
   const notionDBID = process.env.NOTION_OPEN_CALLS
   const notionResponse = await notion.databases.query({
@@ -23,7 +23,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      fellowships: res.items,
+      fellowships: [],
       notionCalls: notionResponse.results,
     },
     revalidate: 30,

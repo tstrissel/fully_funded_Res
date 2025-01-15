@@ -31,21 +31,24 @@ export default function ResourcesComp({
       </h3>
       <ul className="grid-wrapper">
         {grantAndFunds.map((GAF) => {
-          const {
-            grantsFundsTitle,
-            grantfundType,
-            grantfundstatus,
-            grantfundLocation,
-            grantfundWebsite,
-          } = GAF.fields
-
           return (
-            <div className={styles.cards} key={GAF.sys.id}>
-              <h1>{grantsFundsTitle}</h1>
-              <p>{grantfundType}</p>
-              <p>{grantfundstatus}</p>
-              <p>{grantfundLocation}</p>
-              <p>{grantfundWebsite}</p>
+            <div className={styles.cards} key={GAF.id}>
+              {GAF.image && (
+                <img
+                  src={GAF.image}
+                  height="300px"
+                  width="350px"
+                />
+              )}
+              <div className={styles.card__info}>
+                <div>
+                  <h3>{GAF.name}</h3>
+                  <p>{GAF.description}</p>
+                </div>
+                <div className={styles.websiteLink}>
+                  <WebsiteLink website={GAF.link} />
+                </div>
+              </div>
             </div>
           )
         })}
@@ -57,29 +60,22 @@ export default function ResourcesComp({
       </h3>
       <ul className="grid-wrapper">
         {practicalAdviceAndOpportunities.map((PAO) => {
-          const {
-            practicalOppTitle,
-            practicalAdviceImage,
-            practicalAdviceText,
-            practicalAdviceWebsite,
-          } = PAO.fields
-
           return (
-            <div className={styles.cards} key={PAO.sys.id}>
-              {practicalAdviceImage && (
+            <div className={styles.cards} key={PAO.id}>
+              {PAO.image && (
                 <img
-                  src={practicalAdviceImage.fields.file.url}
+                  src={PAO.image}
                   height="300px"
                   width="350px"
                 />
               )}
               <div className={styles.card__info}>
                 <div>
-                  <h3>{practicalOppTitle}</h3>
-                  <p>{practicalAdviceText}</p>
+                  <h3>{PAO.name}</h3>
+                  <p>{PAO.description}</p>
                 </div>
                 <div className={styles.websiteLink}>
-                  <WebsiteLink website={practicalAdviceWebsite} />
+                  <WebsiteLink website={PAO.link} />
                 </div>
               </div>
             </div>
@@ -93,29 +89,22 @@ export default function ResourcesComp({
       </h3>
       <ul className="grid-wrapper">
         {databaseOpp.map((DO) => {
-          const {
-            databaseOppTitle,
-            databaseOppImage,
-            databaseOppText,
-            dataBaseOppWebsite,
-          } = DO.fields
-
           return (
-            <div className={styles.cards} key={DO.sys.id}>
-              {databaseOppImage && (
+            <div className={styles.cards} key={DO.id}>
+              {DO.image && (
                 <img
-                  src={databaseOppImage.fields.file.url}
+                  src={DO.image}
                   height="300px"
                   width="350px"
                 />
               )}
               <div className={styles.card__info}>
                 <div>
-                  <h3>{databaseOppTitle}</h3>
-                  <p>{databaseOppText}</p>
+                  <h3>{DO.name}</h3>
+                  <p>{DO.description}</p>
                 </div>
                 <div className={styles.websiteLink}>
-                  <WebsiteLink website={dataBaseOppWebsite} />
+                  <WebsiteLink website={DO.link} />
                 </div>
               </div>
             </div>
