@@ -24,30 +24,21 @@ export default function Footer() {
             </div>
           </div>
           <div className={styles.footerEntries}>
-            <Link href="/about">
-              <a className={styles.footerEntry}>ABOUT</a>
+            <Link href="/about" className={styles.footerEntry}>ABOUT
             </Link>
-            <Link href="/contact">
-              <a className={styles.footerEntry}>CONTACT</a>
-            </Link>
-            <Link href="/">
-              <a className={styles.footerEntry}>OPEN CALLS</a>
-            </Link>
-            <Link href="/resources">
-              <a className={styles.footerEntry}>RESOURCES</a>
-            </Link>
-            <Link href="/interviews">
-              <a className={styles.footerEntry}>INTERVIEWS</a>
-            </Link>
+            <Link href="/contact" className={styles.footerEntry}>CONTACT</Link>
+            <Link href="/" className={styles.footerEntry}>OPEN CALLS</Link>
+            <Link href="/resources" className={styles.footerEntry}>RESOURCES</Link>
+            <Link href="/interviews" className={styles.footerEntry}>INTERVIEWS</Link>
           </div>
         </div>
         <div>
           <div className={styles.application}>
             <p>Need help with writing an application?</p>
             <p>Write to us at</p>
-            <a href="mailto:fullyfunded.residencies@gmail.com">
+            <Link href="mailto:fullyfunded.residencies@gmail.com">
               fullyfunded.residencies@gmail.com
-            </a>
+            </Link>
           </div>
 
           <div className={styles.support}>

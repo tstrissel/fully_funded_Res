@@ -4,11 +4,9 @@ import Footer from '../components/Footer/Footer'
 import Head from 'next/head'
 // import { MyDocument } from "./_document";
 // import SearchBar from "../components/searchBar"
-import { client } from '../lib/contentful.js'
 import { Client } from '@notionhq/client'
 
 export const getStaticProps = async (context) => {
-  //const res = await client.getEntries({ content_type: 'fellowship' })
   const notion = new Client({ auth: process.env.NOTION_API_KEY })
   const notionDBID = process.env.NOTION_OPEN_CALLS
   const notionResponse = await notion.databases.query({
@@ -24,13 +22,13 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       fellowships: [],
-      notionCalls: notionResponse.results,
+      openCalls: notionResponse.results,
     },
     revalidate: 30,
   }
 }
 
-export default function Index({ fellowships, interviews, notionCalls }) {
+export default function Index({ fellowships, interviews, openCalls }) {
   return (
     <div>
       <div className="titleContainer">
@@ -42,7 +40,7 @@ export default function Index({ fellowships, interviews, notionCalls }) {
           </h2>
         </div>
       </div>
-      <FellowshipList fellowships={fellowships} calls={notionCalls} />
+      <FellowshipList fellowships={fellowships} calls={openCalls} />
     </div>
   )
 }

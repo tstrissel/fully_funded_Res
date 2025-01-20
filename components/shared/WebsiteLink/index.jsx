@@ -1,10 +1,11 @@
 import { ArrowRight } from '../../icons'
+import Link from 'next/link'
 
 export default function WebsiteLink(props) {
   return (
-    <a className="cta" href={props.website} target="_blank">
-      <span>Visit website</span>
+    <Link className="cta" href={props.website} target="_blank">
+      Visit website
       <ArrowRight />
-    </a>
+    </Link>
   )
 }

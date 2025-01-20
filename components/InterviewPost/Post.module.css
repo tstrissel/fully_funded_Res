@@ -72,8 +72,73 @@
   color: var(--color-foreground);
 }
 
+.page__img {
+  width: 50%;
+}
+
 .page__imgContainer {
   width: 100%;
   height: auto;
   margin: 1rem 0 2rem 0;
+}
+
+/* Post Content Layout */
+.page__content {
+  font-family: 'Frutiger', serif; /* Adjust font-family as needed */
+  font-size: 18px; /* Adjust font size */
+  line-height: 1.6; /* Adjust line height for better readability */
+  max-width: 800px; /* Ensure content doesn't stretch too wide */
+  margin: 0 auto; /* Center content */
+  padding: 20px; /* Padding for content */
+}
+
+/* Bold and Italic styling */
+.page__content span {
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Bold text */
+.page__content span[style*="fontWeight: bold"] {
+  font-weight: bold;
+}
+
+/* Italic text */
+.page__content span[style*="fontStyle: italic"] {
+  font-style: italic;
+}
+
+/* Underline text */
+.page__content span[style*="textDecoration: underline"] {
+  text-decoration: underline;
+}
+
+/* Strikethrough text */
+.page__content span[style*="textDecoration: line-through"] {
+  text-decoration: line-through;
+}
+
+/* Monospace for code blocks */
+.page__content span[style*="fontFamily: monospace"] {
+  font-family: 'Courier New', monospace;
+  background-color: #f5f5f5; /* Light background for code */
+  padding: 0.2em;
+  border-radius: 4px;
+}
+
+/* Links */
+.page__content a {
+  color: #0066cc; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.page__content a:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #004999; /* Darker link color on hover */
+}
+
+/* Spacing for block-level elements like paragraphs */
+.page__content span + span {
+  display: block;
+  margin-top: 10px; /* Add spacing between blocks */
 }

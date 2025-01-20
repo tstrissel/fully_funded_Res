@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './ResourcesComp.module.css'
 import { ArrowDown } from '../icons'
 import WebsiteLink from '@components/shared/WebsiteLink'
+import Link from 'next/link';
 
 export default function ResourcesComp({
   grantAndFunds,
@@ -12,18 +13,18 @@ export default function ResourcesComp({
   return (
     <div>
       <div className={styles.jumpSection}>
-        <a href="#grants" className={styles.sectionButton}>
+        <Link href="#grants" className={styles.sectionButton}>
           <ArrowDown />
           <span>Grants & Funds</span>
-        </a>
-        <a href="#practicalAdvice" className={styles.sectionButton}>
+        </Link>
+        <Link href="#practicalAdvice" className={styles.sectionButton}>
           <ArrowDown />
           <span>Practical advice on artist opportunities</span>
-        </a>
-        <a href="#databases" className={styles.sectionButton}>
+        </Link>
+        <Link href="#databases" className={styles.sectionButton}>
           <ArrowDown />
           <span>Databases for Artist Opportunities</span>
-        </a>
+        </Link>
       </div>
       <hr />
       <h3 id="grants" className={styles.sectionTitle}>

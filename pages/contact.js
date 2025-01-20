@@ -10,12 +10,12 @@ export default function contact() {
         <p className={styles.contactSubtitle}>
           If you want to contribute with an open call or have a question, feel
           free to send us an email at <br></br>
-          <a
+          <Link
             href="mailto:fullyfunded.residencies@gmail.com"
             className="underlined"
           >
             fullyfunded.residencies@gmail.com
-          </a>
+          </Link>
         </p>
       </div>
       <hr />
@@ -26,12 +26,12 @@ export default function contact() {
       </p>
       <p className={styles.contactSubtitle}>
         We can help! Write to us at <br></br>{' '}
-        <a
+        <Link
           href="mailto:fullyfunded.residencies@gmail.com"
           className="underlined"
         >
           fullyfunded.residencies@gmail.com
-        </a>
+        </Link>
       </p>
 
       <p className={styles.contactAim}>

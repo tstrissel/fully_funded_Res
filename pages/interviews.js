@@ -14,20 +14,27 @@ export const getStaticProps = async (context) => {
       },
     },
   })
-  console.log(notionResponse.results);
+
+  const items = notionResponse.results.map(item => {
+    return {
+      'id': item.id,
+      'image': item.properties.Image.files[0]?.file?.url ?? '',
+      'title': item.properties.Name.title[0]?.plain_text ?? '',
+      'link': item.properties.Link.url ?? '',
+      'description': item.properties['Short Description'].rich_text[0]?.plain_text ?? '',
+      'slug': item.properties.slug.rich_text[0]?.plain_text ?? '',
+      'text': item.properties.Text.rich_text[0] ?? null
+    };
+  })
   
   return {
     props: {
-      interviews: [],
+      interviews: items,
     },
   }
 }
 
 export default function interviews({ interviews }) {
-  const sortedInterviews = interviews.sort(
-    (a, b) =>
-      new Date(b.fields.publicationDate) - new Date(a.fields.publicationDate)
-  )
   return (
     <div>
       <div className="titleContainer">
@@ -39,7 +46,7 @@ export default function interviews({ interviews }) {
           </h2>
         </div>
       </div>
-      <InterviewComp interviews={sortedInterviews} />
+      <InterviewComp interviews={interviews} />
     </div>
   )
 }

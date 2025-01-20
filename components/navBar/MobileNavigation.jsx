@@ -34,15 +34,12 @@ const MobileNavigation = ({ routes, activePath }) => {
         {routes.map((route) => (
           <li key={route.name}>
             <Link href={route.path}>
-              <a
                 className={cx(
                   styles.navEntry,
                   activePath === route.path && styles.active
                 )}
                 onClick={closeMenu}
-              >
                 {route.name}
-              </a>
             </Link>
           </li>
         ))}

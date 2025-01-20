@@ -37,10 +37,8 @@ const DesktopNavigation = ({ routes, activePath }) => {
     <ul className={styles.nav} ref={navElement}>
       {routes.map((route) => (
         <li key={route.name}>
-          <Link href={route.path}>
-            <a className={styles.navEntry} onClick={handleMoveIndicator}>
+          <Link href={route.path} className={styles.navEntry} onClick={handleMoveIndicator}>
               {route.name}
-            </a>
           </Link>
         </li>
       ))}

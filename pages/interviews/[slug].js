@@ -1,6 +1,9 @@
 import { client } from '@lib/contentful.js'
 import InterviewContainer from '@components/InterviewPost/InterviewContainer'
 import Post from '@components/InterviewPost/Post'
+import { Client } from '@notionhq/client'
+import { useRouter } from 'next/router';
+
 
 // import Post from '@components/Post'
 // import { Config } from '@utils/Config'
@@ -8,12 +11,13 @@ import Post from '@components/InterviewPost/Post'
 // import MainLayout from '@layouts/main'
 // import ContentWrapper from '@components/ContentWrapper'
 
-export default function PostWrapper(props) {
-  const { interview, preview } = props
-  const post = interview.items[0].fields
+export default function PostWrapper(fallbackInterview) {
+  const router = useRouter();
+  const interview = router.query.state || fallbackInterview;
+
   return (
     <InterviewContainer>
-      <Post post={post} />
+      <Post post={interview} />
     </InterviewContainer>
     // <MainLayout preview={preview}>
     //   <PageMeta
@@ -30,12 +34,28 @@ export default function PostWrapper(props) {
 }
 
 export async function getStaticPaths() {
-  const { items } = await client.getEntries({ content_type: 'interviews' })
+  const notion = new Client({ auth: process.env.NOTION_API_KEY })
+  const notionDBID = process.env.NOTION_INTERVIEWS
+  const notionResponse = await notion.databases.query({
+    database_id: notionDBID,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
+  })
+
+  const items = notionResponse.results.map(item => {
+    return {
+      'slug': item.properties.slug.rich_text[0]?.plain_text ?? undefined
+    };
+  })
 
   const paths = items
     .map((interview) => {
-      if (interview.fields.slug === undefined) return
-      return { params: { slug: interview.fields.slug } }
+      if (interview.slug === undefined) return
+      return { params: { slug: interview.slug } }
     })
     .filter((path) => path !== undefined)
 
@@ -49,28 +69,35 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const interview = await client.getEntries(
-    {
-      content_type: 'interviews',
-      'fields.slug': params.slug,
+export async function getStaticProps({ params }) {
+  const notion = new Client({ auth: process.env.NOTION_API_KEY })
+  const notionDBID = process.env.NOTION_INTERVIEWS
+  const notionResponse = await notion.databases.query({
+    database_id: notionDBID,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
     },
-    preview
-  )
+  })
 
-  // Add this with fallback: "blocking"
-  // So that if we do not have a post on production,
-  // the 404 is served
-  if (!interview) {
+  const items = notionResponse.results.map(item => {
     return {
-      notFound: true,
-    }
-  }
+      'id': item.id,
+      'image': item.properties.Image.files[0]?.file?.url ?? '',
+      'title': item.properties.Name.title[0]?.plain_text ?? '',
+      'link': item.properties.Link.url ?? '',
+      'description': item.properties['Short Description'].rich_text[0]?.plain_text ?? '',
+      'slug': item.properties.slug.rich_text[0]?.plain_text ?? undefined,
+      'text': item.properties.Text.rich_text ?? null,
+      'headerImage': item.properties['Header Photo'].files[0]?.file?.url ?? ''
+    };
+  })
 
   return {
     props: {
-      preview,
-      interview,
+      post: items.filter(item => item.slug === params.slug)[0]
     },
   }
 }
