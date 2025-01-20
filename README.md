@@ -5,9 +5,9 @@ Website for the Berlin based association. Currently available here [https://full
 Built with next.js, hosted on vercel with a contentful backend. 
 
 ## To Do
-- [ ] Fill Content and make backend accessible
-- [ ] Interviews Style and Logic
-- [ ] Resources Style
+- [x] Fill Content and make backend accessible
+- [x] Interviews Style and Logic
+- [x] Resources Style
 - [ ] Support us button in footer and about 
 - [ ] Pictures in about
 - [ ] List view style icons
