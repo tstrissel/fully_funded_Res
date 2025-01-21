@@ -4,34 +4,29 @@ import Image from 'next/image'
 import WebsiteLink from '../shared/WebsiteLink'
 import InfoLabel from '../shared/InfoLabel/InfoLabel'
 
-import styles from './FellowshipItem.module.css'
+import styles from './OpenCallsItem.module.css'
 import cx from 'clsx'
 
-const FellowshipItem = ({ viewMode, fellowship }) => {
+const OpenCallsItem = ({ viewMode, openCall }) => {
   const {
     title,
-    slug,
-    category,
-    money,
-    paragraph,
-    thumbnail,
-    location,
-    eligibility,
-    type,
+    linkUrl,
     deadline,
-    field,
-    status,
-    featuredImage,
-  } = fellowship
+    eligibilityList,
+    description,
+    benefits,
+    money,
+    imageUrl,
+    fees,
+    fieldList,
+    country,
+    duration,
+    type 
+  } = openCall;
 
   const [isCardOpen, setIsCardOpen] = useState(false)
   const closeCard = () => {
     setIsCardOpen(false)
-  }
-
-  const handleWebsiteClick = (e) => {
-    e.stopPropagation()
-    alert('opens website...')
   }
 
   return (
@@ -43,28 +38,29 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
         {viewMode === 'cards' ? (
           <div className={styles.cardContainer}>
             <div className={styles.thumbnail}>
-              <img src={thumbnail.fields.file.url} />
+              <img src={imageUrl} />
             </div>
             <h3 className={styles.title}>{title}</h3>
             <ul>
               <li>
-                <InfoLabel type="status">{status}</InfoLabel>
-              </li>
-              <li>
                 <InfoLabel type="money">{money}</InfoLabel>
               </li>
               <li>
-                <InfoLabel type="location">{location}</InfoLabel>
+                <InfoLabel type="location">{country}</InfoLabel>
               </li>
               <li>
-                <InfoLabel type="eligibility">{eligibility}</InfoLabel>
+                <InfoLabel type="eligibility">
+                  {eligibilityList.map((e) => (
+                    <span>{e.name}</span>
+                  ))}
+                </InfoLabel>
               </li>
             </ul>
-            <p className={styles.cardParagraph}>{paragraph}</p>
+            <p className={styles.cardParagraph}>{description}</p>
             <div className={styles.cardButtons}>
               <button className="cta underlined">Read more</button>
-              <div onClick={handleWebsiteClick}>
-                <WebsiteLink href={slug} />
+              <div>
+                <WebsiteLink website={linkUrl} />
               </div>
             </div>
           </div>
@@ -72,12 +68,12 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
           <div className={styles.rowContainer}>
             <div className={styles.description}>
               <h3 className={styles.title}>{title}</h3>
-              <p className={styles.rowParagraph}>{paragraph}</p>
+              <p className={styles.rowParagraph}>{description}</p>
             </div>
             <ul className={styles.attributes}>
               <li>
                 <strong>Deadline</strong>
-                <span>{status}</span>
+                <span>{deadline}</span>
               </li>
               <li>
                 <strong>Stipend</strong>
@@ -85,36 +81,40 @@ const FellowshipItem = ({ viewMode, fellowship }) => {
               </li>
               <li>
                 <strong>Eligibility</strong>
-                <span>{eligibility}</span>
+                <span>
+                  {eligibilityList.map((e) => (
+                    <span>{e.name}</span>
+                  ))}
+                </span>
               </li>
               <li>
                 <strong>Location</strong>
-                <span>{location}</span>
+                <span>{country}</span>
               </li>
-              <div className={styles.websiteLink} onClick={handleWebsiteClick}>
-                <WebsiteLink href={slug} />
+              <div className={styles.websiteLink}>
+                <WebsiteLink website={linkUrl} />
               </div>
             </ul>
           </div>
         )}
       </div>
       <ResultModal
-        fellowship={fellowship}
+        fellowship={openCall}
         trigger={isCardOpen}
         setTrigger={closeCard}
         title={title}
-        category={category}
-        paragraph={paragraph}
+        category={''}
+        paragraph={description}
         deadline={deadline}
         money={money}
-        thumbnail={thumbnail.fields.file.url}
-        featuredImage={featuredImage?.fields.file.url}
-        location={location}
-        field={field}
+        featuredImage={imageUrl}
+        location={country}
+        fieldList={fieldList}
+        eligibilityList={eligibilityList}
         type={type}
       />
     </>
   )
 }
 
-export default FellowshipItem
+export default OpenCallsItem

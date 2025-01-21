@@ -72,9 +72,6 @@
   color: var(--color-foreground);
 }
 
-.page__img {
-  width: 50%;
-}
 
 .page__imgContainer {
   width: 100%;

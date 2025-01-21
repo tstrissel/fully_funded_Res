@@ -1,60 +1,60 @@
-export const sortFellowships = (fellowships, sortBy = 'createdAt') => {
-  if (fellowships.length == 0) {
+export const sortCalls = (calls, sortBy = 'createdAt') => {
+  if (calls.length == 0) {
     return [];
   }
-  return fellowships.sort((a, b) => {
+  return calls.sort((a, b) => {
     if (sortBy === 'deadline') {
-      return new Date(a.fields.deadline) - new Date(b.fields.deadline)
+      return new Date(a.deadline) - new Date(b.deadline)
     }
     // Default sort
     // if (sortBy === "createdAt") {
-    return new Date(a.sys.createdAt) - new Date(b.sys.createdAt)
+    return new Date(a.createdAt) - new Date(b.createdAt)
     // }
     // return a.fields.title.localeCompare(b.fields.title);
   })
 }
 
-export const filterFellowships = (
-  fellowships,
+export const filterCalls = (
+  calls,
   { country, type, eligibility, duration, field }
 ) => {
-  if (fellowships.length == 0) {
+  if (calls.length == 0) {
     return [];
   }
 
-  return fellowships
-    .filter((fellowship) => {
+  return calls
+    .filter((call) => {
       return country
-        ? fellowship?.fields?.location?.toLowerCase() === country.toLowerCase()
+        ? call?.fields?.location?.toLowerCase() === country.toLowerCase()
         : true
     })
-    .filter((fellowship) => {
+    .filter((call) => {
       const arrayOfValidTypes = Object.entries(type)
         .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
         .map(([fieldName]) => fieldName.toLowerCase())
 
       return arrayOfValidTypes.length > 0
-        ? arrayOfValidTypes.includes(fellowship?.fields?.type?.toLowerCase())
+        ? arrayOfValidTypes.includes(call?.fields?.type?.toLowerCase())
         : true
     })
-    .filter((fellowship) => {
+    .filter((call) => {
       return eligibility
-        ? fellowship?.fields?.eligibility?.toLowerCase() ===
+        ? call?.fields?.eligibility?.toLowerCase() ===
             eligibility.toLowerCase()
         : true
     })
-    .filter((fellowship) => {
+    .filter((call) => {
       return duration
-        ? fellowship?.fields?.duration?.toLowerCase() === duration.toLowerCase()
+        ? call?.fields?.duration?.toLowerCase() === duration.toLowerCase()
         : true
     })
-    .filter((fellowship) => {
+    .filter((call) => {
       const arrayOfValidFields = Object.entries(field)
         .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
         .map(([fieldName]) => fieldName.toLowerCase())
 
       return arrayOfValidFields.length > 0
-        ? arrayOfValidFields.includes(fellowship?.fields?.field?.toLowerCase())
+        ? arrayOfValidFields.includes(call?.fields?.field?.toLowerCase())
         : true
     })
 }

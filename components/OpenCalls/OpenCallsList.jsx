@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react'
-import styles from './FellowshipList.module.css'
+import styles from './OpenCallsList.module.css'
 import Link from 'next/link'
 import { isEmpty } from 'lodash'
 import Filters from './Filters'
-import FellowshipItem from './FellowshipItem'
-import FellowshipItemNotion from './FellowshipItemNotion'
+import OpenCallsItem from './OpenCallsItem'
+import OpenCallsItemNotion from './OpenCallsItemNotion'
 import Image from 'next/image'
 import Search from './Search'
-import { sortFellowships, filterFellowships } from './listUtils'
+import { sortCalls, filterCalls } from './listUtils'
 import { ChevronDown } from '../icons'
 import cx from 'clsx'
 
-export default function GridComp({ fellowships = [], calls = [] }) {
+export default function GridComp({ calls = [] }) {
   const [sortBy, setSortBy] = useState('createdAt')
   const [viewMode, setViewMode] = useState('cards')
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
   const [resultPopup, setResultPopup] = useState(false)
   // const [sortDirection, sortDirectionSet] = useState("ASC");
-  const [filteredFellowships, filteredFellowshipsSet] = useState(
-    sortFellowships(fellowships, sortBy)
+  const [filteredCalls, filteredCallsSet] = useState(
+    sortCalls(calls, sortBy)
   )
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -31,12 +31,12 @@ export default function GridComp({ fellowships = [], calls = [] }) {
     setSearchTerm(newSearchTerm)
 
     if (newSearchTerm.trim() === '') {
-      filteredFellowshipsSet(fellowships)
+      filteredCallsSet(calls)
     }
 
-    filteredFellowshipsSet(
-      sortFellowships(
-        fellowships.filter((val) => {
+    filteredCallsSet(
+      sortCalls(
+        calls.filter((val) => {
           return val.fields.title
             .toLowerCase()
             .includes(newSearchTerm.toLowerCase())
@@ -48,17 +48,17 @@ export default function GridComp({ fellowships = [], calls = [] }) {
 
   const clearSearch = () => {
     setSearchTerm('')
-    filteredFellowshipsSet(sortFellowships(fellowships, sortBy))
+    filteredCallsSet(sortCalls(calls, sortBy))
   }
 
   const clearFilters = () => {
     setIsFiltersOpen(false)
-    filteredFellowshipsSet(sortFellowships(fellowships, sortBy))
+    filteredCallsSet(sortCalls(calls, sortBy))
   }
 
   const handleToggleSort = () => {
     const newSortBy = sortBy === 'createdAt' ? 'deadline' : 'createdAt'
-    filteredFellowshipsSet(sortFellowships(filteredFellowships, newSortBy))
+    filteredCallsSet(sortCalls(filteredCalls, newSortBy))
     setSortBy(newSortBy)
   }
 
@@ -79,9 +79,9 @@ export default function GridComp({ fellowships = [], calls = [] }) {
     setAppliedFilters(countAppliedFilters())
 
     // filter
-    const filtered = filterFellowships(fellowships, filters)
+    const filtered = filterCalls(calls, filters)
     // reapply sort and set
-    filteredFellowshipsSet(sortFellowships(filtered, sortBy))
+    filteredCallsSet(sortCalls(filtered, sortBy))
 
     setIsFiltersOpen(false)
   }
@@ -129,7 +129,7 @@ export default function GridComp({ fellowships = [], calls = [] }) {
         />
       </div>
 
-      {filteredFellowships.length == 0 && (
+      {filteredCalls.length == 0 && (
         <h2 className={styles.noResult}>No Results</h2>
       )}
 
@@ -141,14 +141,14 @@ export default function GridComp({ fellowships = [], calls = [] }) {
               key={call.id}
               style={{ animationDelay: `${index * 40}ms` }}
             >
-              <FellowshipItemNotion
+              <OpenCallsItemNotion
                 viewMode={viewMode}
-                fellowship={call.properties}
+                openCall={call}
               />
             </div>
           )
         })}
-        {/* {filteredFellowships.map((fellowship, index) => {
+        {/* {filteredCalls.map((fellowship, index) => {
           return (
             <div
               className={styles.item}
