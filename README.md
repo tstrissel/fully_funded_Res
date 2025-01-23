@@ -11,9 +11,9 @@ Built with next.js, hosted on vercel with a contentful backend.
 - [ ] Support us button in footer and about 
 - [ ] Pictures in about
 - [ ] List view style icons
-- [ ] adaptive filter from the backend
+- [x] adaptive filter from the backend
 - [ ] pagination in Open Calls?
 
 ## Bugs
-- [ ] Using filters and search: after clearing search it goes back to the full list.
+- [x] Using filters and search: after clearing search it goes back to the full list.
 - [x] Resetting filters does not visually remove the filters
