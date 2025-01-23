@@ -16,4 +16,4 @@ Built with next.js, hosted on vercel with a contentful backend.
 
 ## Bugs
 - [ ] Using filters and search: after clearing search it goes back to the full list.
-- [ ] Resetting filters does not visually remove the filters
+- [x] Resetting filters does not visually remove the filters
