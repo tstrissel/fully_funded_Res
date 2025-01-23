@@ -2,30 +2,39 @@ export const sortCalls = (calls, sortBy = 'createdAt') => {
   if (calls.length == 0) {
     return [];
   }
-  return calls.sort((a, b) => {
+  const response = calls.sort((a, b) => {
     if (sortBy === 'deadline') {
       return new Date(a.deadline) - new Date(b.deadline)
     }
     // Default sort
-    // if (sortBy === "createdAt") {
-    return new Date(a.createdAt) - new Date(b.createdAt)
-    // }
-    // return a.fields.title.localeCompare(b.fields.title);
+    if (sortBy === "createdAt") {
+      const diff = new Date(a.createdAt) - new Date(b.createdAt);
+      return (diff !== 0) ? diff : a.title.localeCompare(b.title);
+    }
   })
+  console.log('after sorting calls by ' + sortBy, response);
+  return response;
 }
 
 export const filterCalls = (
   calls,
-  { country, type, eligibility, duration, field }
+  { country, type, eligibility, duration, field, noFees }
 ) => {
   if (calls.length == 0) {
     return [];
   }
-
+  // console.log('in filtered calls');
+  // console.log('calls we have', calls);
+  // console.log(country, type, eligibility, duration, field);
   return calls
     .filter((call) => {
       return country
-        ? call?.fields?.location?.toLowerCase() === country.toLowerCase()
+        ? call?.country?.toLowerCase() === country.toLowerCase()
+        : true
+    })
+    .filter((call) => {
+      return noFees
+        ? call.fees !== ''
         : true
     })
     .filter((call) => {
@@ -34,18 +43,18 @@ export const filterCalls = (
         .map(([fieldName]) => fieldName.toLowerCase())
 
       return arrayOfValidTypes.length > 0
-        ? arrayOfValidTypes.includes(call?.fields?.type?.toLowerCase())
+        ? arrayOfValidTypes.includes(call?.type?.toLowerCase())
         : true
     })
     .filter((call) => {
       return eligibility
-        ? call?.fields?.eligibility?.toLowerCase() ===
+        ? call?.eligibility?.toLowerCase() ===
             eligibility.toLowerCase()
         : true
     })
     .filter((call) => {
       return duration
-        ? call?.fields?.duration?.toLowerCase() === duration.toLowerCase()
+        ? call?.duration?.toLowerCase() === duration.toLowerCase()
         : true
     })
     .filter((call) => {
@@ -54,7 +63,7 @@ export const filterCalls = (
         .map(([fieldName]) => fieldName.toLowerCase())
 
       return arrayOfValidFields.length > 0
-        ? arrayOfValidFields.includes(call?.fields?.field?.toLowerCase())
+        ? arrayOfValidFields.includes(call?.field?.toLowerCase())
         : true
     })
 }

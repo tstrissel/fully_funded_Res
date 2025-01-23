@@ -4,7 +4,6 @@ import WebsiteLink from '../shared/WebsiteLink'
 import InfoLabel from '../shared/InfoLabel/InfoLabel'
 
 export default function ResultModal(props) {
-  console.log(props);
   return (
     <Modal
       isOpen={props.trigger}

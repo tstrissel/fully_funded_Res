@@ -37,7 +37,7 @@ export default function GridComp({ calls = [] }) {
     filteredCallsSet(
       sortCalls(
         calls.filter((val) => {
-          return val.fields.title
+          return val.title
             .toLowerCase()
             .includes(newSearchTerm.toLowerCase())
         }),
@@ -53,6 +53,7 @@ export default function GridComp({ calls = [] }) {
 
   const clearFilters = () => {
     setIsFiltersOpen(false)
+    setAppliedFilters(0);
     filteredCallsSet(sortCalls(calls, sortBy))
   }
 
@@ -63,6 +64,7 @@ export default function GridComp({ calls = [] }) {
   }
 
   const handleApplyFilters = (filters) => {
+    // console.log('we are applying a filter now', filters);
     clearSearch()
 
     const countAppliedFilters = () => {
@@ -72,7 +74,7 @@ export default function GridComp({ calls = [] }) {
       const country = !!filters.country
       const dur = !!filters.duration
       const elig = !!filters.eligibility
-
+  
       return type + field + fees + country + dur + elig
     }
 
@@ -80,6 +82,7 @@ export default function GridComp({ calls = [] }) {
 
     // filter
     const filtered = filterCalls(calls, filters)
+
     // reapply sort and set
     filteredCallsSet(sortCalls(filtered, sortBy))
 
@@ -119,6 +122,7 @@ export default function GridComp({ calls = [] }) {
             className={styles.searchFilter}
             onApplyFilters={handleApplyFilters}
             onClear={clearFilters}
+            countryList={calls.map(call => {return call.country})}
           />
         </div>
 
@@ -134,7 +138,7 @@ export default function GridComp({ calls = [] }) {
       )}
 
       <ul className={cx('grid-wrapper', viewMode === 'list' && styles.list)}>
-        {calls.map((call, index) => {
+        {filteredCalls.map((call, index) => {
           return (
             <div
               className={styles.item}

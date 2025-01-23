@@ -3,7 +3,7 @@ import Modal from '../Modal/Modal'
 import { useEffect, useState } from 'react'
 import cx from 'clsx'
 
-export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
+export default function Filters({ onApplyFilters, onClear, isOpen, onClose, countryList }) {
   const [country, setCountry] = useState()
   const [type, setType] = useState({
     Production: false,
@@ -40,6 +40,30 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
     onClose()
   }
 
+  const resetFields = () => {
+    setCountry(null);
+    setType({
+      Production: false,
+      Exhibition: false,
+      Research: false,
+    });
+    setEligibility(null);
+    setDuration(null);
+    setNoFees(false);
+    setField({
+      Visual: false,
+      Multidisciplinary: false,
+      Curatorial: false,
+      Sound: false,
+      Literature: false,
+      Performance: false,
+      Dance: false,
+    });
+
+    onClear();
+  }
+  console.log('country list', countryList);
+  
   return (
     <Modal
       isOpen={isOpen}
@@ -60,16 +84,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
               className={cx(styles.selectInput, !country && styles.unselected)}
             >
               <option value="">any country &nbsp;</option>
-              {[
-                'France',
-                'Germany',
-                'India',
-                'England',
-                'Australia',
-                'New Zealand',
-                'Tonga',
-                'America',
-              ].map((datum) => (
+              {countryList.map((datum) => (
                 <option key={datum} value={datum}>
                   {datum}
                 </option>
@@ -198,7 +213,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose }) {
         </div>
       </div>
       <div className={styles.footer}>
-        <button className={styles.resetBtn} onClick={onClear}>
+        <button className={styles.resetBtn} onClick={resetFields}>
           Reset
         </button>
         <button className={styles.confirmBtn} onClick={handleApplyFilters}>

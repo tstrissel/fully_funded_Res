@@ -20,7 +20,7 @@ export const getStaticProps = async (context) => {
     },
   })
 
-  console.log(notionResponse.results[0]);
+  console.log(notionResponse);
   const items = notionResponse.results.map(item => {
     return {
       'createdAt': item.created_time,
@@ -32,15 +32,13 @@ export const getStaticProps = async (context) => {
       'benefits': item.properties.Benefits?.rich_text?.[0]?.plain_text,
       'money': item.properties.Money.rich_text?.[0]?.plain_text,
       'imageUrl': item.properties.Image?.files?.[0]?.file?.url || fellowship.Image?.files?.[0]?.external?.url,
-      'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? null,
+      'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? '',
       'fieldList': item.properties.Field.multi_select,
-      'country': item.properties.Country.select?.name,
+      'country': item.properties.Country.select?.name.trimStart(),
       'duration': item.properties.Duration.select?.name,
       'type': item.properties.Type.select?.name
     }
   });
-
-  console.log(items);
 
   return {
     props: {

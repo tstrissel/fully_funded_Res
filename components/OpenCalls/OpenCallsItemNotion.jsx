@@ -58,7 +58,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
             </ul>
             <p className={styles.cardParagraph}>{description}</p>
             <div className={styles.cardButtons}>
-              <button className="cta underlined">Read more</button>
+              <button className="cta underlined" >Read more</button>
               <div>
                 <WebsiteLink website={linkUrl} />
               </div>
