@@ -3,7 +3,7 @@ import Modal from '../Modal/Modal'
 import { useEffect, useState } from 'react'
 import cx from 'clsx'
 
-export default function Filters({ onApplyFilters, onClear, isOpen, onClose, countryList }) {
+export default function Filters({ onApplyFilters, onClear, isOpen, onClose, countryList, typesList }) {
   const [country, setCountry] = useState()
   const [type, setType] = useState({
     Production: false,
@@ -62,7 +62,6 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
 
     onClear();
   }
-  console.log('country list', countryList);
   
   return (
     <Modal
@@ -95,8 +94,7 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
           <fieldset>
             <div className={styles.field}>
               <legend className={styles.filterLabel}>Type</legend>
-
-              {['Production', 'Exhibition', 'Research'].map((val) => (
+              {typesList.map((val) => (
                 <label key={val} className={styles.checkbox}>
                   <input
                     type="checkbox"
@@ -135,10 +133,9 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
               onChange={(e) => setEligibility(e.target.value)}
             >
               <option value="">Select criteria &nbsp;</option>
-              <option value="elig one">elig one</option>
-              <option value="elig two">elig two</option>
-              <option value="elig three">elig three</option>
-              <option value="elig four">elig four</option>
+              <option value="Individual">Individual</option>
+              <option value="Collective">Collective</option>
+              <option value="Individuals & Collectives">Individuals & Collectives</option>
             </select>
           </div>
 
@@ -172,25 +169,25 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
               onChange={(e) => setDuration(e.target.value)}
             >
               <option value="">Select residency duration &nbsp;</option>
-              <option value="duration one">duration one</option>
-              <option value="duration two">duration two</option>
-              <option value="duration three">duration three</option>
-              <option value="duration four">duration four</option>
+              <option value="Under 1 month">Under 1 month</option>
+              <option value="Under 6 months">Under 6 months</option>
+              <option value="6 months+">6 months+</option>
             </select>
           </div>
 
           <fieldset>
             <div className={styles.field}>
               <legend className={styles.filterLabel}>Field</legend>
-
-              {[
-                'Visual',
-                'Multidisciplinary',
-                'Curatorial',
-                'Sound',
+              {[  
+                'Multi-disciplinary',
+                'Digital/New Media',
                 'Literature',
-                'Performance',
-                'Dance',
+                'Music & Sound',
+                'Performance Art',
+                'Architecture',
+                'Cultural Heritage',
+                'Visual Arts & Design',
+                'Curatorial'
               ].map((val) => (
                 <label key={val} className={styles.checkbox}>
                   <input

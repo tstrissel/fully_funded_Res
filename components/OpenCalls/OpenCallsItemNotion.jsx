@@ -12,7 +12,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
     title,
     linkUrl,
     deadline,
-    eligibilityList,
+    eligibility,
     description,
     benefits,
     money,
@@ -49,11 +49,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
                 <InfoLabel type="location">{country}</InfoLabel>
               </li>
               <li>
-                <InfoLabel type="eligibility">
-                  {eligibilityList.map((e) => (
-                    <span>{e.name}</span>
-                  ))}
-                </InfoLabel>
+                <InfoLabel type="eligibility">{eligibility}</InfoLabel>
               </li>
             </ul>
             <p className={styles.cardParagraph}>{description}</p>
@@ -81,11 +77,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
               </li>
               <li>
                 <strong>Eligibility</strong>
-                <span>
-                  {eligibilityList.map((e) => (
-                    <span>{e.name}</span>
-                  ))}
-                </span>
+                <span>{eligibility}</span>
               </li>
               <li>
                 <strong>Location</strong>
@@ -110,7 +102,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
         featuredImage={imageUrl}
         location={country}
         fieldList={fieldList}
-        eligibilityList={eligibilityList}
+        eligibility={eligibility}
         type={type}
       />
     </>

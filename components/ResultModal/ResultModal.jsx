@@ -45,10 +45,7 @@ export default function ResultModal(props) {
           <p>{props.paragraph}</p>
         </div>
         <div className={styles.footer}>
-          <WebsiteLink
-          // todo: what is the website URL field?
-           website={props.fellowship.linkUrl}
-          />
+          <WebsiteLink website={props.fellowship.linkUrl}/>
         </div>
       </article>
     </Modal>

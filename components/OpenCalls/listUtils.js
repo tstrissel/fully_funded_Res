@@ -12,7 +12,7 @@ export const sortCalls = (calls, sortBy = 'createdAt') => {
       return (diff !== 0) ? diff : a.title.localeCompare(b.title);
     }
   })
-  console.log('after sorting calls by ' + sortBy, response);
+
   return response;
 }
 
@@ -23,9 +23,7 @@ export const filterCalls = (
   if (calls.length == 0) {
     return [];
   }
-  // console.log('in filtered calls');
-  // console.log('calls we have', calls);
-  // console.log(country, type, eligibility, duration, field);
+
   return calls
     .filter((call) => {
       return country
@@ -41,7 +39,6 @@ export const filterCalls = (
       const arrayOfValidTypes = Object.entries(type)
         .filter(([_fieldName, fieldNameValue]) => fieldNameValue)
         .map(([fieldName]) => fieldName.toLowerCase())
-
       return arrayOfValidTypes.length > 0
         ? arrayOfValidTypes.includes(call?.type?.toLowerCase())
         : true
@@ -53,9 +50,16 @@ export const filterCalls = (
         : true
     })
     .filter((call) => {
-      return duration
-        ? call?.duration?.toLowerCase() === duration.toLowerCase()
-        : true
+      switch (duration) {
+        case 'Under 1 month':
+          return (call?.durationUnit === 'Weeks' && call?.durationValue < 5)
+        case 'Under 6 months':
+          return (call?.durationUnit === 'Weeks' && call?.durationValue >= 5 || call?.durationUnit === 'Months' && call?.durationValue < 6)
+        case '6 months+':
+          return (call?.durationUnit === 'Months' && call?.durationValue >= 6);
+        default:
+          return true;
+      }
     })
     .filter((call) => {
       const arrayOfValidFields = Object.entries(field)
@@ -63,7 +67,7 @@ export const filterCalls = (
         .map(([fieldName]) => fieldName.toLowerCase())
 
       return arrayOfValidFields.length > 0
-        ? arrayOfValidFields.includes(call?.field?.toLowerCase())
+        ? call?.fieldList?.some(item => arrayOfValidFields.includes(item.toLowerCase()))
         : true
     })
 }

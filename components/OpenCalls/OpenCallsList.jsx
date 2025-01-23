@@ -11,7 +11,7 @@ import { sortCalls, filterCalls } from './listUtils'
 import { ChevronDown } from '../icons'
 import cx from 'clsx'
 
-export default function GridComp({ calls = [] }) {
+export default function GridComp({ calls = [], countriesList = [], typesList = [] }) {
   const [sortBy, setSortBy] = useState('createdAt')
   const [viewMode, setViewMode] = useState('cards')
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
@@ -64,7 +64,6 @@ export default function GridComp({ calls = [] }) {
   }
 
   const handleApplyFilters = (filters) => {
-    // console.log('we are applying a filter now', filters);
     clearSearch()
 
     const countAppliedFilters = () => {
@@ -122,7 +121,8 @@ export default function GridComp({ calls = [] }) {
             className={styles.searchFilter}
             onApplyFilters={handleApplyFilters}
             onClear={clearFilters}
-            countryList={calls.map(call => {return call.country})}
+            countryList={countriesList}
+            typesList={typesList}
           />
         </div>
 
