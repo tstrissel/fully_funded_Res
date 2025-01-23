@@ -20,8 +20,10 @@ export const getStaticProps = async (context) => {
     },
   })
 
-  console.log(notionResponse);
+  console.log(notionResponse.results[0].properties['Duration Value']);
+  console.log(notionResponse.results[0].properties['Duration Unit']);
   const items = notionResponse.results.map(item => {
+    console.log('duration', item.properties['Duration']);
     return {
       'createdAt': item.created_time,
       'title': item.properties.Name.title[0]?.plain_text ?? '',
@@ -35,7 +37,8 @@ export const getStaticProps = async (context) => {
       'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? '',
       'fieldList': item.properties.Field.multi_select,
       'country': item.properties.Country.select?.name.trimStart(),
-      'duration': item.properties.Duration.select?.name,
+      'durationValue': item.properties['Duration Value'].number,
+      'durationUnit': item.properties['Duration Unit'].select?.name ?? '',
       'type': item.properties.Type.select?.name
     }
   });
