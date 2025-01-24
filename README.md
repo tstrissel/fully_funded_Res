@@ -8,7 +8,7 @@ Built with next.js, hosted on vercel with a contentful backend.
 - [x] Fill Content and make backend accessible
 - [x] Interviews Style and Logic
 - [x] Resources Style
-- [ ] Support us button in footer and about 
+- [x] Support us button in footer and about 
 - [ ] Pictures in about
 - [ ] List view style icons
 - [x] adaptive filter from the backend
