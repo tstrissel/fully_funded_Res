@@ -2,7 +2,7 @@ import styles from './MobileNavigation.module.css'
 import { useEffect, useState } from 'react'
 import cx from 'clsx'
 import Link from 'next/link'
-import { Facebook, Instagram } from '../shared/Socials/Socials'
+import { Instagram } from '../shared/Socials/Socials'
 
 const ToggleMenuButton = ({ isOpen, onClick }) => {
   return (
@@ -46,9 +46,6 @@ const MobileNavigation = ({ routes, activePath }) => {
 
         <li>
           <Instagram />
-        </li>
-        <li>
-          <Facebook />
         </li>
       </ul>
     </div>

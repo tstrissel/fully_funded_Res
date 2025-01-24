@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import styles from './DesktopNavigation.module.css'
-import { Facebook, Instagram } from '../shared/Socials/Socials'
+import { Instagram } from '../shared/Socials/Socials'
 
 const DesktopNavigation = ({ routes, activePath }) => {
   const navElement = React.useRef()
@@ -46,9 +46,6 @@ const DesktopNavigation = ({ routes, activePath }) => {
 
       <li>
         <Instagram />
-      </li>
-      <li>
-        <Facebook />
       </li>
     </ul>
   )
