@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Logo from '/public/FFR-assets/Logo/FFR-logo.png'
 import styles from '../Footer/Footer.module.css'
 import { Instagram } from '../shared/Socials/Socials'
+import patreon from '../../public/FFR-assets/Social links/Patreon button/Patreon.png'
+import buymeacoffee from '../../public/FFR-assets/Social links/Buy me a coffee button/default-yellow.png'
 
 export default function Footer() {
   return (
@@ -42,7 +44,13 @@ export default function Footer() {
 
           <div className={styles.support}>
             <p>Like what we do?</p>
-            <button className={styles.supportBtn}>SUPPORT US</button>
+            <Link href="https://buymeacoffee.com/fullyfundedresi" target='_blank'>
+              <Image src={buymeacoffee} width={180} height={50} />
+            </Link>
+            <Link href="https://www.patreon.com/fullyfundedresidencies" target='_blank'>
+              <Image src={patreon} width={180} height={40} />
+            </Link>
+
           </div>
         </div>
       </div>

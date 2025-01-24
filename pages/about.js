@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import exampleImage from '../public/FFR-assets/Icons/profile_icon.svg'
-import patron from '../public/FFR-assets/Social links/Patreon button/Patreon.png'
-import payPal from '../public/FFR-assets/Social links/PayPal button/Paypal.png'
+import patreon from '../public/FFR-assets/Social links/Patreon button/Patreon.png'
+import buymeacoffee from '../public/FFR-assets/Social links/Buy me a coffee button/default-yellow.png'
 import styles from './about.module.css'
 
 export default function about() {
@@ -25,11 +25,11 @@ export default function about() {
       </div>
       <div className={styles.aboutDonation}>
         <p className={styles.aboutSupport}> Ways to support us:</p>
-        <Link href="/about">
-          <Image src={patron} width={180} height={40} />
+        <Link href="https://www.patreon.com/fullyfundedresidencies" target='_blank'>
+          <Image src={patreon} width={180} height={40} />
         </Link>
-        <Link href="/about">
-          <Image src={payPal} width={180} height={50} />
+        <Link href="https://buymeacoffee.com/fullyfundedresi" target='_blank'>
+          <Image src={buymeacoffee} width={180} height={50} />
         </Link>
       </div>
       <p className={styles.aboutMission}>
