@@ -22,8 +22,6 @@ export default function ResultModal(props) {
           <div className={styles.details}>
             <ul>
               <li>
-                <strong>Deadline</strong>
-                <span>{props.deadline}</span>
               </li>
               <li>
                 <InfoLabel type="money">{props.money}</InfoLabel>
@@ -32,16 +30,16 @@ export default function ResultModal(props) {
                 <InfoLabel type="location">{props.location}</InfoLabel>
               </li>
               <li>
-                <InfoLabel type="type">{props.type}</InfoLabel>
-              </li>
-              <li>
-                <InfoLabel type="field">{props.field}</InfoLabel>
+                <InfoLabel type={props.eligibility.toLowerCase()}>{props.eligibility}</InfoLabel>
               </li>
             </ul>
           </div>
         </section>
 
         <div className={styles.body}>
+          <strong>Deadline: {props.deadline}</strong>
+          <br />
+          <strong>Disciplines: {props.fieldList}</strong>
           <p>{props.paragraph}</p>
         </div>
         <div className={styles.footer}>

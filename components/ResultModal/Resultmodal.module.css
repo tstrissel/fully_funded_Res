@@ -17,6 +17,11 @@
   }
 }
 
+.deadline {
+  font-size: 1.1rem;
+  display: flex;
+}
+
 .image {
   height: auto;
   border-radius: 8px;

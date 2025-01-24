@@ -41,6 +41,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
               <img src={imageUrl} />
             </div>
             <h3 className={styles.title}>{title}</h3>
+            <h4 className={styles.deadline}>Deadline: {deadline}</h4>
             <ul>
               <li>
                 <InfoLabel type="money">{money}</InfoLabel>
@@ -49,7 +50,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
                 <InfoLabel type="location">{country}</InfoLabel>
               </li>
               <li>
-                <InfoLabel type="eligibility">{eligibility}</InfoLabel>
+                <InfoLabel type={eligibility.toLowerCase()}>{eligibility}</InfoLabel>
               </li>
             </ul>
             <p className={styles.cardParagraph}>{description}</p>

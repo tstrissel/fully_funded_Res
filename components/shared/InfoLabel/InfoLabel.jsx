@@ -1,5 +1,5 @@
 import styles from './InfoLabel.module.css'
-import { Clock, DollarSign, LocationPin, Profile, ArtField } from '../../icons'
+import { Clock, DollarSign, LocationPin, ProfileIndividual, ArtField, ProfileCollective } from '../../icons'
 
 const getIconForLabel = (label) => {
   switch (label) {
@@ -9,8 +9,12 @@ const getIconForLabel = (label) => {
       return DollarSign
     case 'location':
       return LocationPin
-    case 'eligibility':
-      return Profile
+    case 'individual':
+      return ProfileIndividual
+    case 'collective':
+      return ProfileCollective
+    case 'individuals & collectives':
+      return ProfileCollective
     case 'field':
       return ArtField
     default:
