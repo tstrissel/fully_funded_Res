@@ -53,41 +53,53 @@ export default function about() {
 
       <p className={styles.aboutMission}>FFR Team:</p>
       <div className={styles.teamGrid}>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Mila Panić</a>
+        <div>
+          <Link className={styles.teamMember} href="https://www.milapanic.net" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Mila Panić</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Lena Skrabs</a>
+        <div>
+          <a className={styles.teamMember} href="mailto:example@example.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Lena Skrabs</h4>
+          </a>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Paloma Sanchez-Palencia</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Paloma Sanchez-Palencia</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Sasa Tatić</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Sasa Tatić</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Eliot Moleba</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Eliot Moleba</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Mathias Schäfer</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Mathias Schäfer</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Enrico Floriddia</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Enrico Floriddia</h4>
+          </Link>
         </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Gideon Smilansky</a>
-        </div>
-        <div className={styles.teamMember}>
-          <Image src={exampleImage} width={50} height={50} />
-          <a>Rebecca Layton</a>
+        <div>
+          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+            <Image src={exampleImage} width={50} height={50} />
+            <h4>Rebecca Layton</h4>
+          </Link>
         </div>
       </div>
     </div>
