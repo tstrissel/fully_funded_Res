@@ -9,7 +9,7 @@ Built with next.js, hosted on vercel with a contentful backend.
 - [x] Interviews Style and Logic
 - [x] Resources Style
 - [x] Support us button in footer and about 
-- [ ] Pictures in about
+- [x] Pictures in about (Not using photos)
 - [ ] List view style icons
 - [x] adaptive filter from the backend
 - [ ] pagination in Open Calls?
