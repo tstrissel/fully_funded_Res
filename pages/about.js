@@ -60,43 +60,43 @@ export default function about() {
           </Link>
         </div>
         <div>
-          <a className={styles.teamMember} href="mailto:example@example.com" target="_blank">
+          <a className={styles.teamMember} href="https://lenaskrabs.com/" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Lena Skrabs</h4>
           </a>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://cargocollective.com/palomasanchez" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Paloma Sanchez-Palencia</h4>
           </Link>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://sasatatic.com/" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Sasa Tatić</h4>
           </Link>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://eliotmoleba.com/about-me/" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Eliot Moleba</h4>
           </Link>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://pitscher.net/index_v1.7.txt" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Mathias Schäfer</h4>
           </Link>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://www.slanted.cc/" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Enrico Floriddia</h4>
           </Link>
         </div>
         <div>
-          <Link className={styles.teamMember} href="https://google.com" target="_blank">
+          <Link className={styles.teamMember} href="https://www.rebeccaalayton.com/" target="_blank">
             <Image src={exampleImage} width={50} height={50} />
             <h4>Rebecca Layton</h4>
           </Link>
