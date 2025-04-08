@@ -1,7 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import exampleImage from '../public/FFR-assets/Icons/profile_icon.svg'
-import rebeccaImage from '../public/FFR-assets/Icons/Rebecca.svg'
+import rebeccaImage from '../public/FFR-assets/People/Rebecca.svg'
+import eliotImage from '../public/FFR-assets/People/Eliot.svg'
+import enricoImage from '../public/FFR-assets/People/Enrico.svg'
+import lenaImage from '../public/FFR-assets/People/Lena.svg'
+import matthiasImage from '../public/FFR-assets/People/Matthias.svg'
+import milaImage from '../public/FFR-assets/People/Mila.svg'
+import palomaImage from '../public/FFR-assets/People/Paloma.svg'
+import sashaImage from '../public/FFR-assets/People/Sasha.svg'
 import patreon from '../public/FFR-assets/Social links/Patreon button/Patreon.png'
 import buymeacoffee from '../public/FFR-assets/Social links/Buy me a coffee button/default-yellow.png'
 import styles from './about.module.css'
@@ -56,50 +63,50 @@ export default function about() {
       <div className={styles.teamGrid}>
         <div>
           <Link className={styles.teamMember} href="https://www.milapanic.net" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={milaImage} width={100} height={100} />
             <h4>Mila Panić</h4>
           </Link>
         </div>
         <div>
           <a className={styles.teamMember} href="https://lenaskrabs.com/" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={lenaImage} width={100} height={100} />
             <h4>Lena Skrabs</h4>
           </a>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://cargocollective.com/palomasanchez" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={palomaImage} width={100} height={100} />
             <h4>Paloma Sanchez-Palencia</h4>
           </Link>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://sasatatic.com/" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={sashaImage} width={100} height={100} />
             <h4>Sasa Tatić</h4>
           </Link>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://eliotmoleba.com/about-me/" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={eliotImage} width={100} height={100} />
             <h4>Eliot Moleba</h4>
           </Link>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://pitscher.net/index_v1.7.txt" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
-            <h4>Mathias Schäfer</h4>
+            <Image src={matthiasImage} width={100} height={100} />
+            <h4>Matthias Schäfer</h4>
           </Link>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://www.slanted.cc/" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={enricoImage} width={100} height={100} />
             <h4>Enrico Floriddia</h4>
           </Link>
         </div>
         <div>
           <Link className={styles.teamMember} href="https://www.rebeccaalayton.com/" target="_blank">
             <Image src={rebeccaImage} width={100} height={100} />
-            <h4>Rebecca Layton</h4>
+            <h4>Rebecca A. Layton</h4>
           </Link>
         </div>
       </div>
