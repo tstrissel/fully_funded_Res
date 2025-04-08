@@ -42,6 +42,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
             </div>
             <h3 className={styles.title}>{title}</h3>
             <h4 className={styles.deadline}>Deadline: {deadline}</h4>
+            <h4 className={styles.deadline}>Duration: {duration}</h4>
             <ul>
               <li>
                 <InfoLabel type="money">{money}</InfoLabel>
@@ -73,6 +74,10 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
                 <span>{deadline}</span>
               </li>
               <li>
+                <strong>Duration</strong>
+                <span>{duration}</span>
+              </li>
+              <li>
                 <strong>Stipend</strong>
                 <span>{money}</span>
               </li>
@@ -99,6 +104,8 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
         category={''}
         paragraph={description}
         deadline={deadline}
+        duration={duration}
+        fees={fees}
         money={money}
         featuredImage={imageUrl}
         location={country}

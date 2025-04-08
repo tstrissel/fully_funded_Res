@@ -1,6 +1,6 @@
 import styles from './Filters.module.css'
 import Modal from '../Modal/Modal'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import cx from 'clsx'
 
 export default function Filters({ onApplyFilters, onClear, isOpen, onClose, countryList, typesList }) {
@@ -22,6 +22,14 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
     Performance: false,
     Dance: false,
   })
+
+  const scrollRef = useRef(null);
+  const [showScrollHint, setShowScrollHint] = useState(false);
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (el.scrollTop > 10) setShowScrollHint(false);
+  };
 
   // Uncomment to apply filters on each change:
   // useEffect(() => {
@@ -62,14 +70,47 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
 
     onClear();
   }
+
+  useEffect(() => {
+    if (!isOpen) return;
+  
+    const timeout = setTimeout(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+  
+      const isScrollable = el.scrollHeight > el.clientHeight;
+      setShowScrollHint(isScrollable);
+  
+      el.addEventListener('scroll', handleScroll);
+      console.log('[DEBUG] scrollHeight:', el.scrollHeight, 'clientHeight:', el.clientHeight);
+    }, 0); // run after DOM paint
+  
+    return () => {
+      clearTimeout(timeout);
+      const el = scrollRef.current;
+      el.removeEventListener('scroll', handleScroll)
+    }
+  }, [isOpen]);
   
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      header={<h2 className={styles.filtersHeader}>Filter by</h2>}
     >
-      <div className={styles.container}>
+      <div className={styles.header}>
+        <h2 className={styles.filtersHeader}>Filter by</h2>
+      </div>
+      <div className={styles.modalButtons}>
+        <button className={styles.resetBtn} onClick={resetFields}>
+          Reset
+        </button>
+        <button className={styles.confirmBtn} onClick={handleApplyFilters}>
+          Search
+        </button>
+      </div>
+
+      <div ref={scrollRef} className={styles.scrollContainer}>
+        <div className={styles.container}>
         <div>
           <div className={styles.field}>
             <label className={styles.filterLabel} htmlFor="filter-location">
@@ -208,15 +249,11 @@ export default function Filters({ onApplyFilters, onClear, isOpen, onClose, coun
             </div>
           </fieldset>
         </div>
+        </div>
       </div>
-      <div className={styles.footer}>
-        <button className={styles.resetBtn} onClick={resetFields}>
-          Reset
-        </button>
-        <button className={styles.confirmBtn} onClick={handleApplyFilters}>
-          Search
-        </button>
-      </div>
+      {showScrollHint && (
+        <div className={styles.scrollHint}>↓</div>
+      )}
     </Modal>
   )
 }

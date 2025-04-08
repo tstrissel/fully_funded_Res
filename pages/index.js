@@ -1,11 +1,5 @@
 import OpenCallsList from '../components/OpenCalls'
-import NavBar from '../components/navBar/NavBar'
-import Footer from '../components/Footer/Footer'
-import Head from 'next/head'
 import { DateTime } from 'luxon'
-
-// import { MyDocument } from "./_document";
-// import SearchBar from "../components/searchBar"
 import { Client } from '@notionhq/client'
 
 export const getStaticProps = async (context) => {
@@ -29,9 +23,8 @@ export const getStaticProps = async (context) => {
   const types = schemaResponse.properties['Open Call Type'].select.options.map(option=> option.name.trimStart())
   const uniqueTypes = [...new Set(types)];
 
-  console.log(notionResponse.results[0].properties.Deadline.date);
-
   const items = notionResponse.results.map(item => {
+
     return {
       'createdAt': item.created_time,
       'title': item.properties.Name.title[0]?.plain_text ?? '',
@@ -40,13 +33,12 @@ export const getStaticProps = async (context) => {
       'eligibility': item.properties.Eligibility.select?.name ?? '',
       'description': item.properties['Short Description']?.rich_text?.[0]?.plain_text,
       'benefits': item.properties.Benefits?.rich_text?.[0]?.plain_text,
-      'money': item.properties.Money.rich_text?.[0]?.plain_text,
+      'money': item.properties.Money?.rich_text?.[0]?.plain_text ?? '',
       'imageUrl': item.properties.Image?.files?.[0]?.file?.url || fellowship.Image?.files?.[0]?.external?.url,
       'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? '',
       'fieldList': item.properties.Field.multi_select.map(option => option.name).join(', '),
       'country': item.properties.Country.select?.name.trimStart(),
-      'durationValue': item.properties['Duration Value'].number,
-      'durationUnit': item.properties['Duration Unit'].select?.name ?? '',
+      'duration': item.properties['Duration Value'].number + ' ' + (item.properties['Duration Unit'].select?.name ?? ''),
       'type': item.properties['Open Call Type'].select?.name ?? null
     }
   });

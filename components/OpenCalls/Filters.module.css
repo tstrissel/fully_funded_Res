@@ -4,10 +4,11 @@
   gap: 16px;
 }
 
-.filtersHeader {
-  font-weight: bold;
-  font-size: 24px;
-  margin-bottom: 1.5em;
+.scrollContainer {
+  max-height: 60vh; /* Adjust based on your modal size */
+  padding: 1em 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .field {
@@ -15,7 +16,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 27px;
 }
 
 .filterLabel {
@@ -28,10 +29,11 @@
 }
 
 .selectInput {
-  font-size: 18px;
+  font-size: 16px;
   display: block;
   padding: 5px 0;
   border: none;
+  margin-left: 10%;
   color: var(--color-text);
   background: white;
   border-bottom: 2.4px solid var(--color-text);
@@ -44,6 +46,7 @@
 
 .checkbox {
   display: flex;
+  margin-left: 10%;
   align-items: center;
   justify-content: center;
   gap: 0.7em;
@@ -97,20 +100,38 @@
   transform: scale(1) rotate(10deg);
 }
 
+.header {
+  /*display: inline-flex;*/
+}
+
+.filtersHeader {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 0.5em;
+  margin-right: 5em;
+}
+
 .footer {
   margin-top: 32px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
 
+.modalButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
 .resetBtn {
   padding: 16px 32px;
-  margin-right: 8px;
   min-width: 60px;
-  height: 55px;
+  margin-right: 2em;
+  height:40px;
   background: white;
   border: 2px solid var(--color-text);
   border-radius: 10px;
@@ -123,18 +144,18 @@
 }
 
 .confirmBtn {
-  padding: 16px 64px;
-  min-width: 220px;
-  height: 55px;
+  padding: 16px 32px;
+  min-width: 60px;
+  height: 40px;
   background: var(--color-primary-2);
   color: var(--color-text);
   border-radius: 10px;
   border: 2px solid var(--color-text);
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 
-  font-size: 18px;
+  /*font-size: 22px;*/
   font-weight: 700;
-  font-style: normal;
+  /*font-style: normal;*/
 
   cursor: pointer;
   transition: all 0.1s ease-out;
@@ -157,3 +178,30 @@
     grid-template-columns: 1fr;
   }
 }
+
+.scrollHint {
+  position: absolute;
+  bottom: 10px; /* adjust depending on your footer/buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px; /* make it bigger and bolder */
+  font-weight: 800;
+  color: black; /* or use a brand color */
+  opacity: 0.8;
+  animation: bounce 1.2s infinite;
+  z-index: 5;
+  pointer-events: none; /* so it doesn't block clicks */
+  user-select: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+
+

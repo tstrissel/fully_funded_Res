@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import exampleImage from '../public/FFR-assets/Icons/profile_icon.svg'
+import rebeccaImage from '../public/FFR-assets/Icons/Rebecca.svg'
 import patreon from '../public/FFR-assets/Social links/Patreon button/Patreon.png'
 import buymeacoffee from '../public/FFR-assets/Social links/Buy me a coffee button/default-yellow.png'
 import styles from './about.module.css'
@@ -97,7 +98,7 @@ export default function about() {
         </div>
         <div>
           <Link className={styles.teamMember} href="https://www.rebeccaalayton.com/" target="_blank">
-            <Image src={exampleImage} width={50} height={50} />
+            <Image src={rebeccaImage} width={100} height={100} />
             <h4>Rebecca Layton</h4>
           </Link>
         </div>

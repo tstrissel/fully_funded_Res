@@ -1,17 +1,24 @@
 .wrapper {
-  display: inline-flex;
-  flex-direction: row;
+  display: flex;
+  align-items: center; /* center icon & text block */
   gap: 1em;
-  align-items: center;
 }
 
+
 .icon {
-  width: 2em;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .icon svg {
   height: 1.5em;
+  width: 1.5em;
 }
+
+.content {
+  display: inline-block;
+  line-height: 1.1;
+}
+

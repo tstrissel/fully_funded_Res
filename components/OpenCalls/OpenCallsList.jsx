@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react'
 import styles from './OpenCallsList.module.css'
-import Link from 'next/link'
-import { isEmpty } from 'lodash'
 import Filters from './Filters'
-import OpenCallsItem from './OpenCallsItem'
 import OpenCallsItemNotion from './OpenCallsItemNotion'
-import Image from 'next/image'
-import Search from './Search'
 import { sortCalls, filterCalls } from './listUtils'
-import { ChevronDown } from '../icons'
 import cx from 'clsx'
 
 export default function GridComp({ calls = [], countriesList = [], typesList = [] }) {
@@ -125,12 +119,6 @@ export default function GridComp({ calls = [], countriesList = [], typesList = [
             typesList={typesList}
           />
         </div>
-
-        <Search
-          value={searchTerm}
-          onApplySearch={applySearchTerm}
-          onClearSearch={clearSearch}
-        />
       </div>
 
       {filteredCalls.length == 0 && (

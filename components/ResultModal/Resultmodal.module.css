@@ -4,6 +4,13 @@
   gap: 32px;
 }
 
+.scrollContainer {
+  max-height: 60vh; /* Adjust based on your modal size */
+  padding: 1em 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 .topSection {
   display: flex;
   flex-direction: column;
@@ -43,4 +50,28 @@
 
 .footer {
   align-self: flex-end;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 10px; /* adjust depending on your footer/buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px; /* make it bigger and bolder */
+  font-weight: 800;
+  color: black; /* or use a brand color */
+  opacity: 0.8;
+  animation: bounce 1.2s infinite;
+  z-index: 5;
+  pointer-events: none; /* so it doesn't block clicks */
+  user-select: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
 }

@@ -31,15 +31,14 @@ const MobileNavigation = ({ routes, activePath }) => {
     <div className={styles.wrapper}>
       <ToggleMenuButton isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
       <ul className={cx(styles.menu, isOpen && styles.open)}>
-        {routes.map((route) => (
+        {routes
+        .filter(route => route.path !== activePath) // hide the current page
+        .map((route) => (
           <li key={route.name}>
-            <Link href={route.path}>
-                className={cx(
-                  styles.navEntry,
-                  activePath === route.path && styles.active
-                )}
-                onClick={closeMenu}
-                {route.name}
+            <Link href={route.path} onClick={closeMenu}>
+                <div className={styles.navEntry}>
+                  {route.name}
+                </div>
             </Link>
           </li>
         ))}
