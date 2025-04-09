@@ -34,13 +34,7 @@ export default function ResourcesComp({
         {grantAndFunds.map((GAF) => {
           return (
             <div className={styles.cards} key={GAF.id}>
-              {GAF.image && (
-                <img
-                  src={GAF.image}
-                  height="300px"
-                  width="350px"
-                />
-              )}
+              <img src={GAF.image}/>
               <div className={styles.card__info}>
                 <div>
                   <h3>{GAF.name}</h3>
@@ -63,13 +57,7 @@ export default function ResourcesComp({
         {practicalAdviceAndOpportunities.map((PAO) => {
           return (
             <div className={styles.cards} key={PAO.id}>
-              {PAO.image && (
-                <img
-                  src={PAO.image}
-                  height="300px"
-                  width="350px"
-                />
-              )}
+              <img src={PAO.image} />              
               <div className={styles.card__info}>
                 <div>
                   <h3>{PAO.name}</h3>
@@ -92,13 +80,7 @@ export default function ResourcesComp({
         {databaseOpp.map((DO) => {
           return (
             <div className={styles.cards} key={DO.id}>
-              {DO.image && (
-                <img
-                  src={DO.image}
-                  height="300px"
-                  width="350px"
-                />
-              )}
+                <img src={DO.image} />
               <div className={styles.card__info}>
                 <div>
                   <h3>{DO.name}</h3>
