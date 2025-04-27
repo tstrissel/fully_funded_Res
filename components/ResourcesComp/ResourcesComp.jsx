@@ -34,7 +34,7 @@ export default function ResourcesComp({
         {grantAndFunds.map((GAF) => {
           return (
             <div className={styles.cards} key={GAF.id}>
-              <img src={GAF.image}/>
+              <img src={GAF.image}/>              
               <div className={styles.card__info}>
                 <div>
                   <h3>{GAF.name}</h3>
@@ -57,7 +57,7 @@ export default function ResourcesComp({
         {practicalAdviceAndOpportunities.map((PAO) => {
           return (
             <div className={styles.cards} key={PAO.id}>
-              <img src={PAO.image} />              
+              <img src={PAO.image} />             
               <div className={styles.card__info}>
                 <div>
                   <h3>{PAO.name}</h3>
@@ -80,7 +80,7 @@ export default function ResourcesComp({
         {databaseOpp.map((DO) => {
           return (
             <div className={styles.cards} key={DO.id}>
-                <img src={DO.image} />
+              <img src={DO.image} />
               <div className={styles.card__info}>
                 <div>
                   <h3>{DO.name}</h3>

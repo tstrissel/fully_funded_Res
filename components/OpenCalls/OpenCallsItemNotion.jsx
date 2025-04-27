@@ -35,7 +35,7 @@ const OpenCallsItem = ({ viewMode, openCall }) => {
         {viewMode === 'cards' ? (
           <div className={styles.cardContainer}>
             <div className={styles.thumbnail}>
-              <img src={imageUrl} />
+              <img src={imageUrl}/>
             </div>
             <h3 className={styles.title}>{title}</h3>
             <h4 className={styles.deadline}>Deadline: {deadline}</h4>
