@@ -1,10 +1,13 @@
+import { DateTime } from "luxon";
+
 export const sortCalls = (calls, sortBy = 'createdAt') => {
   if (calls.length == 0) {
     return [];
   }
   const response = calls.sort((a, b) => {
     if (sortBy === 'deadline') {
-      return new Date(a.deadline) - new Date(b.deadline)
+      const diff = DateTime.fromFormat(a.deadline, "dd.LLL.yy").toMillis() - DateTime.fromFormat(b.deadline, "dd.LLL.yy").toMillis()
+      return (diff !== 0) ? diff : a.title.localeCompare(b.title)
     }
     // Default sort
     if (sortBy === "createdAt") {

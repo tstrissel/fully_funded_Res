@@ -23,13 +23,15 @@ export const getStaticProps = async (context) => {
   const types = schemaResponse.properties['Open Call Type'].select.options.map(option=> option.name.trimStart())
   const uniqueTypes = [...new Set(types)];
 
-  const items = notionResponse.results.map(item => {
-
+  const items = notionResponse.results.filter(item => {
+      return DateTime.fromISO(item.properties.Deadline.date.start) >= DateTime.now();
+    })
+    .map(item => {
     return {
       'createdAt': item.created_time,
       'title': item.properties.Name.title[0]?.plain_text ?? '',
       'linkUrl': item.properties.Link.url ?? '', // check url
-      'deadline': DateTime.fromISO(item.properties.Deadline.date.start).toFormat('dd.LL.yy'),
+      'deadline': DateTime.fromISO(item.properties.Deadline.date.start).toFormat('dd.LLL.yy'),
       'eligibility': item.properties.Eligibility.select?.name ?? '',
       'description': item.properties['Short Description']?.rich_text?.[0]?.plain_text,
       'benefits': item.properties.Benefits?.rich_text?.[0]?.plain_text ?? null,
@@ -38,10 +40,12 @@ export const getStaticProps = async (context) => {
       'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? '',
       'fieldList': item.properties.Field.multi_select.map(option => option.name).join(', '),
       'country': item.properties.Country.select?.name.trimStart(),
-      'duration': item.properties['Duration Value'].number + ' ' + (item.properties['Duration Unit'].select?.name ?? ''),
+      'duration': (item.properties['Duration Value'].number ?? '') + ' ' + (item.properties['Duration Unit'].select?.name ?? ''),
       'type': item.properties['Open Call Type'].select?.name ?? null
     }
   });
+
+
 
   return {
     props: {

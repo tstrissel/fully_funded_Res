@@ -26,6 +26,8 @@ export const getStaticProps = async (context) => {
     };
   })
 
+  console.log(items);
+
   return {
     props: {
       grantAndFunds: items.filter(item => item.type === "Grants & Funds"),
