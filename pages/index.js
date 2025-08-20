@@ -32,7 +32,7 @@ export const getStaticProps = async (context) => {
       'deadline': DateTime.fromISO(item.properties.Deadline.date.start).toFormat('dd.LL.yy'),
       'eligibility': item.properties.Eligibility.select?.name ?? '',
       'description': item.properties['Short Description']?.rich_text?.[0]?.plain_text,
-      'benefits': item.properties.Benefits?.rich_text?.[0]?.plain_text,
+      'benefits': item.properties.Benefits?.rich_text?.[0]?.plain_text ?? null,
       'money': item.properties.Money?.rich_text?.[0]?.plain_text ?? '',
       'imageUrl': item.properties.Image?.files?.[0]?.file?.url || fellowship.Image?.files?.[0]?.external?.url,
       'fees': item.properties.Fees.rich_text?.[0]?.plain_text ?? '',
