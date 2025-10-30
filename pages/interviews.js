@@ -31,6 +31,7 @@ export const getStaticProps = async (context) => {
     props: {
       interviews: items,
     },
+    revalidate: 30
   }
 }
 

@@ -34,6 +34,7 @@ export const getStaticProps = async (context) => {
       databaseOpp: items.filter(item => item.type === "Databases"),
       practicalAdviceAndOpportunities: items.filter(item => item.type === "Practical advice"),
     },
+    revalidate: 30
   }
 }
 
