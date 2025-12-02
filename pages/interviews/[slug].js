@@ -1,4 +1,3 @@
-import { client } from '@lib/contentful.js'
 import InterviewContainer from '@components/InterviewPost/InterviewContainer'
 import Post from '@components/InterviewPost/Post'
 import { Client } from '@notionhq/client'
