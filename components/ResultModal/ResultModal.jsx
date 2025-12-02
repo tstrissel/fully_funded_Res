@@ -1,6 +1,6 @@
 import styles from './Resultmodal.module.css'
 import Modal from '../Modal/Modal'
-import WebsiteLink from '../shared/WebsiteLink'
+import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
 import InfoLabel from '../shared/InfoLabel/InfoLabel'
 import { useEffect, useState, useRef } from 'react'
 
