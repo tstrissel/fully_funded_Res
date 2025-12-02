@@ -1,6 +1,6 @@
 import ResultModal from '../ResultModal/ResultModal'
 import { useState } from 'react'
-import WebsiteLink from '../shared/WebsiteLink'
+import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
 import InfoLabel from '../shared/InfoLabel/InfoLabel'
 import styles from './OpenCallsItem.module.css'
 

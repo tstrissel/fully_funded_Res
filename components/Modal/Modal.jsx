@@ -1,3 +1,4 @@
+import React, { ReactNode } from 'react'
 import ReactModal from 'react-modal'
 import cx from 'clsx'
 import styles from './Modal.module.css'

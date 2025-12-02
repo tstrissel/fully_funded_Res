@@ -2,7 +2,7 @@ import styles from './InterviewComp.module.css'
 import interButton from '../../public/FFR-assets/Buttons/Buttons/read-interview-button.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import WebsiteLink from '@components/shared/WebsiteLink'
+import WebsiteLink from '@components/shared/WebsiteLink/WebsiteLink'
 
 export default function interviewComp({ interviews }) {
   /* interviews[{
