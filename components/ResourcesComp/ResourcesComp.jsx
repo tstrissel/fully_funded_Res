@@ -2,7 +2,7 @@ import { getMiddlewareManifest } from 'next/dist/client/route-loader'
 import Image from 'next/image'
 import styles from './ResourcesComp.module.css'
 import { ArrowDown } from '../icons'
-import WebsiteLink from '../shared/WebsiteLink/WebsiteLink'
+import WebsiteLink from '@components/shared/WebsiteLink/WebsiteLink'
 import Link from 'next/link';
 
 export default function ResourcesComp({
